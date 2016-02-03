@@ -1,0 +1,42 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Peg;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SqlBuddy.Domain
+{
+    [Serializable]
+  public variant DirectiveExpression
+  {
+    | Symbol              { id    : string; }
+    | Boolean             { value : bool;   }
+    | AndOperator         { left  : DirectiveExpression;
+                            right : DirectiveExpression; }
+    | OrOperator          { left  : DirectiveExpression;
+                            right : DirectiveExpression; }
+    | EqualsOperator      { left  : DirectiveExpression;
+                            right : DirectiveExpression; }
+    | NotEqualsOperator   { left  : DirectiveExpression;
+                            right : DirectiveExpression; }
+    | NotOperator         { e     : DirectiveExpression; }
+
+    public override ToString() : string
+    {
+      match(this)
+      {
+        | Symbol(id) => id
+        | Boolean(value) => value.ToString()
+        | AndOperator(left, right) => $"($left && $right)"
+        | OrOperator(left, right) => $"($left || $right)"
+        | EqualsOperator(left, right) => $"($left == $right)"
+        | NotEqualsOperator(left, right) => $"($left != $right)"
+        | NotOperator(expr) => $"!$expr"
+      }
+    }
+  }
+}

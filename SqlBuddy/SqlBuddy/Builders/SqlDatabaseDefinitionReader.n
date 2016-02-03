@@ -1,0 +1,43 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using SqlBuddy.Dal;
+using SqlBuddy.Domain;
+
+namespace SqlBuddy.Builders
+{
+    public class SqlDatabaseDefinitionReader
+        : IDatabaseDefinitionReader
+    {
+        private _definition : DatabaseDefinition;
+        
+        public this(definition : DatabaseDefinition)
+        {
+            _definition = definition;
+        }
+        
+        public ReadDatabase() : SqlDatabaseDefinition
+        {
+            def server = _definition.Server;
+            def database = _definition.Name;
+            def user = _definition.UserName;
+            def password = _definition.Password;
+            def connectionString = $"Server=$server;Database=$database;User Id=$user;Password=$password;MultipleActiveResultSets=true";
+            def executionContext = ExecutionContext(connectionString, TimeSpan.FromSeconds(_definition.Timeout));
+            def dbReader = DbReader(executionContext);
+            
+            dbReader.ReadDatabase(_definition);
+        }
+        
+        public DatabaseDefinition() : DatabaseDefinition
+        {
+            _definition;
+        }
+    }
+}

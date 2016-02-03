@@ -1,0 +1,21 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Peg;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SqlBuddy.Domain
+{
+    [Serializable]
+    public variant PreParseElement 
+        : Located
+    {
+        | Comment
+        | DocComment  { values     : list[Location]; }
+        | Directive   { directive  : SqlBuddy.Domain.Directive; }
+    }
+}

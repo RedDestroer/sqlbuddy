@@ -1,0 +1,27 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SqlBuddy.Domain
+{
+    [Record]
+    [Serializable]
+    public class DatabaseDefinition
+    {
+        public ClassName : string;
+        public Name : string;
+        public Server : string;
+        public UserName : string;
+        public Password : string;
+        public Timeout : int;
+        public Schemas : List[string];
+        public Tables : List[string];
+        public Procedures : List[string];
+        public Template : string;
+    }
+}

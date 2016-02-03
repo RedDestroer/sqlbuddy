@@ -1,0 +1,170 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Peg;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Collections.Generic.Dictionary;
+
+using SqlBuddy.Domain;
+
+namespace SqlBuddy.Parsers
+{
+    [PegGrammar(
+        Options = EmitDebugSources,
+        source,
+        grammar {
+            ANY = !['\u0000'..'\u001F'] !'\u007F' ['\u0000'..'\uFFFF'];
+            ws : void = ("\r\n" / "\n" / "\r" / "\t" / ' ')*;
+            space = ' ';
+            spaces = space*;
+            tab = '\t';
+            tabs = tab*;
+            spchar = '\\' / '(' / ')' / ',';
+            
+            letter = [Lu, Ll, Lt, Lm, Lo] / '_';
+            digit = ['0'..'9'];
+            digits = digit (digit)*;
+            keyword = "database";
+            keyname = ".name" / ".server" / ".userName" / ".password" / ".timeout" / ".schemas" / ".tables" / ".procedures" / ".generator";
+            identifier : string = letter (letter / digit)*;
+            qualifiedName : string = identifier ("." identifier)*;
+            pp : string = "." / "..";
+            sep : string = ":";
+            pathPart : string = qualifiedName / pp;
+            driveName : string = letter sep;
+            filename : string = ((driveName / pp) "\\")? pathPart;
+            stringvalue : string = (letter / digit / space / tab / spchar)*;
+            intvalue : string = digits;
+            @null : string = "null";
+            
+            keyvalue : KeyValueDefinition = !keyword !(@null) keyname ws "=" ws (stringvalue / @null / intvalue / filename) ws ";";
+            database : DatabaseDefinition = ws "database" ws identifier ws "{" ws keyvalue (ws keyvalue)* ws "}" ws;
+            
+            source : DatabaseDefinition = ws database ws;
+        }
+    )]
+    public class DatabaseParser
+    {
+        identifier(data : NToken, data2 : NToken) : string
+        {
+            GetText(data) + GetText(data2);
+        }
+        
+        filename(pathStart : option[(string*NToken)], pathPart: string) : string
+        {
+            mutable path : string = string.Empty;
+            when (pathStart.IsSome)
+            {
+                def (t1, _) = pathStart.Value;
+                path = t1 + "\\";
+            }
+            
+            path += pathPart;
+            
+            path;
+        }
+        
+        driveName(drive : NToken, _ : string) : string
+        {
+            GetText(drive) + ":";
+        }
+        
+        sep(val : NToken) : string
+        {
+            GetText(val);
+        }
+        
+        pp(val : NToken) : string
+        {
+            GetText(val);
+        }
+        
+        stringvalue(val : NToken) : string
+        {
+            GetText(val);
+        }
+        
+        intvalue(val : NToken) : string
+        {
+            GetText(val);
+        }
+        
+        keyvalue(key : NToken, _ : NToken, val : string, _ : NToken) : KeyValueDefinition
+        {
+            KeyValueDefinition(GetText(key), val);
+        }
+        
+        qualifiedName(id : string, ids : List[NToken * string]) : string 
+        {
+            def crumbs = List();
+            crumbs.Add(id);
+            
+            foreach((_, i) in ids) 
+                crumbs.Add(i);
+            
+            string.Join(".", crumbs);
+        }
+        
+        database(_ : NToken, className : string, _ : NToken, kv : KeyValueDefinition, kvs : List[KeyValueDefinition], _ : NToken) : DatabaseDefinition
+        {
+            kvs.Insert(0, kv);
+            
+            def val (s, kvs) : string 
+            {
+                mutable res : string = null;
+                foreach (kv in kvs)
+                {
+                    when(kv.Key == s)
+                    {
+                        res = kv.Value;
+                    }
+                }
+                
+                res;
+            };
+            
+            def name : string = val(".name", kvs);
+            def server : string = val(".server", kvs);
+            def userName : string = val(".userName", kvs);
+            def password : string = val(".password", kvs);
+            def timeout : int = int.Parse(val(".timeout", kvs));
+            
+            def schemas : List[string] = List();
+            def schemasVal = val(".schemas", kvs);
+            
+            when(schemasVal != "null")
+            {
+                schemas.AddRange(schemasVal.Split(',').Where(o => !string.IsNullOrEmpty(o)).Select(o => o.TrimStart().TrimEnd()));
+            }
+            
+            def tables : List[string] = List();
+            def tablesVal = val(".tables", kvs);
+            
+            when(tablesVal != "null")
+            {
+                tables.AddRange(tablesVal.Split(',').Where(o => !string.IsNullOrEmpty(o)).Select(o => o.TrimStart().TrimEnd()));
+            }
+            
+            def procedures : List[string] = List();
+            def proceduresVal = val(".procedures", kvs);
+            
+            when(proceduresVal != "null")
+            {
+                procedures.AddRange(proceduresVal.Split(',').Where(o => !string.IsNullOrEmpty(o)).Select(o => o.TrimStart().TrimEnd()));
+            }
+            
+            def template = val(".generator", kvs);
+            
+            DatabaseDefinition(className, name, server, userName, password, timeout, schemas, tables, procedures, template);
+        }
+        
+        @null(_ : NToken) : string
+        {
+            null;
+        }
+    }
+}

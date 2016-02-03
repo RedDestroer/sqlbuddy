@@ -1,0 +1,241 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using System.Data;
+using System.Data.SqlClient;
+
+using SqlBuddy.Dal;
+using SqlBuddy.Domain;
+using SqlBuddy.Parsers;
+
+namespace SqlBuddy.Builders
+{
+    public class DbReader
+    {
+        private _executionContext : IExecutionContext;
+        private mutable _databaseDefinition : DatabaseDefinition;
+        
+        public this(executionContext : IExecutionContext)
+        {
+            _executionContext = executionContext;
+        }
+        
+        public ReadDatabase(databaseDefinition : DatabaseDefinition) : SqlDatabaseDefinition
+        {
+            mutable sqlDatabaseDefinition : SqlDatabaseDefinition;
+            _databaseDefinition = databaseDefinition;
+            
+            using(command = SqlCommand(Sql.Use(databaseDefinition.Name)))
+            {
+                _executionContext.Open();
+                _ = _executionContext.ExecuteNonQuery(command);
+                
+                sqlDatabaseDefinition = SqlDatabaseDefinition(ReadSchemas());
+                
+                _executionContext.Close();
+            }
+            
+            sqlDatabaseDefinition;
+        }
+        
+        ReadSchemas() : List[SqlSchemaDefinition]
+        {
+            // Schema list
+            def lst = List();
+            
+            using(command = SqlCommand(Sql.SelectAllSchemas()))
+            {
+                using(reader = _executionContext.ExecuteReader(command))
+                {
+                    // Read sql schemas
+                    while (reader.Read())
+                    {
+                        def (haveToAdd, schema) = ReadSchema(reader);
+                        
+                        when(haveToAdd)
+                        {
+                            lst.Add(schema);
+                        }
+                    }
+                }
+            }
+            
+            lst;
+        }
+        
+        ReadSchema(reader : IDataReader) : bool*SqlSchemaDefinition
+        {
+            // ObjectId schema
+            def schemaId = reader.GetInt32(0);
+                        
+            // Schema name
+            def schemaName = reader.GetString(1);
+            
+            if (HaveToReadSchema(schemaName))
+            {
+                // Schema procedure list
+                def procedures = ReadSqlProcedures(schemaId);
+            
+                (true, SqlSchemaDefinition(schemaId, schemaName, procedures));
+            }
+            else
+            {
+                (false, null);
+            }
+        }
+        
+        HaveToReadSchema(name : string) : bool
+        {
+            HaveToReadList(name, _databaseDefinition.Schemas);
+        }
+        
+        HaveToReadList(name : string, list : List[string]) : bool
+        {
+            if (list.Count == 0)
+            {
+                true;
+            }
+            else
+            {
+                list.Contains(name)
+            }
+        }
+        
+        ReadSqlProcedures(schemaId : int) : List[SqlProcedureDefinition]
+        {
+            // Procedure list
+            def lst = List();
+            
+            using(command = SqlCommand(Sql.SelectProceduresForSchema(schemaId)))
+            using(reader = _executionContext.ExecuteReader(command))
+            {
+                
+                // Read procedures
+                while (reader.Read())
+                {
+                    def (haveToAdd, procedure) = ReadSqlProcedure(reader);
+                        
+                    when(haveToAdd)
+                    {
+                        lst.Add(procedure);
+                    }
+                }
+            }
+            
+            lst;
+        }
+        
+        ReadSqlProcedure(reader : IDataReader) : bool*SqlProcedureDefinition
+        {
+            // ObjectId procedure
+            def procedureId = reader.GetInt32(0);
+                                
+            // Procedure name
+            def procedureName = reader.GetString(1);
+            
+            if (HaveToReadSqlProcedure(procedureName))
+            {
+                // Procedure param list
+                def paramenters = ReadSqlProcedureParameters(procedureId);
+            
+                (true, SqlProcedureDefinition(procedureId, procedureName, paramenters));
+            }
+            else
+            {
+                (false, null);
+            }
+        }
+        
+        HaveToReadSqlProcedure(name : string) : bool
+        {
+            HaveToReadList(name, _databaseDefinition.Procedures);
+        }
+        
+        ReadSqlProcedureParameters(procedureId : int) : List[SqlScalarParameterDefinition]
+        {
+            def procText = StringBuilder();
+            
+            // Procedure text
+            using(command = SqlCommand(Sql.GetProcedureText(procedureId)))
+            using(reader = _executionContext.ExecuteReader(command))
+            {
+                while (reader.Read())
+                {
+                    _ = procText.Append(reader.GetString(0));
+                }
+            }
+            
+            def preParser = PreParser();
+            match(preParser.Parse(procText.ToString()))
+            {
+                | Some(preAst) =>
+                    def preResult = Preprocessor.Run(preAst, []);
+                    when(preResult.HasErrors)
+                    {
+                        mutable errorMsg : string = string.Empty;
+                        foreach(error in preResult.Errors)
+                        {
+                            errorMsg += $"SqlProcedure parse error Object_Id: $(procedureId) Error: '$(error)'.\r\n";
+                        }
+                            
+                        throw InvalidOperationException(errorMsg);
+                    }
+
+                    def parser = SqlProcedureParser();
+                    match(parser.Parse(preResult.Source))
+                    {
+                        | Some(source) =>
+                            def (_, @params) = source;
+                            @params;
+    
+                        | _ =>
+                            def (errorPos, ids) = parser.GetMaxRollbackPosAndIds();
+                            def location = parser.ParsingSource.GetSourceLine(errorPos);
+                            def (l, _) = location.StartLineColumn;
+                            def s = location.StartPos;
+                
+                            mutable text : string = string.Empty;
+                            foreach(id in ids)
+                            {
+                                text += $"$(id): $(parser.GetRuleName(id))\r\n";
+                            }
+                
+                            when(string.IsNullOrEmpty(text))
+                            {
+                                text = "Can't find sql procedure header.";
+                            }
+                
+                            def errorMsg = $"SqlProcedure parse error Object_Id: $(procedureId) Row: $(l) Column: $(errorPos - s) Total: $(ids.Count) Expected: $(text).";
+                
+                            throw InvalidOperationException(errorMsg);
+                    }
+                | _ =>
+                    def (errorPos, ids) = preParser.GetMaxRollbackPosAndIds();
+                    def location = preParser.ParsingSource.GetSourceLine(errorPos);
+                    def (l, _) = location.StartLineColumn;
+                    def s = location.StartPos;
+                
+                    mutable text : string = string.Empty;
+                    foreach(id in ids)
+                    {
+                        text += $"$(id): $(preParser.GetRuleName(id))\r\n";
+                    }
+                
+                    when(string.IsNullOrEmpty(text))
+                    {
+                        text = "Can't find sql procedure header.";
+                    }
+                
+                    def errorMsg = $"SqlProcedure pre-parse error Object_Id: $(procedureId) Row: $(l) Column: $(errorPos - s) Total: $(ids.Count) Expected: $(text).";
+                
+                    throw InvalidOperationException(errorMsg);
+            }
+        }
+    }
+}

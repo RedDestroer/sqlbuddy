@@ -37,6 +37,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
+    <Reference Include="Nemerle.Peg, Version=1.2.0.477, Culture=neutral, PublicKeyToken=e080a9c724e2bfcd">
+      <Name>Nemerle.Peg</Name>
+      <AssemblyName>Nemerle.Peg.dll</AssemblyName>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Nemerle\net-4.0\Nemerle.Peg.dll</HintPath>
+    </Reference>
+    <Reference Include="Nemerle.Peg.Macros, Version=1.2.0.477, Culture=neutral, PublicKeyToken=null">
+      <Name>Nemerle.Peg.Macros</Name>
+      <AssemblyName>Nemerle.Peg.Macros.dll</AssemblyName>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Nemerle\net-4.0\Nemerle.Peg.Macros.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -59,10 +69,121 @@
     </MacroReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.n" />
+    <Compile Include="Builders\DbReader.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\Helper.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\CsNativeDatabaseBuilder.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\IDatabaseDefinitionReader.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\Sql.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\SqlDatabaseDefinitionReader.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dal\ExecutionContext.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dal\IExecutionContext.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\ClassDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\DatabaseDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Direction.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Directive.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\DirectiveExpression.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\ImportDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\KeyValueDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Literal.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\NamespaceDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\PreparedCompilationUnit.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\PreParseElement.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\PreprocessorResult.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\PropertyDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\ResultDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SourceFileContent.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SqlDatabaseDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SqlDbTypeDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SqlDbTypeLiteral.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SqlParameterDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SqlProcedureDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SqlScalarParameterDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\SqlSchemaDefinition.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\DatabaseParser.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\PreParser.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\Preprocessor.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\PreprocessorContext.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\PreprocessorWriter.n">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\SqlProcedureParser.n">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.n" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Builders\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Dal" />
+    <Folder Include="Parsers\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(Nemerle)\Nemerle.MSBuild.targets" />

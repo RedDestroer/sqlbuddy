@@ -1,0 +1,59 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SqlBuddy.Builders
+{
+    public module Sql
+    {
+        public Use(databaseName : string) : string
+        {
+            "USE " + databaseName;
+        }
+        
+        public SelectAllSchemas() : string
+        {
+            "SELECT schema_id, name FROM sys.schemas order by name";
+        }
+        
+        public SelectProceduresForSchema(shemaId : int) : string
+        {
+            @"SELECT 
+                    p.object_id ObjectId,
+                    p.name ProcedureName,
+                    s.name SchemaName
+                FROM sys.procedures p
+                    inner join sys.schemas s
+                    on p.schema_id = s.schema_id
+                WHERE p.is_ms_shipped = 0 and s.schema_id = " + shemaId + " AND p.Type = 'P' ORDER BY p.name";
+        }
+        
+        public GetProcedureText(procedureId : int) : string
+        {
+            $"SELECT [text] FROM syscomments WHERE id = $procedureId ORDER BY colid";
+        }
+        
+        // CLR procedures...
+        /*
+        SELECT
+sp.name AS [Name],
+sp.object_id AS [object_ID],
+case when amsp.object_id is null then N'''' else asmblsp.name end AS [AssemblyName],
+case when amsp.object_id is null then N'''' else amsp.assembly_class end AS [ClassName],
+case when amsp.object_id is null then N'''' else amsp.assembly_method end AS [MethodName]
+FROM
+sys.all_objects AS sp
+LEFT OUTER JOIN sys.assembly_modules AS amsp ON amsp.object_id = sp.object_id
+LEFT OUTER JOIN sys.assemblies AS asmblsp ON asmblsp.assembly_id = amsp.assembly_id
+LEFT OUTER JOIN sys.procedures AS spp ON spp.object_id = sp.object_id
+WHERE spp.type like 'PC'
+
+SELECT * FROM INFORMATION_SCHEMA.PARAMETERS AS p WHERE p.SPECIFIC_SCHEMA='dbo' AND p.SPECIFIC_NAME='clr_DECheckFolder' ORDER BY ORDINAL_POSITION
+        */
+    }
+}

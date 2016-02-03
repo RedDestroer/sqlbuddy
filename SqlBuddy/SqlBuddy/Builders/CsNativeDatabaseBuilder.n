@@ -1,0 +1,451 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+
+using SqlBuddy.Dal;
+using SqlBuddy.Domain;
+
+namespace SqlBuddy.Builders
+{
+    public class CsNativeDatabaseBuilder
+    {
+        private _formatProvider : IFormatProvider;
+        private _databaseDefinitionReader : IDatabaseDefinitionReader;
+        private _definition : DatabaseDefinition;
+        private mutable _className : string;
+        
+        public this(databaseDefinitionReader : IDatabaseDefinitionReader)
+        {
+            _databaseDefinitionReader = databaseDefinitionReader;
+            _definition = _databaseDefinitionReader.DatabaseDefinition();
+            _formatProvider = CultureInfo("en-US");
+        }
+        
+        public Build(nmspace : string) : CodeCompileUnit
+        {
+            // Read database definition
+            def sqlDatabaseDefinition = _databaseDefinitionReader.ReadDatabase();
+
+            def compileUnit = CodeCompileUnit();
+            
+            // Add requared assemblies
+            def assemblies = List();
+            assemblies.Add(typeof(string).Assembly.Location);
+            assemblies.Add(typeof(IDbCommand).Assembly.Location);
+            
+            compileUnit.ReferencedAssemblies.AddRange(assemblies.ToArray());
+            
+            def importsNamespace = CodeNamespace(null);
+            importsNamespace.Imports.Add(CodeNamespaceImport("System"));
+            importsNamespace.Imports.Add(CodeNamespaceImport("System.Data"));
+            importsNamespace.Imports.Add(CodeNamespaceImport("System.Data.SqlClient"));
+            importsNamespace.Imports.Add(CodeNamespaceImport("System.Runtime.InteropServices"));
+            
+            // Add usings
+            _ = compileUnit.Namespaces.Add(importsNamespace);
+            
+            // Main class to build
+            _className = Helper.Capitalize(_definition.ClassName);
+            def codeTypeDeclaration = CodeTypeDeclaration(_className);
+            codeTypeDeclaration.IsClass = true;
+            codeTypeDeclaration.IsPartial = true;
+            
+            // Add field to store databaseName
+            def databaseNameField = CodeMemberField(typeof(string), "_databaseName");
+            databaseNameField.Attributes = (databaseNameField.Attributes & ~MemberAttributes.AccessMask & ~MemberAttributes.ScopeMask) | MemberAttributes.Private | MemberAttributes.Static;
+            
+            _ = codeTypeDeclaration.Members.Add(databaseNameField);
+            
+            // Add static constructor and set default database name
+            def typeConstructor = CodeTypeConstructor();
+            _ = typeConstructor.Statements.Add(CodeAssignStatement(CodeFieldReferenceExpression(CodeSnippetExpression(_className), "DatabaseName"), CodePrimitiveExpression(_definition.Name)));
+
+            _ = codeTypeDeclaration.Members.Add(typeConstructor);
+            
+            // Add static property for database access
+            def databaseNameProperty = CodeMemberProperty();
+            databaseNameProperty.Attributes = (databaseNameField.Attributes & ~MemberAttributes.AccessMask & ~MemberAttributes.ScopeMask) | MemberAttributes.Public | MemberAttributes.Static;
+            databaseNameProperty.Name = "DatabaseName";
+            databaseNameProperty.HasGet = true;
+            databaseNameProperty.HasSet = true;
+            databaseNameProperty.Type = CodeTypeReference(typeof(string));
+            _ = databaseNameProperty.GetStatements.Add(CodeMethodReturnStatement(CodeFieldReferenceExpression(CodeSnippetExpression(_className), "_databaseName")));
+            _ = databaseNameProperty.SetStatements.Add(CodeAssignStatement(CodeFieldReferenceExpression(CodeSnippetExpression(_className), "_databaseName"), CodeVariableReferenceExpression("value")));
+            
+            _ = codeTypeDeclaration.Members.Add(databaseNameProperty);
+            
+            // Add all schemas
+            codeTypeDeclaration.Members.AddRange(CreateSchemas(sqlDatabaseDefinition));
+            
+            // Add method for database prefix build
+            def getPrefixMethod = CodeMemberMethod();
+            getPrefixMethod.Attributes |= MemberAttributes.Static;
+            getPrefixMethod.Attributes |= MemberAttributes.Private;
+            getPrefixMethod.Name = "GetPrefix";
+            _ = getPrefixMethod.Parameters.Add(CodeParameterDeclarationExpression(typeof(string), "schemaName"));
+            _ = getPrefixMethod.Statements.Add(
+                CodeMethodReturnStatement(
+                    CodeMethodInvokeExpression(
+                        CodeTypeReferenceExpression(typeof(string)),
+                        "Format",
+                        CodePrimitiveExpression("[{0}].[{1}]"),
+                        CodeFieldReferenceExpression(CodeSnippetExpression(_className), "DatabaseName"),
+                        CodeVariableReferenceExpression("schemaName"))));
+            getPrefixMethod.ReturnType = CodeTypeReference(typeof(string));
+
+            _ = codeTypeDeclaration.Members.Add(getPrefixMethod);
+            
+            // Create namespace
+            def typeNamespace = CodeNamespace(nmspace);
+            _ = typeNamespace.Types.Add(codeTypeDeclaration);
+            
+            _ = compileUnit.Namespaces.Add(typeNamespace);
+            
+            compileUnit;
+        }
+        
+        
+        
+        CreateSchemas(sqlDatabaseDefinition : SqlDatabaseDefinition) : array[CodeTypeMember]
+        {
+            def lst = sqlDatabaseDefinition.Schemas.Where(o => _definition.Schemas.Count == 0 || _definition.Schemas.Contains(o.Name)).ToList();
+            def cnt = lst.Count;
+            def result = array(cnt);
+            for(mutable i = 0; i < cnt; i++)
+            {
+                def sqlSchemaDefinition = lst[i];
+                result[i] = CreateSchema(sqlSchemaDefinition);
+            }
+            
+            result;
+        }
+        
+        CreateSchema(sqlSchemaDefinition : SqlSchemaDefinition) : CodeTypeMember
+        {
+            def schemaName = Helper.Capitalize(sqlSchemaDefinition.Name);
+            def codeTypeDeclaration = CodeTypeDeclaration(schemaName);
+            codeTypeDeclaration.IsClass = true;
+            codeTypeDeclaration.IsPartial = true;
+            
+            // Add field to store schema name
+            def databaseNameField = CodeMemberField(typeof(string), "_schemaName");
+            databaseNameField.Attributes = (databaseNameField.Attributes & ~MemberAttributes.AccessMask & ~MemberAttributes.ScopeMask) | MemberAttributes.Private | MemberAttributes.Static;
+            
+            _ = codeTypeDeclaration.Members.Add(databaseNameField);
+            
+            def typeConstructor = CodeTypeConstructor();
+            _ = typeConstructor.Statements.Add(CodeAssignStatement(CodeFieldReferenceExpression(CodeSnippetExpression(string.Format("{0}.{1}", _className, schemaName)), "SchemaName"), CodePrimitiveExpression(sqlSchemaDefinition.Name)));
+
+            _ = codeTypeDeclaration.Members.Add(typeConstructor);
+            
+            def schemaNameProperty = CodeMemberProperty();
+            schemaNameProperty.Attributes = (databaseNameField.Attributes & ~MemberAttributes.AccessMask & ~MemberAttributes.ScopeMask) | MemberAttributes.Public | MemberAttributes.Static;
+            schemaNameProperty.Name = "SchemaName";
+            schemaNameProperty.HasGet = true;
+            schemaNameProperty.HasSet = true;
+            schemaNameProperty.Type = CodeTypeReference(typeof(string));
+            _ = schemaNameProperty.GetStatements.Add(CodeMethodReturnStatement(CodeFieldReferenceExpression(CodeSnippetExpression(string.Format("{0}.{1}", _className, schemaName)), "_schemaName")));
+            _ = schemaNameProperty.SetStatements.Add(CodeAssignStatement(CodeFieldReferenceExpression(CodeSnippetExpression(string.Format("{0}.{1}", _className, schemaName)), "_schemaName"), CodeVariableReferenceExpression("value")));
+            
+            _ = codeTypeDeclaration.Members.Add(schemaNameProperty);
+            
+            _ = codeTypeDeclaration.Members.Add(CreateProceduresType(sqlSchemaDefinition));
+            
+            def getPrefixMethod = CodeMemberMethod();
+            getPrefixMethod.Attributes |= MemberAttributes.Static;
+            getPrefixMethod.Attributes |= MemberAttributes.Private;
+            getPrefixMethod.Name = "GetPrefix";
+            _ = getPrefixMethod.Statements.Add(CodeMethodReturnStatement(CodeMethodInvokeExpression(CodeSnippetExpression(_className), "GetPrefix", CodeVariableReferenceExpression("SchemaName"))));
+            getPrefixMethod.ReturnType = CodeTypeReference(typeof(string));
+
+            _ = codeTypeDeclaration.Members.Add(getPrefixMethod);
+           
+            codeTypeDeclaration;
+        }
+        
+        CreateProceduresType(sqlSchemaDefinition : SqlSchemaDefinition) : CodeTypeMember
+        {
+            def codeTypeDeclaration = CodeTypeDeclaration("Procedures");
+            codeTypeDeclaration.IsClass = true;
+            codeTypeDeclaration.IsPartial = true;
+            
+            when (sqlSchemaDefinition.Procedures.Count > 0)
+            {
+                codeTypeDeclaration.Members.AddRange(CreateProcedures(sqlSchemaDefinition));
+            }
+            
+            codeTypeDeclaration;
+        }
+        
+        CreateProcedures(sqlSchemaDefinition : SqlSchemaDefinition) : array[CodeTypeMember]
+        {
+            def lst = sqlSchemaDefinition.Procedures
+                                         .Where(o => _definition.Procedures.Count == 0 || _definition.Procedures.Contains(o.Name))
+                                         .Where(o => !o.Parameters.Any(p => p.SqlDbType == null))
+                                         .ToList();
+            def cnt = lst.Count;
+            def result = array(cnt);
+            for(mutable i = 0; i < cnt; i++)
+            {
+                def sqlProcedureDefinition = lst[i];
+                result[i] = CreateProcedure(sqlProcedureDefinition);
+            }
+            
+            result;
+        }
+        
+        CreateProcedure(sqlProcedureDefinition : SqlProcedureDefinition) : CodeTypeMember
+        {
+            def procedureName = Helper.FilterWhiteSpace(Helper.Capitalize(sqlProcedureDefinition.Name));
+            
+            def codeTypeDeclaration = CodeMemberMethod();
+            codeTypeDeclaration.Attributes = (codeTypeDeclaration.Attributes & ~MemberAttributes.AccessMask & ~MemberAttributes.Static) | MemberAttributes.Public | MemberAttributes.Static;
+            codeTypeDeclaration.Name = procedureName;
+            
+            def procParams = sqlProcedureDefinition
+                .Parameters
+                .Select(pm => SqlProcedurePar(
+                                pm.Name, 
+                                "@" + Helper.NormalizeNetName(pm.Name),
+                                Helper.NormalizeNetName(pm.Name),
+                                Helper.GetNetType(pm),
+                                Helper.NormalizeNetTypeName(Helper.GetNetType(pm)), 
+                                pm.Direction,
+                                pm.SqlDbType.Value,
+                                pm.HasDefault,
+                                pm.Default,
+                                pm.Nullable))
+                .ToList();
+                
+            foreach(par in procParams)
+            {
+                def parameterExpression = CreateCodeParameterDeclarationExpression(par);
+                
+                when (parameterExpression != null)
+                    _ = codeTypeDeclaration.Parameters.Add(parameterExpression);
+            }
+            
+            codeTypeDeclaration.ReturnType = CodeTypeReference(typeof(IDbCommand));
+            
+            def formatSb = StringBuilder();
+            _ = formatSb.Append("EXEC {0}.[").Append(sqlProcedureDefinition.Name).Append("] ");
+
+            foreach (par in procParams)
+            {
+                _ = formatSb.Append(par.SqlName).Append("=").Append(par.SqlAssignName).Append(", ");
+            }
+
+            when (sqlProcedureDefinition.Parameters.Count > 0)
+                _ = formatSb.Remove(formatSb.Length - 2, 2);
+
+            def stringFormatCodeMethodInvokeExpression = CodeMethodInvokeExpression(
+                CodeTypeReferenceExpression(typeof(string)),
+                "Format",
+                CodePrimitiveExpression(formatSb.ToString()),
+                CodeMethodInvokeExpression(null, "GetPrefix"));
+            
+            def cmdStringCodeVariableDeclarationStatement = CodeVariableDeclarationStatement(typeof(string), "cmdString", stringFormatCodeMethodInvokeExpression);
+            _ = codeTypeDeclaration.Statements.Add(cmdStringCodeVariableDeclarationStatement);
+
+            def cmdCodeVariableDeclarationStatement = CodeVariableDeclarationStatement(typeof(SqlCommand), "cmd", CodeObjectCreateExpression(typeof(SqlCommand), CodeVariableReferenceExpression("cmdString")));
+            _ = codeTypeDeclaration.Statements.Add(cmdCodeVariableDeclarationStatement);
+
+            mutable idx : int = 0;
+            foreach (par in procParams)
+            {
+                idx++;
+                
+                def propName = "prop" + idx;
+                def propertyExpression = CodePropertyReferenceExpression(CodeVariableReferenceExpression("cmd"), "Parameters");
+                def methodExpression = CodeMethodInvokeExpression(propertyExpression, "AddWithValue", CodePrimitiveExpression(par.SqlAssignName), CodeVariableReferenceExpression(par.NetName));
+                def propCodeVariableDeclarationStatement = CodeVariableDeclarationStatement(typeof(SqlParameter), propName, methodExpression);
+                
+                _ = codeTypeDeclaration.Statements.Add(propCodeVariableDeclarationStatement);
+
+                def propertyExpression1 = CodePropertyReferenceExpression(CodeVariableReferenceExpression(propName), "Direction");
+                
+                def codeAssignStatement : CodeAssignStatement = match(par.Direction){
+                    | Direction.Input => CodeAssignStatement(propertyExpression1, CodeVariableReferenceExpression("ParameterDirection.Input"))
+                    | Direction.Output => CodeAssignStatement(propertyExpression1, CodeVariableReferenceExpression("ParameterDirection.Output"))
+                    | Direction.InputOutput => CodeAssignStatement(propertyExpression1, CodeVariableReferenceExpression("ParameterDirection.InputOutput"))
+                };
+
+                when (codeAssignStatement != null)
+                    _ = codeTypeDeclaration.Statements.Add(codeAssignStatement);
+            }
+
+            def returnCodeMethodReturnStatement = CodeMethodReturnStatement(CodeVariableReferenceExpression("cmd"));
+            _ = codeTypeDeclaration.Statements.Add(returnCodeMethodReturnStatement);
+
+            codeTypeDeclaration;
+        }
+        
+        CreateCodeParameterDeclarationExpression(par : SqlProcedurePar) : CodeParameterDeclarationExpression
+        {
+            def parameter = CodeParameterDeclarationExpression(par.NetType, par.NetName);
+            
+            when (par.HasDefault)
+            {
+                _ = parameter.CustomAttributes.Add(CodeAttributeDeclaration("Optional"));
+                
+                def nullableRes[T](par : SqlProcedurePar, @def : T) : object
+                {
+                    if (par.IsNullable)
+                    {
+                        match(@def)
+                        {
+                            | o is int => Nullable(o)
+                            | o is bool => Nullable(o)
+                            | o is byte => Nullable(o)
+                            | o is Guid => Nullable(o)
+                            | o is DateTime => Nullable(o)
+                            | o is short => Nullable(o)
+                            | o is long => Nullable(o)
+                            | o is decimal => Nullable(o)
+                            | o is float => Nullable(o)
+                            | o is double => Nullable(o)
+                            | _ => @def
+                        }
+                    }
+                    else
+                    {
+                        @def
+                    }
+                }
+                
+                def tryParseDate8(s : string) : DateTime
+                {
+                    DateTime.ParseExact(s, "yyyyMMdd", _formatProvider);
+                }
+                
+                def tryParseDate6(s : string) : DateTime
+                {
+                    DateTime.ParseExact(s, "yyMMdd", _formatProvider);
+                }
+                
+                def tryParseDate(s : string) : DateTime
+                {
+                    def ts = s.Trim();
+                    
+                    if (ts.Length == 8)
+                    {
+                        tryParseDate8(ts);
+                    }
+                    else
+                    {
+                        if (ts.Length == 6)
+                        {
+                            tryParseDate6(ts);
+                        }
+                        else
+                        {
+                            DateTime.Parse(ts, _formatProvider);
+                        }
+                    }
+                }
+                
+                def res : object = match (par.Default){
+                   | Literal.Null => null
+                   | Literal.Boolean(val) => val
+                   | Literal.Char(char) when (par.SqlDbType == SqlDbType.VarChar) => string(array[char])
+                   | Literal.Char(char) when (par.SqlDbType == SqlDbType.NVarChar) => string(array[char])
+                   | Literal.Char(char) => char
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.Date) => nullableRes(par, tryParseDate(str))
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.DateTime) => nullableRes(par, tryParseDate(str))
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.SmallDateTime) => nullableRes(par, tryParseDate(str))
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.UniqueIdentifier) => nullableRes(par, Guid.Parse(str))
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.Image) => nullableRes(par, Guid.Parse(str)) // ???
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.Timestamp) => nullableRes(par, Guid.Parse(str)) // ???
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.VarBinary) => nullableRes(par, Guid.Parse(str)) // ???
+                   | Literal.String(str, _) when (par.SqlDbType == SqlDbType.Variant) => str // ???
+                   | Literal.String(str, _) => str
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.Bit) => nullableRes(par, (if (int.Parse(mantissa, _formatProvider) != 0) true else false))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.Int) => nullableRes(par, int.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.TinyInt) => nullableRes(par, byte.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.SmallInt) => nullableRes(par, short.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.BigInt) => nullableRes(par, long.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.Decimal) => nullableRes(par, decimal.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.Money) => nullableRes(par, decimal.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.SmallMoney) => nullableRes(par, decimal.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.Float) => nullableRes(par, float.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) when (par.SqlDbType == SqlDbType.Real) => nullableRes(par, double.Parse(mantissa, _formatProvider))
+                   | Literal.Real(mantissa) => mantissa
+                   | Literal.Integer(val, _) => nullableRes(par, (val :> int))
+                   | Literal.NegativeInteger(val, _) => nullableRes(par, (val :> int))
+                   | _ => throw InvalidOperationException($"Can't detect default value from literal '$(par.Default.ToString())'.")
+                }
+                
+                if (res != null)
+                {
+                    match(par.SqlDbType)
+                    {
+                        | o when(o == SqlDbType.UniqueIdentifier) => {}
+                        | o when(o == SqlDbType.Date) => {}
+                        | o when(o == SqlDbType.DateTime) => {}
+                        | o when(o == SqlDbType.SmallDateTime) => {}
+                        | _ => {
+                            _  = parameter.CustomAttributes.Add(
+                                CodeAttributeDeclaration(
+                                    "DefaultParameterValue",
+                                    CodeAttributeArgument(
+                                        CodePrimitiveExpression(res))));
+                        }
+                    }
+                }
+                else
+                {
+                    if (par.IsNullable)
+                    {
+                        _ = parameter.CustomAttributes.Add(
+                            CodeAttributeDeclaration(
+                                "DefaultParameterValue",
+                                CodeAttributeArgument(CodeSnippetExpression("null"))));
+                    }
+                    else
+                    {
+                        _ = parameter.CustomAttributes.Add(
+                            CodeAttributeDeclaration(
+                                "DefaultParameterValue",
+                                CodeAttributeArgument(
+                                    CodeDefaultValueExpression(
+                                        CodeTypeReference(par.NetType)))));
+                    }
+                }
+            }
+
+            if (par.Direction == Direction.Output)
+            {
+                null;
+            }
+            else
+            {
+                parameter;
+            }
+        }
+        
+        [Record]
+        private class SqlProcedurePar
+        {
+            public SqlName : string;
+            public SqlAssignName : string;
+            public NetName : string;
+            public NetType : Type;
+            public NetTypeName : string;
+            public Direction : Direction;
+            public SqlDbType : SqlDbType;
+            public HasDefault : bool;
+            public Default : Literal;
+            public IsNullable : bool;
+        }
+    }
+}

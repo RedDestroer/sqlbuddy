@@ -1,0 +1,98 @@
+﻿using System;
+using SCG = System.Collections.Generic;
+
+using Nemerle.Assertions;
+using Nemerle.Collections;
+using Nemerle.Utility;
+using Nemerle.Peg;
+
+using SqlBuddy.Domain;
+
+namespace SqlBuddy.Parsers
+{
+  [PegGrammar(Options = EmitDebugSources,
+    start,
+    grammar
+    {
+      #region Primitives
+
+      newLine = "\n"
+              / "\r\n"
+              / "\r"
+              / "\u2028"      /*  line separator       */
+              / "\u2029";     /*  paragraph separator  */
+
+      whitespace = [Zs]
+                / '\t'
+                / '\v'        /*  vertial tab          */
+                / '\f';       /*  form feed            */
+
+      s : void = whitespace*;
+      S : void = !identifierPartCharacters s;
+
+      #endregion
+
+      #region Strings
+
+      delimitedStringLiteral    = "'" delimitedStringCharacter* "'";
+      delimitedStringCharacter  = "\\'"
+                                / !(newLine / "'") [Any];
+
+      verbatimStringLiteral     = "@'" verbatimStringCharacter* "'";
+      verbatimStringCharacter   = "''"
+                                / !"'" [Any];
+
+      stringLiteral = delimitedStringLiteral / verbatimStringLiteral;
+
+      #endregion
+
+      #region Comments
+
+      singleLineComment         = "--" (!newLine [Any])*;
+      delimitedComment          = "/*" (!"*/" [Any])* "*/";
+      comment : PreParseElement = singleLineComment / delimitedComment;
+
+      #endregion
+
+      #region Expressions
+
+      letterCharacter       = [Lu, Ll, Lt, Lm, Lo, Nl];
+      combiningCharacter    = [Mn, Mc];
+      decimalDigitCharacter = [Nd];
+      connectingCharacter   = [Pc];
+      formattingCharacter   = [Cf];
+
+      identifierStartCharacter  = letterCharacter / "_";
+      identifierPartCharacters  = letterCharacter / decimalDigitCharacter / connectingCharacter / combiningCharacter / formattingCharacter;
+      identifierBody            = identifierStartCharacter identifierPartCharacters*;
+
+      #endregion
+
+
+      #region Top rules
+
+      rawTextOrString : void = (!(comment / stringLiteral) [Any])+ / stringLiteral;
+
+      [OmitLocation]
+      element : PreParseElement         = rawTextOrString* comment;
+
+      start   : PreparedCompilationUnit = element* rawTextOrString* ![Any];
+
+      #endregion
+    }
+  )]
+  public partial class PreParser
+  {
+    //comment           : PreParseElement = singleLineComment / delimitedComment;
+    comment(_ : NToken) : PreParseElement
+    {
+      PreParseElement.Comment()
+    }
+
+    //start   : PreparedCompilationUnit = directive? element* rawText* ![Any];
+    start(          elements            : SCG.List[PreParseElement]) : PreparedCompilationUnit
+    {
+      PreparedCompilationUnit(elements)
+    }
+  }
+}

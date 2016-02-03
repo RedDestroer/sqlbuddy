@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Microsoft.VisualStudio;
+using SqlBuddy.VisualStudio;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -8,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SqlBuddy.VS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("PolarFox")]
 [assembly: AssemblyProduct("SqlBuddy.VS")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
@@ -31,3 +33,8 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+
+[assembly: ProvideAssemblyObject(typeof(SqlBuddyCodeGenerator))]
+[assembly: ProvideGenerator(typeof(SqlBuddyCodeGenerator), VSConstants.UICONTEXT.CSharpProject_string, Description = "Sql wrapper", GeneratesDesignTimeSource = true)]
+[assembly: ProvideGenerator(typeof(SqlBuddyCodeGenerator), VSConstants.UICONTEXT.VBProject_string, Description = "Sql wrapper", GeneratesDesignTimeSource = true)]

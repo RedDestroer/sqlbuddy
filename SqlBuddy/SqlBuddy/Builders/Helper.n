@@ -1,0 +1,193 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data;
+using System.Data.SqlClient;
+
+using SqlBuddy.Domain;
+
+namespace SqlBuddy.Builders
+{
+    public module Helper
+    {
+        private DbConversion : Hashtable[SqlDbType, Type] = Hashtable
+        ([
+            (SqlDbType.BigInt, typeof(long)),
+            (SqlDbType.Binary, typeof(array[byte])),
+            (SqlDbType.Bit, typeof(bool)),
+            (SqlDbType.Char, typeof(char)),                 // TODO: need to check
+            (SqlDbType.DateTime, typeof(DateTime)),
+            (SqlDbType.Decimal, typeof(decimal)),
+            (SqlDbType.Float, typeof(float)),               // TODO: need to check
+            (SqlDbType.Image, typeof(array[byte])),
+            (SqlDbType.Int, typeof(int)),
+            (SqlDbType.Money, typeof(decimal)),
+            (SqlDbType.NChar, typeof(string)),              // TODO: need to check
+            (SqlDbType.NText, typeof(string)),              // TODO: need to check
+            (SqlDbType.NVarChar, typeof(string)),           // TODO: need to check
+            (SqlDbType.Real, typeof(double)),               // TODO: need to check
+            (SqlDbType.UniqueIdentifier, typeof(Guid)),
+            (SqlDbType.SmallDateTime, typeof(DateTime)),
+            (SqlDbType.SmallInt, typeof(short)),            // TODO: need to check
+            (SqlDbType.SmallMoney, typeof(decimal)),        // TODO: need to check
+            (SqlDbType.Text, typeof(string)),               // TODO: need to check
+            (SqlDbType.Timestamp, typeof(array[byte])),
+            (SqlDbType.TinyInt, typeof(byte)),              // TODO: need to check
+            (SqlDbType.VarBinary, typeof(array[byte])),
+            (SqlDbType.VarChar, typeof(string)),
+            (SqlDbType.Variant, typeof(object)),            // TODO: need to check
+            (SqlDbType.Xml, typeof(string)),                // TODO: need to check
+            // (SqlDbType.Udt, typeof(???)),                // unsupported
+            // (SqlDbType.Structured, typeof(???)),         // unsupported
+            (SqlDbType.Date, typeof(DateTime))              // TODO: need to check
+            // (SqlDbType.Time, typeof(DateTime)),          // unsupported
+            // (SqlDbType.DateTime2, typeof(???)),          // unsupported
+            // (SqlDbType.DateTimeOffset, typeof(???)),     // unsupported
+            
+        ]);
+        
+        private NetConversion : Hashtable[Type, string] = Hashtable
+        ([
+            (typeof(long), "long"),
+            (typeof(array[byte]), "byte[]"),
+            (typeof(bool), "bool"),
+            (typeof(char), "char"),
+            (typeof(DateTime), "DateTime"),
+            (typeof(decimal), "decimal"),
+            (typeof(float), "float"),
+            (typeof(int), "int"),
+            (typeof(string), "string"),
+            (typeof(double), "double"),
+            (typeof(Guid), "Guid"),
+            (typeof(short), "short"),
+            (typeof(byte), "byte"),
+            (typeof(object), "object")
+        ]);
+        
+        public Capitalize(name : string) : string
+        {
+            try
+            {
+                match(name.Length)
+                {
+                    | l when (l > 1) => name[0].ToString().ToUpper() + name.Substring(1, name.Length - 1);
+                    | l when (l > 2) => name[0] + name[1].ToString().ToLower() + name.Substring(2, name.Length - 2);
+                    | l when (l < 2) => name;
+                    | _ => name[0] + name[1].ToString().ToLower();
+                }
+            }
+            catch
+            {
+                | _ is Exception => ""
+                | _ => ""
+                "";
+            }
+        }
+        
+        public FilterWhiteSpace(name : string) : string
+        {
+            mutable n : string;
+            foreach(c in name)
+            {
+                match(c)
+                {
+                    | ch when char.IsLetter(ch) => n += c
+                    | ch when char.IsDigit(ch) => n += c
+                    | ch when ch == '_' => n += c
+                    | _ => n += '_'
+                }
+            }
+            n;
+        }
+        
+        public GetNetType(sqlScalarParameterDefinition : SqlScalarParameterDefinition) : Type
+        {
+            GetNetType(sqlScalarParameterDefinition.SqlDbType.Value, sqlScalarParameterDefinition.Nullable)
+        }
+        
+        public GetNetType(sqlDbType : SqlDbType, isNullable : bool) : Type
+        {
+            when (!DbConversion.ContainsKey(sqlDbType))
+                throw KeyNotFoundException($"Key $sqlDbType not exists.");
+
+            mutable type : Type = DbConversion[sqlDbType];
+            
+            when(isNullable)
+                type = GetNullableType(type);
+            
+            type;
+        }
+        
+        public NormalizeNetTypeName(type : Type) : string
+        {
+            if (!NetConversion.ContainsKey(type))
+            {
+                type.Name;
+            }
+            else
+            {
+                NetConversion[type];
+            }
+        }
+        
+        public NormalizeNetName(name : string) : string
+        {
+            mutable name1 : string = name;
+            
+            when (name1.StartsWith("@"))
+                name1 = name1.Substring(1, name1.Length - 1);
+
+            name1 = name1.Substring(0, 1).ToLower() + name1.Substring(1, name1.Length - 1);
+
+            mutable copy : string = null;
+            mutable isUpper : bool = false;
+            for (mutable i : int = 0; i < name1.Length; i++)
+            {
+                def c = name1[i];
+
+                if (isUpper && char.IsUpper(c) && i > 0)
+                {
+                    copy += char.ToLower(name1[i]);
+                }
+                else
+                {
+                    if (char.IsLower(c))
+                    {
+                        isUpper = false;
+                        copy += c;
+                    }
+                    else
+                    {
+                        isUpper = true;
+                        copy += c;
+                    }
+                }
+            }
+
+            copy;
+        }
+        
+        public GetNullableType(type : Type) : Type
+        {
+            // Use Nullable.GetUnderlyingType() to remove the Nullable<T> wrapper if type is already nullable.
+            def uType : Type = Nullable.GetUnderlyingType(type);
+            mutable aType : Type = type;
+            when (uType != null)
+                aType = uType;
+            
+            if (aType.IsValueType)
+            {
+                typeof(Nullable[_]).MakeGenericType(aType);
+            }
+            else
+            {
+                type;
+            }
+        }
+    }
+}

@@ -1,0 +1,912 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Peg;
+using Nemerle.Text;
+using Nemerle.Utility;
+using Nemerle.Assertions;
+
+using System;
+using System.Data;
+using System.Collections.Generic;
+using System.Linq;
+using SqlBuddy.Domain;
+using SCG = System.Collections.Generic;
+
+namespace SqlBuddy.Parsers
+{
+    type VString = VToken[string];
+
+    
+    [PegGrammar(
+        Options = EmitDebugSources,
+        source,
+        grammar {
+            source : string*List[SqlScalarParameterDefinition] = sp procHeaderStart sp procedureName sp (left_parenthesis? sp procParam? (sp "," sp procParam)* sp right_parenthesis?)? sp (WITH Sp EXECUTE Sp AS Sp (CALLER / Np? voidLiteral))? (sp? WITH Sp RECOMPILE)? sp procHeaderEnd;
+            
+#region Line terminators
+
+            newLineCharacter = '\n'
+                            / '\r'
+                            / '\u2028'    /*  line separator       */
+                            / '\u2029';   /*  paragraph separator  */
+            newLine   = "\r\n" / newLineCharacter;
+
+#endregion
+
+#region White space
+            
+            whitespace = [Zs]
+                    / '\t'
+                    / '\v'        /*  vertial tab          */
+                    / '\f';       /*  form feed            */
+
+#endregion
+
+#region Spacer
+
+            space : void = whitespace / newLine;
+            [InlineAllSubrules]
+            SPACE : string = whitespace / newLine;
+
+            [InlineAllSubrules]
+            sp : void = space*;                      /* optional spacer          */
+            Sp : void = !identifierPartCharacters sp; /* identifier break spacer  */
+
+#endregion
+
+#region Literals
+
+          minus          : string = '-';
+          nullLiteral    : Literal = "null"Sp;
+
+          booleanLiteral : Literal = ("true" / "false")Sp;
+
+          decimalDigit                        = ['0'..'9'];
+          hexDigit                            = ['0'..'9', 'a'..'f', 'A'..'F'];
+      
+          decimalIntegerLiteral     : Literal = decimalDigit+;
+          integerLiteral            : Literal = decimalIntegerLiteral sp;
+          negativeIntegerLiteral    : Literal = minus sp decimalDigit+ sp;
+
+          realLiteral_1   : Literal = decimalDigit* "." decimalDigit+;
+          realLiteral_2   : Literal = decimalDigit+;
+          realLiteral     : Literal = (realLiteral_1 / realLiteral_2) sp;
+
+          unicodeEscapeSequence_u   : VString = "\\u" hexDigit hexDigit hexDigit hexDigit;
+          unicodeEscapeSequence_U   : VString = "\\U" hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit;
+          unicodeEscapeSequence     : VString = unicodeEscapeSequence_u / unicodeEscapeSequence_U;
+          hexadecimalEscapeSequence : VString = "\\x" hexDigit hexDigit? hexDigit? hexDigit?;
+          simpleEscapeSequence      : VString = "\\'" / "\\\\" / "\\0" / "\\a" / "\\b" / "\\f" / "\\n" / "\\r" / "\\t" / "\\v";
+          singleCharacter           : VString = !(newLineCharacter / "'" / "\\") [Any];
+          character                 : VString = simpleEscapeSequence / unicodeEscapeSequence / hexadecimalEscapeSequence / singleCharacter;
+          characterLiteral          : Literal = "'" character "'" sp;
+          slashLiteral              : Literal = @"'\'" sp;
+          voidLiteral               : void = stringLiteral;
+
+          singleRegularStringLiteralCharacter                = !(newLineCharacter / "'" / "\\") [Any];
+          regularStringLiteralCharacterSequence     : VString = singleRegularStringLiteralCharacter+;
+          regularStringLiteralPart                  : VString = simpleEscapeSequence
+                                                              / unicodeEscapeSequence
+                                                              / hexadecimalEscapeSequence
+                                                              / regularStringLiteralCharacterSequence;
+          regularStringLiteral                      : Literal = "'" regularStringLiteralPart* "'";
+
+          singleVerbatimStringLiteralCharacter               = !"'" [Any];
+          verbatimStringLiteralCharacterSequence    : string = singleVerbatimStringLiteralCharacter+;
+          quoteEscapeSequence                       : string = "''";
+          verbatimStringLiteralPart                 : string = quoteEscapeSequence
+                                                              / verbatimStringLiteralCharacterSequence;
+          verbatimStringLiteral                     : Literal = "@'" verbatimStringLiteralPart* "'";
+
+          stringLiteral                             : Literal = (regularStringLiteral / verbatimStringLiteral) sp;
+
+          literal : Literal = booleanLiteral / nullLiteral / realLiteral / negativeIntegerLiteral / integerLiteral / characterLiteral / stringLiteral / slashLiteral;
+          
+          Np : void = 'N';
+
+#endregion
+
+#region Main grammar
+      
+#region Preparation
+
+            letterCharacter       = [Lu, Ll, Lt, Lm, Lo, Nl];
+            combiningCharacter    = [Mn, Mc];
+            decimalDigitCharacter = [Nd];
+            connectingCharacter   = [Pc];
+            formattingCharacter   = [Cf];
+
+            identifierStartCharacter  = letterCharacter / "_";
+            identifierPartCharacters  = letterCharacter / decimalDigitCharacter / connectingCharacter / combiningCharacter / formattingCharacter;
+            
+            spchar = '\\' / '(' / ')' / ',' / '{' / '}' / '[' / ']';
+            
+            A = ('a'/'A');
+            B = ('b'/'B');
+            C = ('c'/'C');
+            D = ('d'/'D');
+            E = ('e'/'E');
+            F = ('f'/'F');
+            G = ('g'/'G');
+            H = ('h'/'H');
+            I = ('i'/'I');
+            J = ('j'/'J');
+            K = ('k'/'K');
+            L = ('l'/'L');
+            M = ('m'/'M');
+            N = ('n'/'N');
+            O = ('o'/'O');
+            P = ('p'/'P');
+            Q = ('q'/'Q');
+            R = ('r'/'R');
+            S = ('s'/'S');
+            T = ('t'/'T');
+            U = ('u'/'U');
+            V = ('v'/'V');
+            W = ('w'/'W');
+            X = ('x'/'X');
+            Y = ('y'/'Y');
+            Z = ('z'/'Z');
+            
+            left_parenthesis : void = "(";
+            right_parenthesis : void = ")";
+            left_bracket : void = "[";
+            right_bracket : void = "]";
+
+#endregion
+
+#region Reserved words
+
+            CREATE : void = C R E A T E;
+            ALTER : void = A L T E R;
+            PROCEDURE : void = P R O C E D U R E;
+            PROC : void = P R O C;
+            AS : void = A S;
+            WITH : void = W I T H;
+            EXECUTE : void = E X E C U T E;
+            CALLER : void = C A L L E R;
+            MAX : Literal = M A X;
+            NULL : Literal = N U L L;
+            OUTPUT : Literal = O U T P U T;
+            OUT : Literal = O U T;
+            RECOMPILE : void = R E C O M P I L E;
+            TRUE : Literal = T R U E;
+            FALSE : Literal = F A L S E;
+
+            keyword = CREATE / ALTER / PROCEDURE / AS / MAX / OUTPUT / OUT / WITH / EXECUTE / CALLER / RECOMPILE;
+
+#endregion
+
+#region Types
+
+            BIGINT : SqlDbTypeLiteral = (B I G I N T) / (left_bracket B I G I N T right_bracket);
+            BINARY : SqlDbTypeLiteral = (B I N A R Y) / (left_bracket B I N A R Y right_bracket);
+            BINARYSIZE : SqlDbTypeLiteral = (B I N A R Y sp left_parenthesis sp integerLiteral+ sp right_parenthesis) / (left_bracket B I N A R Y right_bracket sp left_parenthesis sp integerLiteral+ sp right_parenthesis);
+            BIT : SqlDbTypeLiteral = (B I T) / (left_bracket B I T right_bracket);
+            CHAR : SqlDbTypeLiteral = (C H A R) / (left_bracket C H A R right_bracket);
+            DECIMAL : SqlDbTypeLiteral = (D E C I M A L sp left_parenthesis sp integerLiteral+ sp "," sp integerLiteral+ sp right_parenthesis) / (left_bracket D E C I M A L right_bracket sp left_parenthesis sp integerLiteral+ sp "," sp integerLiteral+ sp right_parenthesis);
+            NUMERIC : SqlDbTypeLiteral = (N U M E R I C sp left_parenthesis sp integerLiteral+ sp "," sp integerLiteral+ sp right_parenthesis) / (left_bracket N U M E R I C right_bracket sp left_parenthesis sp integerLiteral+ sp "," sp integerLiteral+ sp right_parenthesis);
+            FLOAT : SqlDbTypeLiteral = (F L O A T) / (left_bracket F L O A T right_bracket);
+            IMAGE : SqlDbTypeLiteral = (I M A G E) / (left_bracket I M A G E right_bracket);
+            INTEGER : SqlDbTypeLiteral = (I N T E G E R) / (left_bracket I N T E G E R right_bracket);
+            INT : SqlDbTypeLiteral = (I N T) / (left_bracket I N T right_bracket);
+            MONEY : SqlDbTypeLiteral = (M O N E Y) / (left_bracket M O N E Y right_bracket);
+            NCHAR : SqlDbTypeLiteral = (N C H A R) / (left_bracket N C H A R right_bracket);
+            NCHARMAX : SqlDbTypeLiteral = (N C H A R sp left_parenthesis sp MAX sp right_parenthesis) / (left_bracket N C H A R right_bracket sp left_parenthesis sp MAX sp right_parenthesis);
+            NCHARSIZE : SqlDbTypeLiteral = (N C H A R sp left_parenthesis sp integerLiteral+ sp right_parenthesis) / (left_bracket N C H A R right_bracket sp left_parenthesis sp integerLiteral+ sp right_parenthesis);
+            NTEXT : SqlDbTypeLiteral = (N T E X T) / (left_bracket N T E X T right_bracket);
+            NVARCHAR : SqlDbTypeLiteral = (N V A R C H A R sp left_parenthesis sp integerLiteral+ sp right_parenthesis) / (left_bracket N V A R C H A R right_bracket sp left_parenthesis sp integerLiteral+ sp right_parenthesis);
+            NVARCHARMAX : SqlDbTypeLiteral = (N V A R C H A R sp left_parenthesis sp MAX sp right_parenthesis) / (left_bracket N V A R C H A R right_bracket sp left_parenthesis sp MAX sp right_parenthesis);
+            REAL : SqlDbTypeLiteral = (R E A L) / (left_bracket R E A L right_bracket);
+            UNIQUEIDENTIFIER : SqlDbTypeLiteral = (U N I Q U E I D E N T I F I E R) / (left_bracket U N I Q U E I D E N T I F I E R right_bracket);
+            SMALLDATETIME : SqlDbTypeLiteral = (S M A L L D A T E T I M E) / (left_bracket S M A L L D A T E T I M E right_bracket);
+            SMALLINT : SqlDbTypeLiteral = (S M A L L I N T) / (left_bracket S M A L L I N T right_bracket);
+            SMALLMONEY : SqlDbTypeLiteral = (S M A L L M O N E Y) / (left_bracket S M A L L M O N E Y right_bracket);
+            TEXT : SqlDbTypeLiteral = (T E X T) / (left_bracket T E X T right_bracket);
+            TIMESTAMP : SqlDbTypeLiteral = (T I M E S T A M P) / (left_bracket T I M E S T A M P right_bracket);
+            TINYINT : SqlDbTypeLiteral = (T I N Y I N T) / (left_bracket T I N Y I N T right_bracket);
+            VARBINARY : SqlDbTypeLiteral = (V A R B I N A R Y sp left_parenthesis sp integerLiteral+ sp right_parenthesis) / (left_bracket V A R B I N A R Y right_bracket sp left_parenthesis sp integerLiteral+ sp right_parenthesis);
+            VARBINARYMAX : SqlDbTypeLiteral = (V A R B I N A R Y sp left_parenthesis sp MAX sp right_parenthesis) / (left_bracket V A R B I N A R Y right_bracket sp left_parenthesis sp MAX sp right_parenthesis);
+            VARCHAR : SqlDbTypeLiteral = (V A R C H A R sp left_parenthesis sp integerLiteral+ sp right_parenthesis) / (left_bracket V A R C H A R right_bracket sp left_parenthesis sp integerLiteral+ sp right_parenthesis);
+            VARCHARMAX : SqlDbTypeLiteral = (V A R C H A R sp left_parenthesis sp MAX sp right_parenthesis) / (left_bracket V A R C H A R right_bracket sp left_parenthesis sp MAX sp right_parenthesis);
+            VARIANT : SqlDbTypeLiteral = (V A R I A N T) / (left_bracket V A R I A N T right_bracket);
+            XML : SqlDbTypeLiteral = (X M L) / (left_bracket X M L right_bracket);
+            DATETIME : SqlDbTypeLiteral = (D A T E T I M E) / (left_bracket D A T E T I M E right_bracket);
+            SYSNAME : SqlDbTypeLiteral = (S Y S N A M E) / (left_bracket S Y S N A M E right_bracket);
+            CURSOR : SqlDbTypeLiteral = (C U R S O R space+ V A R Y I N G) / (left_bracket C U R S O R space+ V A R Y I N G right_bracket);
+
+            type : SqlDbTypeLiteral = BIGINT
+                                      / BINARYSIZE
+                                      / BINARY
+                                      / BIT
+                                      / CHAR
+                                      / DECIMAL
+                                      / NUMERIC
+                                      / FLOAT
+                                      / IMAGE
+                                      / INTEGER
+                                      / INT
+                                      / MONEY
+                                      / NCHARSIZE
+                                      / NCHAR
+                                      / NCHARMAX
+                                      / NTEXT
+                                      / NVARCHAR
+                                      / NVARCHARMAX
+                                      / REAL
+                                      / UNIQUEIDENTIFIER
+                                      / SMALLDATETIME
+                                      / SMALLINT
+                                      / SMALLMONEY
+                                      / TEXT
+                                      / TIMESTAMP
+                                      / TINYINT
+                                      / VARBINARY
+                                      / VARBINARYMAX
+                                      / VARCHAR
+                                      / VARCHARMAX
+                                      / VARIANT
+                                      / XML
+                                      / DATETIME
+                                      / SYSNAME
+                                      / CURSOR;
+
+#endregion
+            
+            procHeaderStart : void = sp ((CREATE Sp (PROCEDURE / PROC)) / (ALTER Sp (PROCEDURE / PROC)));
+            procHeaderEnd : void = AS;
+                       
+            identifier : string = identifierStartCharacter (letterCharacter / identifierStartCharacter / decimalDigit)*;
+            paramIdentifier : string = "@" identifierStartCharacter (letterCharacter / identifierStartCharacter / decimalDigit)*;
+            brackedIdentifier : string = "[" SPACE* identifier (SPACE+ identifier*)* SPACE* "]";
+            procedureName : string = ((identifier / brackedIdentifier) ".")? (identifier / brackedIdentifier);
+            procParam : SqlScalarParameterDefinition = sp paramIdentifier (space+ AS? space+ / space+) type sp ("=" sp (literal / NULL / TRUE / FALSE) sp)? sp (OUTPUT / OUT)? sp;
+#endregion
+        }
+    )]
+    public class SqlProcedureParser
+    {
+
+#region Result
+
+        source(name : string, options : option[(option[SqlScalarParameterDefinition]*List[(NToken*SqlScalarParameterDefinition)])]) : string*List[SqlScalarParameterDefinition]
+        {
+            def @params = List();
+            
+            when (options.HasValue)
+            {
+                def (firstParam, otherParams) = options.Value;
+            
+                unless(firstParam.IsNone)
+                {
+                    @params.Add(firstParam.Value);
+                }
+            
+                def consume(data)
+                {
+                  | (_, prop) => prop;
+                }
+                
+                @params.AddRange(otherParams.Select(consume));
+            }
+            
+            (name, @params);
+        }
+        
+        identifier(data : NToken, data2 : NToken) : string
+        {
+            GetText(data) + GetText(data2);
+        }
+        
+        paramIdentifier(_ : NToken, data : NToken, data2 : NToken) : string
+        {
+            "@" + GetText(data) + GetText(data2);
+        }
+        
+        SPACE(s : NToken) : string
+        {
+            GetText(s);
+        }
+        
+        brackedIdentifier(_ : NToken, lspaces : List[string], id : string, ids : List[(List[string]*List[string])], tspaces : List[string], _ : NToken) : string
+        {
+            mutable res : string;
+            res = string.Empty;
+            
+            foreach(s in lspaces)
+            {
+                res += s;
+            }
+            
+            res += id;
+            
+            foreach((x, y) in ids)
+            {
+                foreach(s in x)
+                {
+                    res += s;
+                }
+                
+                foreach(s in y)
+                {
+                    res += s;
+                }
+            }
+            
+            foreach(s in tspaces)
+            {
+                res += s;
+            }
+            
+            res;
+        }
+        
+        procedureName(_ : option[(string*NToken)], name : string) : string
+        {
+            name;
+        }
+        
+        procParam(name : string, type : SqlDbTypeLiteral, default : option[(NToken*Literal)], output : option[Literal]) : SqlScalarParameterDefinition
+        {
+            def defaultValue(opt : option[(NToken*Literal)]) : Literal
+            {
+                if (opt.HasValue)
+                {
+                    match(opt.Value)
+                    {
+                        | (_, s) => s;
+                    }
+                }
+                else
+                {
+                    null
+                }
+            }
+            
+            def sqlDbTypeDefinition = type.GetSqlDbTypeDefinition();
+            
+            
+            mutable direction : Direction = Direction.Input;
+            when(output.HasValue)
+            {
+                direction = Direction.InputOutput;
+            }
+            
+            SqlScalarParameterDefinition(name, true, sqlDbTypeDefinition.SqlDbType, sqlDbTypeDefinition.Precision, sqlDbTypeDefinition.Scale, direction, default.HasValue, defaultValue(default));
+        }
+        
+#endregion
+        
+#region Literals
+
+    //minus          : string = '-';
+    minus(_ : NToken) : string
+    {
+      "-";
+    }
+
+    //nullLiteral    : Literal = "null"S;
+    nullLiteral(_null : NToken) : Literal
+    {
+      Literal.Null()
+    }
+
+    //booleanLiteral : Literal = ("true" / "false")S;
+    booleanLiteral(val : NToken) : Literal
+    {
+      Literal.Boolean(bool.Parse(GetText(val)))
+    }
+
+    //decimalIntegerLiteral     : Literal = decimalDigit+ integerTypeSuffix?;
+    decimalIntegerLiteral(decimalDigits       : NToken) : Literal
+    {
+      mutable val;
+      if (ulong.TryParse(GetText(decimalDigits), out val))
+        Literal.Integer(val, false)
+      else
+        Literal.ErrorOverflow(GetText(decimalDigits))
+    }
+
+    //negativeIntegerLiteral    : Literal = minus decimalIntegerLiteral sp;
+    negativeIntegerLiteral(_ : string, decimalDigits : NToken) : Literal
+    {
+      mutable val;
+      if (long.TryParse(GetText(decimalDigits), out val))
+        Literal.NegativeInteger(-1 * val, false)
+      else
+        Literal.ErrorOverflow(GetText(decimalDigits))
+    }
+    
+    //realLiteral_1   : Literal = decimalDigit* "." decimalDigit+ exponentPart? realTypeSuffix?;
+    realLiteral_1(mantissa1       : NToken,
+                  _dot            : NToken,
+                  mantissa2       : NToken) : Literal
+    {
+      def mantissa = GetText(mantissa1) + "." + GetText(mantissa2);
+      Literal.Real(mantissa)
+    }
+
+    //realLiteral_2   : Literal = decimalDigit+ exponentPart realTypeSuffix?;
+    realLiteral_2(mantissa        : NToken) : Literal
+    {
+      Literal.Real(GetText(mantissa))
+    }
+
+    //unicodeEscapeSequence_u   : string = "\\u" hexDigit hexDigit hexDigit hexDigit;
+    unicodeEscapeSequence_u(_u : NToken, d1 : NToken, d2 : NToken, d3 : NToken, d4 : NToken) : VToken[string]
+    {
+      unchecked {
+        def x = 
+              HexDigit(d1) << 12
+          %|  HexDigit(d2) << 8
+          %|  HexDigit(d3) << 4
+          %|  HexDigit(d4);
+        ConvertUtf32(x)
+      }
+    }
+
+    //unicodeEscapeSequence_U   : char  = "\\U" hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit;
+    unicodeEscapeSequence_U(_U : NToken, d1 : NToken, d2 : NToken, d3 : NToken, d4 : NToken,
+                                         d5 : NToken, d6 : NToken, d7 : NToken, d8 : NToken) : VToken[string]
+    {
+      unchecked {
+        def x = 
+              HexDigit(d1) << 28
+          %|  HexDigit(d2) << 24
+          %|  HexDigit(d3) << 20
+          %|  HexDigit(d4) << 16
+          %|  HexDigit(d5) << 12
+          %|  HexDigit(d6) << 8
+          %|  HexDigit(d7) << 4
+          %|  HexDigit(d8);
+        ConvertUtf32(x)
+      }
+    }
+
+    //hexadecimalEscapeSequence : string = "\\x" hexDigit hexDigit? hexDigit? hexDigit?;
+    hexadecimalEscapeSequence(_x : NToken, d1 : NToken, d2 : NToken, d3 : NToken, d4 : NToken) : VToken[string]
+    {
+      mutable x = HexDigit(d1);
+      unless(d2.IsEmpty)
+        x = (x << 4) %| HexDigit(d2);
+      unless(d3.IsEmpty)
+        x = (x << 4) %| HexDigit(d3);
+      unless(d4.IsEmpty)
+        x = (x << 4) %| HexDigit(d4);
+      ConvertUtf32(x)
+    }
+
+    //simpleEscapeSequence      : string = "\\'" / "\\\"" / "\\\\" / "\\0" / "\\a" / "\\b" / "\\f" / "\\n" / "\\r" / "\\t" / "\\v";
+    simpleEscapeSequence(seq : NToken) : VToken[string]
+    {
+      VToken(match(GetText(seq)) {
+        | "\\'"   => "\'"
+        | "\\\\"  => "\\"
+        | "\\0"   => "\0"
+        | "\\a"   => "\a"
+        | "\\b"   => "\b"
+        | "\\f"   => "\f"
+        | "\\n"   => "\n"
+        | "\\r"   => "\r"
+        | "\\t"   => "\t"
+        | "\\v"   => "\v"
+        | s => s
+      })
+    }
+
+    //singleCharacter           : string = !newLineCharacter !"'" !"\\" any;
+    singleCharacter(any : NToken) : VToken[string]
+    {
+      VToken(GetText(any))
+    }
+
+    //characterLiteral  : Literal = "'" character "'" s;
+    characterLiteral(_lquot : NToken, character : VToken[string], _rquot : NToken) : Literal
+    {
+      match(character.Value) {
+        | null => Literal.ErrorUnicode(true, [character.Location])
+        | x when x.Length != 1 => Literal.ErrorChar()
+        | x => Literal.Char(x[0])
+      }
+    }
+    
+    //slashLiteral              : Literal = @"'\'" sp;
+    slashLiteral(_ : NToken) : Literal
+    {
+        Literal.Char('\\');
+    }
+
+    //regularStringLiteralCharacterSequence     : string  = singleRegularStringLiteralCharacter*;
+    regularStringLiteralCharacterSequence(seq : NToken) : VToken[string]
+    {
+      VToken(GetText(seq))
+    }
+
+    //regularStringLiteral                  : Literal = "\"" regularStringLiteralPart* "\"";
+    regularStringLiteral(_lquot : NToken, parts : SCG.List[VToken[string]], _rquot : NToken) : Literal
+    {
+      mutable unicodeErrors = [];
+      foreach(part when null == part.Value in parts)
+        unicodeErrors ::= part.Location;
+
+      match(unicodeErrors) {
+        | [] => 
+          def value = match(parts.Count) {
+            | 0 => ""
+            | 1 => parts[0].Value
+            | 2 => string.Concat(parts[0].Value, parts[1].Value)
+            | 3 => string.Concat(parts[0].Value, parts[1].Value, parts[2].Value)
+            | 4 => string.Concat(parts[0].Value, parts[1].Value, parts[2].Value, parts[3].Value)
+            | _ =>
+              def sb = System.Text.StringBuilder(parts.Count * 20);
+              foreach(part in parts)
+                _ = sb.Append(part.Value);
+              sb.ToString()
+          }
+          Literal.String(value, false)
+
+        | _ =>
+          Literal.ErrorUnicode(false, unicodeErrors.Rev())
+      }
+    }
+
+    //verbatimStringLiteralCharacterSequence    : string  = singleVerbatimStringLiteralCharacter*;
+    verbatimStringLiteralCharacterSequence(seq : NToken) : string
+    {
+      GetText(seq)
+    }
+
+    //quoteEscapeSequence                         : string  = "\"\"";
+    quoteEscapeSequence(_quot_quot : NToken) : string
+    {
+      "'"
+    }
+
+    //verbatimStringLiteral                       : Literal = "@\"" verbatimStringLiteralPart* "\"";
+    verbatimStringLiteral(_at_lquot : NToken, parts : SCG.List[string], _rquot : NToken) : Literal
+    {
+      def value = match(parts.Count) {
+        | 0 => ""
+        | 1 => parts[0]
+        | 2 => string.Concat(parts[0], parts[1])
+        | 3 => string.Concat(parts[0], parts[1], parts[2])
+        | 4 => string.Concat(parts[0], parts[1], parts[2], parts[3])
+        | _ =>
+          def sb = System.Text.StringBuilder(parts.Count * 20);
+          foreach(part in parts)
+            _ = sb.Append(part);
+          sb.ToString()
+      }
+      Literal.String(value, true)
+    }
+
+#endregion
+
+#region Reserved words
+
+        MAX(_ : NToken, _ : NToken, _ : NToken) : Literal
+        {
+            Literal.Max();
+        }
+
+        NULL(_ : NToken, _ : NToken, _ : NToken, _ : NToken) : Literal
+        {
+            Literal.Null();
+        }
+        
+        OUTPUT(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : Literal
+        {
+            Literal.Output();
+        }
+        
+        OUT(_ : NToken, _ : NToken, _ : NToken) : Literal
+        {
+            Literal.Output();
+        }
+        
+        TRUE(_ : NToken, _ : NToken, _ : NToken, _ : NToken) : Literal
+        {
+            Literal.Boolean(true);
+        }
+        
+        FALSE(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : Literal
+        {
+            Literal.Boolean(false);
+        }
+
+#endregion
+
+#region Types
+
+        BIGINT(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.BIGINT();
+        }
+        
+        BINARY(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.BINARY(null);
+        }
+        
+        BINARYSIZE(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, ints : List[Literal]) : SqlDbTypeLiteral
+        {
+            def toInt(l : List[Literal]) : int
+            {
+                mutable s : string = string.Empty;
+                foreach(i in l)
+                {
+                    s = s + i.ToString()
+                }
+                
+                int.Parse(s);
+            }
+            
+            mutable i : int? = null;
+            when(ints.Count() > 0)
+                i = toInt(ints);
+            
+            SqlDbTypeLiteral.BINARY(i);
+        }
+        
+        BIT(_ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.BIT();
+        }
+        
+        CHAR(_ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.CHAR();
+        }
+        
+        DECIMAL(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, scale : List[Literal], _ : NToken, precision : List[Literal]) : SqlDbTypeLiteral
+        {
+            def toInt(l : List[Literal]) : int
+            {
+                mutable s : string = string.Empty;
+                foreach(i in l)
+                {
+                    s = s + i.ToString()
+                }
+                
+                int.Parse(s);
+            }
+            
+            SqlDbTypeLiteral.DECIMAL(toInt(scale), toInt(precision));
+        }
+
+        NUMERIC(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, scale : List[Literal], _ : NToken, precision : List[Literal]) : SqlDbTypeLiteral
+        {
+            def toInt(l : List[Literal]) : int
+            {
+                mutable s : string = string.Empty;
+                foreach(i in l)
+                {
+                    s = s + i.ToString()
+                }
+                
+                int.Parse(s);
+            }
+            
+            SqlDbTypeLiteral.NUMERIC(toInt(scale), toInt(precision));
+        }
+        
+        FLOAT(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.FLOAT();
+        }
+        
+        IMAGE(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.IMAGE();
+        }
+        
+        INT(_ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.INT();
+        }
+        
+        INTEGER(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.INT();
+        }
+        
+        MONEY(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.MONEY();
+        }
+        
+        NCHAR(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.NCHAR(null, false);
+        }
+        
+        NCHARMAX(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : Literal) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.NCHAR(null, true);
+        }    
+        
+        NCHARSIZE(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, ints : List[Literal]) : SqlDbTypeLiteral
+        {
+            def toInt(l : List[Literal]) : int
+            {
+                mutable s : string = string.Empty;
+                foreach(i in l)
+                {
+                    s = s + i.ToString()
+                }
+                
+                int.Parse(s);
+            }
+            
+            SqlDbTypeLiteral.NCHAR(toInt(ints), false);
+        }
+        
+        NTEXT(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.NTEXT();
+        }
+        
+        NVARCHAR(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, ints : List[Literal]) : SqlDbTypeLiteral
+        {
+            def toInt(l : List[Literal]) : int
+            {
+                mutable s : string = string.Empty;
+                foreach(i in l)
+                {
+                    s = s + i.ToString()
+                }
+                
+                int.Parse(s);
+            }
+            
+            SqlDbTypeLiteral.NVARCHAR(toInt(ints), false);
+        }
+        
+        NVARCHARMAX(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : Literal) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.NVARCHAR(null, true);
+        }
+        
+        REAL(_ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.REAL();
+        }
+        
+        UNIQUEIDENTIFIER(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.UNIQUEIDENTIFIER();
+        }
+        
+        SMALLDATETIME(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.SMALLDATETIME();
+        }
+        
+        SMALLINT(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.SMALLINT();
+        }
+        
+        SMALLMONEY(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.SMALLMONEY();
+        }
+        
+        TEXT(_ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.TEXT();
+        }
+        
+        TIMESTAMP(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.TIMESTAMP();
+        }
+        
+        TINYINT(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.TINYINT();
+        }
+        
+        VARBINARY(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, ints : List[Literal]) : SqlDbTypeLiteral
+        {
+            def toInt(l : List[Literal]) : int
+            {
+                mutable s : string = string.Empty;
+                foreach(i in l)
+                {
+                    s = s + i.ToString()
+                }
+                
+                int.Parse(s);
+            }
+            
+            SqlDbTypeLiteral.VARBINARY(toInt(ints), false);
+        }
+        
+        VARBINARYMAX(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : Literal) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.VARBINARY(null, true);
+        }
+        
+        VARCHAR(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, ints : List[Literal]) : SqlDbTypeLiteral
+        {
+            def toInt(l : List[Literal]) : int
+            {
+                mutable s : string = string.Empty;
+                foreach(i in l)
+                {
+                    s = s + i.ToString()
+                }
+                
+                int.Parse(s);
+            }
+            
+            SqlDbTypeLiteral.VARCHAR(toInt(ints), false);
+        }
+        
+        VARCHARMAX(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken,  _ : Literal) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.VARCHAR(null, true);
+        }
+        
+        VARIANT(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.VARIANT();
+        }
+        
+        XML(_ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.XML();
+        }
+        
+        DATETIME(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.DATETIME();
+        }
+        
+        SYSNAME(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.NVARCHAR(128, false);
+        }
+        
+        CURSOR(_ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken, _ : NToken) : SqlDbTypeLiteral
+        {
+            SqlDbTypeLiteral.CURSOR();
+        }
+
+#endregion
+    
+#region ServiceFuncs
+
+    private HexDigit(t : NToken) : int
+    {
+        unchecked {
+            def c = ParsingSource.Text[t.StartPos];
+            if('0' <= c && c <= '9')
+                c :> int - '0' :> int
+            else if('a' <= c && c <= 'f')
+                c :> int - 'a' :> int + 10
+            else if('A' <= c && c <= 'F')
+                c :> int - 'A' :> int + 10
+            else 
+                0
+        }
+    }
+
+    static ConvertUtf32(x : int) : VToken[string]
+    {
+      unchecked {
+        def x = x :> uint;
+        if(x < 0x10000u)
+          VToken(char.ToString(x :> char))
+        else if(x < 0x110000u) {
+          def x = x - 0x10000u;
+          VToken(string(array[(x / 0x400u + 0xD800u) :> char, (x % 0x400u + 0xDC00u) :> char]))
+        } else
+          VToken(null)
+      }
+    }
+    
+#endregion
+  }
+}
