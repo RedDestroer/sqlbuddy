@@ -4,7 +4,7 @@ namespace SqlBuddy.VisualStudio
 {
     public interface IDatabaseProvider
     {
-        DatabaseDefinition DatabaseDefinition { get; }
+        DataAccess DataAccess { get; }
         string Namespace { get; }
         SqlDatabaseDefinition SqlDatabaseDefinition { get; }
     }

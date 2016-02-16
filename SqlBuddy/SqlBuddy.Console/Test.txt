@@ -1,0 +1,13 @@
+﻿dataaccess
+{
+    classname = "GoodsMovement";
+    generator = "csnativedbgen.tt";
+    connection = 
+    {
+        { database, "rrGoodsMovement" },
+        { server, "odin\run2010" },
+        { user, "sa" },
+        { password, "" }
+    };
+    transformators = { };
+}  
