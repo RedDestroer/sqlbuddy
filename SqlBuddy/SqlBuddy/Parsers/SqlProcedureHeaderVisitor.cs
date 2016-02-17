@@ -38,6 +38,7 @@ namespace SqlBuddy.Parsers
             int? scale = tuple.Item4;
             bool isNullable = tuple.Item5;
             var sqlTypeDefinition = new SqlTypeDefinition(sqlDbType, type, precision, scale);
+            var direction = Direction.Input;
 
             // Decide if we have default value
             DefaultValue defaultValue = null;
@@ -48,12 +49,17 @@ namespace SqlBuddy.Parsers
                 defaultValue = new DefaultValue(@default);
             }
 
+            if (context.OUTPUT() != null)
+            {
+                direction = Direction.InputOutput;
+            }
+
             /*
             if (defaultValue == null && isNullable)
                 isNullable = false;
             */
 
-            var sqlParameterDefinition = new SqlParameterDefinition(paramIdentifier, sqlTypeDefinition, isNullable, defaultValue);
+            var sqlParameterDefinition = new SqlParameterDefinition(paramIdentifier, sqlTypeDefinition, isNullable, defaultValue, direction);
             AddSqlParameterDefinition(sqlParameterDefinition);
 
             return _sqlParameterDefinitions;

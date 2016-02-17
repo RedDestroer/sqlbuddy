@@ -18,6 +18,6 @@ namespace SqlBuddy.Domain
 
         public int ID { get; private set; }
         public string Name { get; private set; }
-        public IEnumerable<SqlProcedureDefinition> Procedures { get; private set; }
+        public IList<SqlProcedureDefinition> Procedures { get; private set; }
     }
 }

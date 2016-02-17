@@ -53,6 +53,7 @@
     <Compile Include="Domain\ConnectionKeys.cs" />
     <Compile Include="Domain\DataAccess.cs" />
     <Compile Include="Domain\DefaultValue.cs" />
+    <Compile Include="Domain\Direction.cs" />
     <Compile Include="Domain\SqlDatabaseDefinition.cs" />
     <Compile Include="Domain\SqlDatabaseDefinitionReader.cs" />
     <Compile Include="Domain\SqlParameterDefinition.cs" />

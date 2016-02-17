@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using SqlBuddy.Domain;
 
 namespace SqlBuddy.Parsers
 {
@@ -44,6 +45,7 @@ namespace SqlBuddy.Parsers
         private static readonly Dictionary<Type, string> NetConversion = new Dictionary<Type, string>
                                                                              {
                                                                                  { typeof(long), "long" },
+                                                                                 { typeof(ulong), "ulong" },
                                                                                  { typeof(byte[]), "byte[]" },
                                                                                  { typeof(bool), "bool" },
                                                                                  { typeof(char), "char" },
@@ -51,10 +53,12 @@ namespace SqlBuddy.Parsers
                                                                                  { typeof(decimal), "decimal" },
                                                                                  { typeof(float), "float" },
                                                                                  { typeof(int), "int" },
+                                                                                 { typeof(uint), "uint" },
                                                                                  { typeof(string), "string" },
                                                                                  { typeof(double), "double" },
                                                                                  { typeof(Guid), "Guid" },
                                                                                  { typeof(short), "short" },
+                                                                                 { typeof(ushort), "ushort" },
                                                                                  { typeof(byte), "byte" },
                                                                                  { typeof(object), "object" },
                                                                              };
@@ -126,10 +130,18 @@ namespace SqlBuddy.Parsers
 
         public static string NormalizeNetTypeName(Type type)
         {
-            if (!NetConversion.ContainsKey(type))
-                return type.Name;
+            if (NetConversion.ContainsKey(type))
+                return NetConversion[type];
 
-            return NetConversion[type];
+            var baseType = Nullable.GetUnderlyingType(type);
+
+            if (baseType != null)
+            {
+                if (NetConversion.ContainsKey(baseType))
+                    return NetConversion[baseType] + "?";
+            }
+            
+            return type.Name;
         }
 
         public static string NormalizeNetName(string name)
@@ -172,8 +184,8 @@ namespace SqlBuddy.Parsers
         public static Type GetNullableType(Type type)
         {
             // Use Nullable.GetUnderlyingType() to remove the Nullable<T> wrapper if type is already nullable.
-            Type uType = Nullable.GetUnderlyingType(type);
-            Type aType = type;
+            var uType = Nullable.GetUnderlyingType(type);
+            var aType = type;
             if (uType != null)
                 aType = uType;
 
@@ -181,6 +193,50 @@ namespace SqlBuddy.Parsers
                 return typeof(Nullable<>).MakeGenericType(aType);
 
             return type;
-        } 
+        }
+
+        public static bool TryGetDefaultAsString(SqlParameterDefinition parameter, out string @value)
+        {
+            if (parameter.DefaultValue == null)
+            {
+                @value = null;
+
+                return false;
+            }
+
+            if (parameter.DefaultValue.Value == null)
+            {
+                @value = null;
+
+                return true;
+            }
+
+            if (!parameter.TypeDefinition.SqlType.HasValue)
+            {
+                @value = null;
+
+                return false;
+            }
+
+            switch (parameter.TypeDefinition.SqlType.Value)
+            {
+                case SqlDbType.Bit:
+                    @value = (bool)parameter.DefaultValue.Value ? "true" : "false";
+                    return true;
+                case SqlDbType.Char:
+                case SqlDbType.NChar:
+                    @value = string.Format("'{0}'", parameter.DefaultValue.Value);
+                    return true;
+                case SqlDbType.Text:
+                case SqlDbType.NText:
+                case SqlDbType.NVarChar:
+                case SqlDbType.VarChar:
+                    @value = string.Format("\"{0}\"", parameter.DefaultValue.Value);
+                    return true;
+                default:
+                    @value = parameter.DefaultValue.Value.ToString();
+                    return true;
+            }
+        }
     }
 }

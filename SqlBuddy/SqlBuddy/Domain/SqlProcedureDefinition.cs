@@ -27,7 +27,7 @@ namespace SqlBuddy.Domain
 
         public int ID { get; private set; }
         public string Name { get; private set; }
-        public IEnumerable<SqlParameterDefinition> Parameters { get; private set; }
+        public IList<SqlParameterDefinition> Parameters { get; private set; }
         public Exception Exception { get; private set; }
     }
 }
