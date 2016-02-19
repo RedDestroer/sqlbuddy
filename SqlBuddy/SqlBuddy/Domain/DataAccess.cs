@@ -20,16 +20,16 @@ namespace SqlBuddy.Domain
 
         public bool HaveToReadSchema(string schemaName)
         {
-            //if (!(schemaName == "dbo"))
-            //    return false;
+            if (!(schemaName == "dbo"))
+                return false;
 
             return true;
         }
 
         public bool HaveToReadSqlProcedure(string schemaName, string procedureName)
         {
-            //if (!(schemaName == "dbo" && procedureName == "AssortmentByDivision"))
-            //    return false;
+            if (!(schemaName == "dbo" && procedureName == "AllowedDivisionList"))
+                return false;
 
             return true;
         }

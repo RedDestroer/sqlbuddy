@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Xml;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
-using Antlr4.Runtime.Tree.Xpath;
 using SqlBuddy.Domain;
 using SqlBuddy.Parsers;
 
@@ -85,15 +79,15 @@ namespace SqlBuddy.Console
 
             _tabCount++;
 
-            foreach (var sqlProcedureDefinition in sqlSchemaDefinition.Procedures.Where(proc => proc.Exception == null))
+            foreach (var sqlProcedureDefinition in sqlSchemaDefinition.Procedures.Where(proc => proc.ExceptionMessage == null))
             {
                 Output(sqlProcedureDefinition);
             }
 
-            foreach (var sqlProcedureDefinition in sqlSchemaDefinition.Procedures.Where(proc => proc.Exception != null))
+            foreach (var sqlProcedureDefinition in sqlSchemaDefinition.Procedures.Where(proc => proc.ExceptionMessage != null))
             {
                 System.Console.Write(new string(' ', _tabCount * 2));
-                System.Console.WriteLine("Ignored procedure: {0,-28}, reason: {1}", sqlProcedureDefinition.Name, sqlProcedureDefinition.Exception.Message);
+                System.Console.WriteLine("Ignored procedure: {0,-28}, reason: {1}", sqlProcedureDefinition.Name, sqlProcedureDefinition.ExceptionMessage);
             }
 
             _tabCount--;

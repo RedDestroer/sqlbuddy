@@ -1,0 +1,15 @@
+﻿
+dataaccess
+{
+    classname = "RunFront";
+    generator = "csnativedbgen.tt";
+    connection = 
+    {
+        { database, "rrRunFront" },
+        { server, "odin\run2010" },
+        { user, "sa" },
+        { password, "" }
+    };
+    transformators = { "SqlBuddy.Domain.PrettyNameTransformator", "SqlBuddy.Domain.SqlExtSyntaxTransformator" };
+}  
+   

@@ -39,7 +39,7 @@ namespace SqlBuddy.Domain
                 _executionContext.Open();
                 _executionContext.ExecuteNonQuery(command);
 
-                sqlDatabaseDefinition = ReadSqlDatabaseDefinition();
+                sqlDatabaseDefinition = ReadSqlDatabaseDefinition(connectionString);
 
                 _executionContext.Close();
             }
@@ -49,11 +49,11 @@ namespace SqlBuddy.Domain
             return sqlDatabaseDefinition;
         }
 
-        private SqlDatabaseDefinition ReadSqlDatabaseDefinition()
+        private SqlDatabaseDefinition ReadSqlDatabaseDefinition(string connectionString)
         {
             var shemas = ReadSqlSchemaDefinitions();
 
-            return new SqlDatabaseDefinition(shemas.ToArray());
+            return new SqlDatabaseDefinition(connectionString, shemas.ToArray());
         }
 
         private IEnumerable<SqlSchemaDefinition> ReadSqlSchemaDefinitions()
@@ -132,12 +132,19 @@ namespace SqlBuddy.Domain
                     // Procedure param list
                     var parameters = ReadSqlProcedureParameterDefinitions(procText);
 
-                    return new SqlProcedureDefinition(procedureId, procedureName, procText, parameters.ToArray());
+                    return new SqlProcedureDefinition(procedureId, procedureName, parameters.ToArray())
+                    {
+                        ProcText = procText
+                    };
                 }
             }
             catch (NotSupportedException exception)
             {
-                return new SqlProcedureDefinition(procedureName, exception, procText);
+                return new SqlProcedureDefinition(procedureName)
+                {
+                    ExceptionMessage = exception.Message,
+                    ProcText = procText
+                };
             }
 
             return null;

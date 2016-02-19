@@ -5,6 +5,7 @@ namespace SqlBuddy.Domain
 {
     [Serializable]
     public class SqlParameterDefinition
+        : ContextualDefinition
     {
         public SqlParameterDefinition(string name, SqlTypeDefinition typeDefinition, bool nullable, DefaultValue defaultValue, Direction direction)
         {
@@ -20,9 +21,10 @@ namespace SqlBuddy.Domain
             if (name.Length > 0)
             {
                 var parameterName = name.Substring(1, name.Length - 1);
-                NetParameterName = Helper.NormalizeNetName(parameterName);
-                SqlParameterName = "@" + NetParameterName;
-                NetTypeName = Helper.NormalizeNetTypeName(typeDefinition.NetType);
+
+                Context[SqlParameterContextKeys.NetParameterName] = Helper.NormalizeNetName(parameterName);
+                Context[SqlParameterContextKeys.SqlParameterName] = "@" + Context[SqlParameterContextKeys.NetParameterName];
+                Context[SqlParameterContextKeys.NetTypeName] = Helper.NormalizeNetTypeName(typeDefinition.NetType);
             }
         }
 
@@ -31,8 +33,5 @@ namespace SqlBuddy.Domain
         public bool Nullable { get; private set; }
         public DefaultValue DefaultValue { get; private set; }
         public Direction Direction { get; private set; }
-        public string NetParameterName { get; set; }
-        public string SqlParameterName { get; set; }
-        public string NetTypeName { get; set; }
     }
 }

@@ -51,13 +51,20 @@
     <Compile Include="Dal\IExecutionContext.cs" />
     <Compile Include="Dal\Sql.cs" />
     <Compile Include="Domain\ConnectionKeys.cs" />
+    <Compile Include="Domain\ContextualDefinition.cs" />
     <Compile Include="Domain\DataAccess.cs" />
     <Compile Include="Domain\DefaultValue.cs" />
     <Compile Include="Domain\Direction.cs" />
+    <Compile Include="Domain\ITransformator.cs" />
+    <Compile Include="Domain\PrettyNameTransformator.cs" />
     <Compile Include="Domain\SqlDatabaseDefinition.cs" />
     <Compile Include="Domain\SqlDatabaseDefinitionReader.cs" />
+    <Compile Include="Domain\SqlExtSyntaxTransformator.cs" />
+    <Compile Include="Domain\SqlParameterContextKeys.cs" />
     <Compile Include="Domain\SqlParameterDefinition.cs" />
+    <Compile Include="Domain\SqlProcedureContextKeys.cs" />
     <Compile Include="Domain\SqlProcedureDefinition.cs" />
+    <Compile Include="Domain\SqlProcedureExt.cs" />
     <Compile Include="Domain\SqlSchemaDefinition.cs" />
     <Compile Include="Domain\SqlTypeDefinition.cs" />
     <Compile Include="obj\Debug\DataAccessBaseListener.cs" />
@@ -66,6 +73,12 @@
     <Compile Include="obj\Debug\DataAccessListener.cs" />
     <Compile Include="obj\Debug\DataAccessParser.cs" />
     <Compile Include="obj\Debug\DataAccessVisitor.cs" />
+    <Compile Include="obj\Debug\SqlProcedureExtBaseListener.cs" />
+    <Compile Include="obj\Debug\SqlProcedureExtBaseVisitor.cs" />
+    <Compile Include="obj\Debug\SqlProcedureExtLexer.cs" />
+    <Compile Include="obj\Debug\SqlProcedureExtListener.cs" />
+    <Compile Include="obj\Debug\SqlProcedureExtParser.cs" />
+    <Compile Include="obj\Debug\SqlProcedureExtVisitor.cs" />
     <Compile Include="obj\Debug\SqlProcedureHeaderBaseListener.cs" />
     <Compile Include="obj\Debug\SqlProcedureHeaderBaseVisitor.cs" />
     <Compile Include="obj\Debug\SqlProcedureHeaderLexer.cs" />
@@ -85,6 +98,13 @@
     <Compile Include="Parsers\LexerThrowingErrorListener.cs" />
     <Compile Include="Parsers\ParserStringLogListener.cs" />
     <Compile Include="Parsers\ParserThrowingErrorListener.cs" />
+    <Compile Include="Parsers\SqlProcedureExt.g4.lexer.cs">
+      <DependentUpon>SqlProcedureExt.g4</DependentUpon>
+    </Compile>
+    <Compile Include="Parsers\SqlProcedureExt.g4.parser.cs">
+      <DependentUpon>SqlProcedureExt.g4</DependentUpon>
+    </Compile>
+    <Compile Include="Parsers\SqlProcedureExtVisitor.cs" />
     <Compile Include="Parsers\SqlProcedureHeader.g4.lexer.cs">
       <DependentUpon>SqlProcedureHeader.g4</DependentUpon>
     </Compile>
@@ -101,6 +121,10 @@
       <CustomToolNamespace>SqlBuddy.Parsers</CustomToolNamespace>
     </Antlr4>
     <Antlr4 Include="Parsers\SqlProcedureHeader.g4">
+      <Generator>MSBuild:Compile</Generator>
+      <CustomToolNamespace>SqlBuddy.Parsers</CustomToolNamespace>
+    </Antlr4>
+    <Antlr4 Include="Parsers\SqlProcedureExt.g4">
       <Generator>MSBuild:Compile</Generator>
       <CustomToolNamespace>SqlBuddy.Parsers</CustomToolNamespace>
     </Antlr4>

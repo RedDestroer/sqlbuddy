@@ -1,6 +1,8 @@
-﻿using System.CodeDom.Compiler;
+﻿using System;
+using System.CodeDom.Compiler;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.VisualStudio.Shell;
@@ -47,6 +49,23 @@ namespace SqlBuddy.VisualStudio
             var templateFileName = Path.Combine(dir, dataAccess.Generator);
 
             var database = databaseReader.Read();
+
+            foreach (string transformatorFullTypeName in dataAccess.Transformators)
+            {
+                try
+                {
+                    Transform(transformatorFullTypeName, database);
+                }
+                catch (Exception exception)
+                {
+                    var errorMsg = exception.Message;
+
+                    progressCallback.GeneratorError(0, 0, errorMsg, 0, 0);
+
+                    return Encoding.UTF8.GetBytes(errorMsg);
+                }
+            }
+
             var host = new DatabaseTemplateHost(dataAccess, defaultNamespace, database);
             var engine = new Engine();
             host.TemplateFileValue = templateFileName;
@@ -68,6 +87,24 @@ namespace SqlBuddy.VisualStudio
             }
 
             return Encoding.UTF8.GetBytes(output);
+        }
+
+        private void Transform(string transformatorFullTypeName, SqlDatabaseDefinition sqlDatabaseDefinition)
+        {
+            var assembly = Assembly.GetAssembly(typeof (PrettyNameTransformator));
+            var objectType = (from type in assembly.GetTypes()
+                where type.FullName == transformatorFullTypeName
+                select type)
+                .SingleOrDefault();
+
+            ////var objectType = typeof(SqlBuddy.Domain.PrettyNameTransformator);
+
+            if (objectType == null)
+                throw new InvalidOperationException(string.Format("Can't find class '{0}'.", transformatorFullTypeName));
+
+            var transformator = (ITransformator)Activator.CreateInstance(objectType);
+
+            transformator.Transform(sqlDatabaseDefinition);
         }
     }
 }
