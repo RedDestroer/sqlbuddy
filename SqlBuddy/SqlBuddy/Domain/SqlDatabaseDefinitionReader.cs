@@ -114,39 +114,37 @@ namespace SqlBuddy.Domain
                                 
             // Procedure name
             var procedureName = reader.GetString(1);
+            var procText = new StringBuilder();
 
             try
             {
                 if (_dataAccess.HaveToReadSqlProcedure(schemaName, procedureName))
                 {
+                    // Procedure text
+                    using (var command = new SqlCommand(Sql.GetProcedureText(procedureId)))
+                    using (var procTextReader = _executionContext.ExecuteReader(command))
+                    {
+                        while (procTextReader.Read())
+                        {
+                            procText.Append(procTextReader.GetString(0));
+                        }
+                    }
                     // Procedure param list
-                    var parameters = ReadSqlProcedureParameterDefinitions(procedureId);
+                    var parameters = ReadSqlProcedureParameterDefinitions(procText);
 
-                    return new SqlProcedureDefinition(procedureId, procedureName, parameters.ToArray());
+                    return new SqlProcedureDefinition(procedureId, procedureName, procText, parameters.ToArray());
                 }
             }
             catch (NotSupportedException exception)
             {
-                return new SqlProcedureDefinition(procedureName, exception);
+                return new SqlProcedureDefinition(procedureName, exception, procText);
             }
 
             return null;
         }
 
-        private IEnumerable<SqlParameterDefinition> ReadSqlProcedureParameterDefinitions(int procedureId)
+        private IEnumerable<SqlParameterDefinition> ReadSqlProcedureParameterDefinitions(StringBuilder procText)
         {
-            var procText = new StringBuilder();
-
-            // Procedure text
-            using (var command = new SqlCommand(Sql.GetProcedureText(procedureId)))
-            using (var reader = _executionContext.ExecuteReader(command))
-            {
-                while (reader.Read())
-                {
-                    procText.Append(reader.GetString(0));
-                }
-            }
-
             // Parse procedure to find out its parameters
             var input = new AntlrInputStream(procText.ToString());
 

@@ -233,6 +233,15 @@ namespace SqlBuddy.Parsers
                 case SqlDbType.VarChar:
                     @value = string.Format("\"{0}\"", parameter.DefaultValue.Value);
                     return true;
+                case SqlDbType.UniqueIdentifier:
+                    @value = parameter.DefaultValue.Value.ToString();
+                    if (@value == "00000000-0000-0000-0000-000000000000")
+                    {
+                        @value = parameter.Nullable ? "new Guid?()" : "new Guid()";
+                        return true;
+                    }
+
+                    return false;
                 default:
                     @value = parameter.DefaultValue.Value.ToString();
                     return true;

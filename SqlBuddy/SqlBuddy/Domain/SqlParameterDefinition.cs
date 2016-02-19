@@ -1,4 +1,5 @@
 ﻿using System;
+using SqlBuddy.Parsers;
 
 namespace SqlBuddy.Domain
 {
@@ -15,6 +16,14 @@ namespace SqlBuddy.Domain
             Nullable = nullable;
             DefaultValue = defaultValue;
             Direction = direction;
+
+            if (name.Length > 0)
+            {
+                var parameterName = name.Substring(1, name.Length - 1);
+                NetParameterName = Helper.NormalizeNetName(parameterName);
+                SqlParameterName = "@" + NetParameterName;
+                NetTypeName = Helper.NormalizeNetTypeName(typeDefinition.NetType);
+            }
         }
 
         public string Name { get; private set; }
@@ -22,5 +31,8 @@ namespace SqlBuddy.Domain
         public bool Nullable { get; private set; }
         public DefaultValue DefaultValue { get; private set; }
         public Direction Direction { get; private set; }
+        public string NetParameterName { get; set; }
+        public string SqlParameterName { get; set; }
+        public string NetTypeName { get; set; }
     }
 }
