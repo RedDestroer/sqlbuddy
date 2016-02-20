@@ -83,6 +83,61 @@ namespace SqlBuddy.Parsers
             return _dataAccess;
         }
 
+        public override DataAccess VisitSchemas(DataAccessParser.SchemasContext context)
+        {
+            _dataAccess = base.VisitSchemas(context) ?? _dataAccess;
+
+            var dictContext = context.partial_dictionary_initializer();
+            if (dictContext != null)
+            {
+                if (dictContext.ALL() != null)
+                    _dataAccess.SchemaRules.IsGoodByDefault = true;
+                if (dictContext.NOTALL() != null)
+                    _dataAccess.SchemaRules.IsGoodByDefault = false;
+
+                var pairsContext = dictContext.partial_dictionary_pairs();
+                if (pairsContext != null)
+                {
+                    foreach (var pairContext in pairsContext.partial_dictionary_pair())
+                    {
+                        string pattern = pairContext.STRING_LITERAL()
+                                                    .GetText();
+
+                        if (pairContext.BANG() == null)
+                        {
+                            _dataAccess.SchemaRules.ProcessRules.Add(new IncludeRule(pattern));
+                        }
+                        else
+                        {
+                            _dataAccess.SchemaRules.ProcessRules.Add(new ExcludeRule(pattern));
+                        }
+
+                        _dataAccess.ProcedureRules[pattern] = new Rules();
+
+                        var listContext = pairContext.string_list2();
+                        if (listContext != null)
+                        {
+                            if (listContext.ALL() != null)
+                                _dataAccess.ProcedureRules[pattern].IsGoodByDefault = true;
+                            if (listContext.NOTALL() != null)
+                                _dataAccess.ProcedureRules[pattern].IsGoodByDefault = false;
+
+                            var stringListContext = listContext.string_list_items2();
+                            if (stringListContext != null)
+                            {
+                                foreach (var node in stringListContext.STRING_LITERAL())
+                                {
+                                    /// !!!!!
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return _dataAccess;
+        }
+
         private string RemoveDoubleQuotes(string s)
         {
             if (s == null) 

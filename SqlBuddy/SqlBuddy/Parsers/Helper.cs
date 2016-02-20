@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using SqlBuddy.Domain;
 
 namespace SqlBuddy.Parsers
@@ -211,14 +212,7 @@ namespace SqlBuddy.Parsers
                 return true;
             }
 
-            if (!parameter.TypeDefinition.SqlType.HasValue)
-            {
-                @value = null;
-
-                return false;
-            }
-
-            switch (parameter.TypeDefinition.SqlType.Value)
+            switch (parameter.TypeDefinition.SqlType)
             {
                 case SqlDbType.Bit:
                     @value = (bool)parameter.DefaultValue.Value ? "true" : "false";
@@ -237,7 +231,7 @@ namespace SqlBuddy.Parsers
                     @value = parameter.DefaultValue.Value.ToString();
                     if (@value == "00000000-0000-0000-0000-000000000000")
                     {
-                        @value = parameter.Nullable ? "new Guid?()" : "new Guid()";
+                        @value = parameter.TryGetValue<bool>(SqlParameterContextKeys.IsNullable, true) ? "new Guid?()" : "new Guid()";
                         return true;
                     }
 
@@ -246,6 +240,21 @@ namespace SqlBuddy.Parsers
                     @value = parameter.DefaultValue.Value.ToString();
                     return true;
             }
+        }
+
+        public static IList<string> GetComments(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+                return new List<string>();
+
+            var comments = s.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < comments.Length; i++)
+            {
+                comments[i] = comments[i] ?? string.Empty;
+            }
+
+            return comments.Select(str => str.Trim(' ', '\r', '\n', '\t')).ToList();
         }
     }
 }

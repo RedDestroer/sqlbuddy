@@ -7,16 +7,17 @@ namespace SqlBuddy.Domain
     public class SqlParameterDefinition
         : ContextualDefinition
     {
-        public SqlParameterDefinition(string name, SqlTypeDefinition typeDefinition, bool nullable, DefaultValue defaultValue, Direction direction)
+        public SqlParameterDefinition(string name, SqlTypeDefinition typeDefinition, DefaultValue defaultValue, Direction direction, uint row, uint column)
         {
             if (name == null) throw new ArgumentNullException("name");
             if (typeDefinition == null) throw new ArgumentNullException("typeDefinition");
 
             Name = name;
             TypeDefinition = typeDefinition;
-            Nullable = nullable;
             DefaultValue = defaultValue;
             Direction = direction;
+            Row = row;
+            Column = column;
 
             if (name.Length > 0)
             {
@@ -30,8 +31,9 @@ namespace SqlBuddy.Domain
 
         public string Name { get; private set; }
         public SqlTypeDefinition TypeDefinition { get; private set; }
-        public bool Nullable { get; private set; }
         public DefaultValue DefaultValue { get; private set; }
         public Direction Direction { get; private set; }
+        public uint Row { get; private set; }
+        public uint Column { get; private set; }
     }
 }

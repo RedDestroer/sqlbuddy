@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Reflection;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using SqlBuddy.Domain;
@@ -41,6 +43,11 @@ namespace SqlBuddy.Console
                 var sqlDatabaseDefinitionReader = new SqlDatabaseDefinitionReader(dataAccess);
                 var sqlDatabaseDefinition = sqlDatabaseDefinitionReader.Read();
 
+                foreach (string transformatorFullTypeName in dataAccess.Transformators)
+                {
+                    Transform(transformatorFullTypeName, sqlDatabaseDefinition);
+                }
+
                 Output(sqlDatabaseDefinition);
 
                 System.Console.WriteLine();
@@ -54,6 +61,22 @@ namespace SqlBuddy.Console
 
             System.Console.WriteLine("Press any key...");
             System.Console.ReadKey(true);
+        }
+
+        private static void Transform(string transformatorFullTypeName, SqlDatabaseDefinition sqlDatabaseDefinition)
+        {
+            var assembly = Assembly.GetAssembly(typeof(PrettyNameTransformator));
+            var objectType = (from type in assembly.GetTypes()
+                              where type.FullName == transformatorFullTypeName
+                              select type)
+                .SingleOrDefault();
+
+            if (objectType == null)
+                throw new InvalidOperationException(string.Format("Can't find class '{0}'.", transformatorFullTypeName));
+
+            var transformator = (ITransformator)Activator.CreateInstance(objectType);
+
+            transformator.Transform(sqlDatabaseDefinition);
         }
 
         private static void Output(SqlDatabaseDefinition sqlDatabaseDefinition)
@@ -100,6 +123,21 @@ namespace SqlBuddy.Console
 
             _tabCount++;
 
+            if (sqlProcedureDefinition.Context.Count > 0)
+            {
+                System.Console.Write(new string(' ', _tabCount * 2));
+                System.Console.WriteLine("Procedure context:");
+
+                _tabCount++;
+                
+                foreach (var kv in sqlProcedureDefinition.Context)
+                {
+                    Output(kv);
+                }
+
+                _tabCount--;
+            }
+            
             foreach (var sqlParameterDefinition in sqlProcedureDefinition.Parameters)
             {
                 Output(sqlParameterDefinition);
@@ -108,18 +146,37 @@ namespace SqlBuddy.Console
             _tabCount--;
         }
 
+        private static void Output(KeyValuePair<string, string> kv)
+        {
+            System.Console.Write(new string(' ', _tabCount * 2));
+            System.Console.Write("Key: {0, -20}, Value: '{1}'", kv.Key, kv.Value);
+
+            System.Console.WriteLine();
+        }
+
         private static void Output(SqlParameterDefinition sqlParameterDefinition)
         {
             System.Console.Write(new string(' ', _tabCount * 2));
             System.Console.Write("{0,-28}", sqlParameterDefinition.Name);
-            System.Console.Write(": ");
+            System.Console.WriteLine(":");
 
-            if (sqlParameterDefinition.Nullable)
-                System.Console.Write("{0,-8}", "NULL");
-            else
-                System.Console.Write("{0,-8}", "NOT NULL");
+            if (sqlParameterDefinition.Context.Count > 0)
+            {
+                System.Console.Write(new string(' ', _tabCount * 2));
+                System.Console.WriteLine("Parameter context:");
 
-            System.Console.Write(", ");
+                _tabCount++;
+
+                foreach (var kv in sqlParameterDefinition.Context)
+                {
+                    Output(kv);
+                }
+
+                _tabCount--;
+            }
+
+            System.Console.Write(new string(' ', _tabCount * 2));
+            System.Console.Write("Parameter state: ");
 
             var td = sqlParameterDefinition.TypeDefinition;
             System.Console.Write("SqlType:{0,-20}, ", td.SqlType);

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\git\inet\sqlbuddy\SqlBuddy\SqlBuddy\Parsers\DataAccess.g4 by ANTLR 4.3
+// Generated from C:\git\Repo\sqlbuddy\SqlBuddy\SqlBuddy\Parsers\DataAccess.g4 by ANTLR 4.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -33,19 +33,6 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.3")]
 [System.CLSCompliant(false)]
 public partial class DataAccessBaseListener : IDataAccessListener {
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="DataAccessParser.identifier"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIdentifier([NotNull] DataAccessParser.IdentifierContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="DataAccessParser.identifier"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIdentifier([NotNull] DataAccessParser.IdentifierContext context) { }
-
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DataAccessParser.dataaccess"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -125,6 +112,19 @@ public partial class DataAccessBaseListener : IDataAccessListener {
 	public virtual void ExitClassName([NotNull] DataAccessParser.ClassNameContext context) { }
 
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.partial_dictionary_pair"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPartial_dictionary_pair([NotNull] DataAccessParser.Partial_dictionary_pairContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.partial_dictionary_pair"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPartial_dictionary_pair([NotNull] DataAccessParser.Partial_dictionary_pairContext context) { }
+
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DataAccessParser.literal"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -136,19 +136,6 @@ public partial class DataAccessBaseListener : IDataAccessListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLiteral([NotNull] DataAccessParser.LiteralContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="DataAccessParser.literal_list"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterLiteral_list([NotNull] DataAccessParser.Literal_listContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="DataAccessParser.literal_list"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitLiteral_list([NotNull] DataAccessParser.Literal_listContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DataAccessParser.transformators"/>.
@@ -175,19 +162,6 @@ public partial class DataAccessBaseListener : IDataAccessListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLiteral_list_items([NotNull] DataAccessParser.Literal_list_itemsContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="DataAccessParser.compileUnit"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterCompileUnit([NotNull] DataAccessParser.CompileUnitContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="DataAccessParser.compileUnit"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitCompileUnit([NotNull] DataAccessParser.CompileUnitContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DataAccessParser.string_list_items"/>.
@@ -229,19 +203,6 @@ public partial class DataAccessBaseListener : IDataAccessListener {
 	public virtual void ExitConnection([NotNull] DataAccessParser.ConnectionContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DataAccessParser.string_list"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterString_list([NotNull] DataAccessParser.String_listContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="DataAccessParser.string_list"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitString_list([NotNull] DataAccessParser.String_listContext context) { }
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="DataAccessParser.keyword"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -266,6 +227,162 @@ public partial class DataAccessBaseListener : IDataAccessListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitDictionary_pairs([NotNull] DataAccessParser.Dictionary_pairsContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.identifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIdentifier([NotNull] DataAccessParser.IdentifierContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.identifier"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIdentifier([NotNull] DataAccessParser.IdentifierContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.partial_dictionary_initializer"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPartial_dictionary_initializer([NotNull] DataAccessParser.Partial_dictionary_initializerContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.partial_dictionary_initializer"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPartial_dictionary_initializer([NotNull] DataAccessParser.Partial_dictionary_initializerContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.schema_items"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSchema_items([NotNull] DataAccessParser.Schema_itemsContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.schema_items"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSchema_items([NotNull] DataAccessParser.Schema_itemsContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.partial_dictionary_pairs"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPartial_dictionary_pairs([NotNull] DataAccessParser.Partial_dictionary_pairsContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.partial_dictionary_pairs"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPartial_dictionary_pairs([NotNull] DataAccessParser.Partial_dictionary_pairsContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.literal_list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLiteral_list([NotNull] DataAccessParser.Literal_listContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.literal_list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLiteral_list([NotNull] DataAccessParser.Literal_listContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.string_list_items2"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterString_list_items2([NotNull] DataAccessParser.String_list_items2Context context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.string_list_items2"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitString_list_items2([NotNull] DataAccessParser.String_list_items2Context context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.schema_item"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSchema_item([NotNull] DataAccessParser.Schema_itemContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.schema_item"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSchema_item([NotNull] DataAccessParser.Schema_itemContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.string_list2"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterString_list2([NotNull] DataAccessParser.String_list2Context context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.string_list2"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitString_list2([NotNull] DataAccessParser.String_list2Context context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.compileUnit"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCompileUnit([NotNull] DataAccessParser.CompileUnitContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.compileUnit"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCompileUnit([NotNull] DataAccessParser.CompileUnitContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.schemas"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSchemas([NotNull] DataAccessParser.SchemasContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.schemas"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSchemas([NotNull] DataAccessParser.SchemasContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.string_list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterString_list([NotNull] DataAccessParser.String_listContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.string_list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitString_list([NotNull] DataAccessParser.String_listContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DataAccessParser.schema_list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSchema_list([NotNull] DataAccessParser.Schema_listContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DataAccessParser.schema_list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSchema_list([NotNull] DataAccessParser.Schema_listContext context) { }
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DataAccessParser.properties"/>.

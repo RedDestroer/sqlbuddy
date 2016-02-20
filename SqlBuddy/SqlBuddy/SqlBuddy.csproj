@@ -55,8 +55,12 @@
     <Compile Include="Domain\DataAccess.cs" />
     <Compile Include="Domain\DefaultValue.cs" />
     <Compile Include="Domain\Direction.cs" />
+    <Compile Include="Domain\ExcludeRule.cs" />
+    <Compile Include="Domain\IncludeRule.cs" />
     <Compile Include="Domain\ITransformator.cs" />
     <Compile Include="Domain\PrettyNameTransformator.cs" />
+    <Compile Include="Domain\ProcessRule.cs" />
+    <Compile Include="Domain\Rules.cs" />
     <Compile Include="Domain\SqlDatabaseDefinition.cs" />
     <Compile Include="Domain\SqlDatabaseDefinitionReader.cs" />
     <Compile Include="Domain\SqlExtSyntaxTransformator.cs" />
@@ -65,6 +69,8 @@
     <Compile Include="Domain\SqlProcedureContextKeys.cs" />
     <Compile Include="Domain\SqlProcedureDefinition.cs" />
     <Compile Include="Domain\SqlProcedureExt.cs" />
+    <Compile Include="Domain\SqlProcedureFlags.cs" />
+    <Compile Include="Domain\SqlProocedureParameterExt.cs" />
     <Compile Include="Domain\SqlSchemaDefinition.cs" />
     <Compile Include="Domain\SqlTypeDefinition.cs" />
     <Compile Include="obj\Debug\DataAccessBaseListener.cs" />

@@ -57,10 +57,11 @@ boolean_literal
     ;
     
 assignment
-    : 'classname' ASSIGNMENT STRING_LITERAL             # className
-    | 'connection' ASSIGNMENT dictionary_initializer    # connection
-    | 'generator' ASSIGNMENT STRING_LITERAL             # generator
-    | 'transformators' ASSIGNMENT string_list           # transformators
+    : 'classname' ASSIGNMENT STRING_LITERAL                 # className
+    | 'connection' ASSIGNMENT dictionary_initializer        # connection
+    | 'generator' ASSIGNMENT STRING_LITERAL                 # generator
+    | 'transformators' ASSIGNMENT string_list               # transformators
+    | 'schemas' ASSIGNMENT partial_dictionary_initializer   # schemas
     ;
 
 dictionary_initializer
@@ -85,13 +86,50 @@ literal_list_items
     : literal (COMMA literal)*
     ;
 
+schema_list
+    : OPEN_BRACE schema_items? CLOSE_BRACE
+    ;
+
+schema_items
+    : schema_item (COMMA schema_item)*
+    ;
+
+schema_item
+    : (NOTALL | ALL)
+    | partial_dictionary_initializer
+    ;
+
+partial_dictionary_initializer
+    : OPEN_BRACE (NOTALL | ALL) CLOSE_BRACE
+    | OPEN_BRACE ((NOTALL | ALL) COMMA)? partial_dictionary_pairs CLOSE_BRACE
+    | OPEN_BRACE CLOSE_BRACE
+    ;
+
+partial_dictionary_pairs
+    : partial_dictionary_pair (COMMA partial_dictionary_pair)*
+    ;
+
+partial_dictionary_pair
+    : OPEN_BRACE BANG? STRING_LITERAL (COMMA string_list2)? CLOSE_BRACE
+    ;
+
 string_list
     : OPEN_BRACE string_list_items CLOSE_BRACE
     | OPEN_BRACE CLOSE_BRACE
     ;
 
+string_list2
+    : OPEN_BRACE (NOTALL | ALL) CLOSE_BRACE
+    | OPEN_BRACE ((NOTALL | ALL) COMMA)? string_list_items2 CLOSE_BRACE
+    | OPEN_BRACE CLOSE_BRACE
+    ;
+
 string_list_items
     : STRING_LITERAL (COMMA STRING_LITERAL)*
+    ;
+
+string_list_items2
+    : BANG? STRING_LITERAL (COMMA BANG? STRING_LITERAL)*
     ;
 
 /*
@@ -180,6 +218,9 @@ DATAACCESS : 'dataaccess';
 FALSE : 'false';
 NULL : 'null';
 TRUE : 'true';
+ALL : 'all' | 'ALL';
+NOTALL : '!all' | '!ALL';
+
 
 //B.1.6 Identifiers
 // must be defined after all keywords so the first branch (Available_identifier) does not match keywords 
@@ -343,10 +384,13 @@ fragment Hexadecimal_escape_sequence
   | '\\x' HEX_DIGIT HEX_DIGIT HEX_DIGIT
   | '\\x' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
   ;
+
 STRING_LITERAL 
   : Regular_string_literal
   | Verbatim_string_literal
   ;
+
+
 fragment Regular_string_literal 
   : DOUBLE_QUOTE Regular_string_literal_character* DOUBLE_QUOTE
   ;

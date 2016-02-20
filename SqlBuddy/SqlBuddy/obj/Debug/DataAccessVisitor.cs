@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\git\inet\sqlbuddy\SqlBuddy\SqlBuddy\Parsers\DataAccess.g4 by ANTLR 4.3
+// Generated from C:\git\Repo\sqlbuddy\SqlBuddy\SqlBuddy\Parsers\DataAccess.g4 by ANTLR 4.3
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -30,13 +30,6 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.3")]
 [System.CLSCompliant(false)]
 public interface IDataAccessVisitor<Result> : IParseTreeVisitor<Result> {
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="DataAccessParser.identifier"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitIdentifier([NotNull] DataAccessParser.IdentifierContext context);
-
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DataAccessParser.dataaccess"/>.
 	/// </summary>
@@ -82,18 +75,18 @@ public interface IDataAccessVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitClassName([NotNull] DataAccessParser.ClassNameContext context);
 
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.partial_dictionary_pair"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPartial_dictionary_pair([NotNull] DataAccessParser.Partial_dictionary_pairContext context);
+
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DataAccessParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLiteral([NotNull] DataAccessParser.LiteralContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="DataAccessParser.literal_list"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitLiteral_list([NotNull] DataAccessParser.Literal_listContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by the <c>transformators</c>
@@ -109,13 +102,6 @@ public interface IDataAccessVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLiteral_list_items([NotNull] DataAccessParser.Literal_list_itemsContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by <see cref="DataAccessParser.compileUnit"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitCompileUnit([NotNull] DataAccessParser.CompileUnitContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DataAccessParser.string_list_items"/>.
@@ -140,13 +126,6 @@ public interface IDataAccessVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitConnection([NotNull] DataAccessParser.ConnectionContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DataAccessParser.string_list"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitString_list([NotNull] DataAccessParser.String_listContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="DataAccessParser.keyword"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -159,6 +138,91 @@ public interface IDataAccessVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitDictionary_pairs([NotNull] DataAccessParser.Dictionary_pairsContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.identifier"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIdentifier([NotNull] DataAccessParser.IdentifierContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.partial_dictionary_initializer"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPartial_dictionary_initializer([NotNull] DataAccessParser.Partial_dictionary_initializerContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.schema_items"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSchema_items([NotNull] DataAccessParser.Schema_itemsContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.partial_dictionary_pairs"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPartial_dictionary_pairs([NotNull] DataAccessParser.Partial_dictionary_pairsContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.literal_list"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLiteral_list([NotNull] DataAccessParser.Literal_listContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.string_list_items2"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitString_list_items2([NotNull] DataAccessParser.String_list_items2Context context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.schema_item"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSchema_item([NotNull] DataAccessParser.Schema_itemContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.string_list2"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitString_list2([NotNull] DataAccessParser.String_list2Context context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.compileUnit"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCompileUnit([NotNull] DataAccessParser.CompileUnitContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>schemas</c>
+	/// labeled alternative in <see cref="DataAccessParser.assignment"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSchemas([NotNull] DataAccessParser.SchemasContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.string_list"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitString_list([NotNull] DataAccessParser.String_listContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DataAccessParser.schema_list"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSchema_list([NotNull] DataAccessParser.Schema_listContext context);
 
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DataAccessParser.properties"/>.

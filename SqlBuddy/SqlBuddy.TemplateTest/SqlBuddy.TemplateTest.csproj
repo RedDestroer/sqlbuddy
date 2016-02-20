@@ -41,11 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="csnativedbgen.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>csnativedbgen.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunFront.cs">
@@ -56,15 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="csnativedbgen.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>csnativedbgen.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="RunFront.dcs">
       <Generator>SqlBuddyCodeGenerator</Generator>
-      <LastGenOutput>RunFront.cs</LastGenOutput>
       <CustomToolNamespace>SqlBuddy.TemplateTest</CustomToolNamespace>
+      <LastGenOutput>RunFront.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

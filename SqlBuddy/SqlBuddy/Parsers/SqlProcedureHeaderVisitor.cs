@@ -28,11 +28,11 @@ namespace SqlBuddy.Parsers
             _sqlParameterDefinitions = base.VisitProcedureParamNode(context) ?? _sqlParameterDefinitions;
 
             // Get name of parameter
-            var paramIdentifier = context.paramIdentifier()
-                                         .GetText();
+            var paramIdentifierContext = context.paramIdentifier();
+            var paramIdentifier = paramIdentifierContext.GetText();
             var paramTypeContext = context.paramType();
-            Tuple<SqlDbType?, Type, int?, int?, bool> tuple = GetTypeFromContext(paramTypeContext);
-            SqlDbType? sqlDbType = tuple.Item1;
+            Tuple<SqlDbType, Type, int?, int?, bool> tuple = GetTypeFromContext(paramTypeContext);
+            SqlDbType sqlDbType = tuple.Item1;
             Type type = tuple.Item2;
             int? precision = tuple.Item3;
             int? scale = tuple.Item4;
@@ -55,11 +55,12 @@ namespace SqlBuddy.Parsers
             }
 
             /*
-            if (defaultValue == null && isNullable)
-                isNullable = false;
+                if (defaultValue == null && isNullable)
+                    isNullable = false;
             */
 
-            var sqlParameterDefinition = new SqlParameterDefinition(paramIdentifier, sqlTypeDefinition, isNullable, defaultValue, direction);
+            var sqlParameterDefinition = new SqlParameterDefinition(paramIdentifier, sqlTypeDefinition, defaultValue, direction, (uint)paramIdentifierContext.Start.Line, (uint)paramIdentifierContext.Start.Column);
+            sqlParameterDefinition.Context[SqlParameterContextKeys.IsNullable] = isNullable.ToString();
             AddSqlParameterDefinition(sqlParameterDefinition);
 
             return _sqlParameterDefinitions;
@@ -139,7 +140,7 @@ namespace SqlBuddy.Parsers
             ((List<SqlParameterDefinition>)_sqlParameterDefinitions).Add(sqlParameterDefinition);
         }
 
-        private Tuple<SqlDbType?, Type, int?, int?, bool> GetTypeFromContext(SqlProcedureHeaderParser.ParamTypeContext context)
+        private Tuple<SqlDbType, Type, int?, int?, bool> GetTypeFromContext(SqlProcedureHeaderParser.ParamTypeContext context)
         {
             SqlDbType sqlDbType;
             int? precision = null;
@@ -216,7 +217,7 @@ namespace SqlBuddy.Parsers
             precision = precision ?? GetPrecision(context.paramConstrains());
             scale = scale ?? GetScale(context.paramConstrains());
 
-            return Tuple.Create<SqlDbType?, Type, int?, int?, bool>(sqlDbType, type, precision, scale, isNullable);
+            return Tuple.Create<SqlDbType, Type, int?, int?, bool>(sqlDbType, type, precision, scale, isNullable);
         }
 
         private int? GetPrecision(SqlProcedureHeaderParser.ParamConstrainsContext context)

@@ -42,7 +42,27 @@ namespace SqlBuddy.Domain
                 var visitor = new SqlProcedureExtVisitor();
                 var sqlProcedureExt = visitor.Visit(tree);
 
-                sqlProcedureDefinition.Context[SqlProcedureContextKeys.IsPublic] = sqlProcedureExt.IsPublic.ToString();
+                sqlProcedureDefinition.Context[SqlProcedureContextKeys.Description] = sqlProcedureExt.Description;
+                if (sqlProcedureExt.SqlProcedureFlags != null)
+                {
+                    sqlProcedureDefinition.Context[SqlProcedureContextKeys.IsPublic] = sqlProcedureExt.SqlProcedureFlags.IsPublic.ToString();
+                }
+
+                foreach (var paramExtension in sqlProcedureExt.ParamExtensions)
+                {
+                    var maxColumn = sqlProcedureDefinition.Parameters
+                                                          .Where(o => o.Row == paramExtension.Row && o.Column < paramExtension.Column)
+                                                          .DefaultIfEmpty()
+                                                          .Max(o => o.Column);
+                    var param = sqlProcedureDefinition.Parameters.FirstOrDefault(o => o.Row == paramExtension.Row && o.Column == maxColumn);
+                    if (param != null)
+                    {
+                        param.Context[SqlParameterContextKeys.Description] = paramExtension.Description;
+                        param.Context[SqlParameterContextKeys.IsNullable] = paramExtension.IsNullable.ToString();
+                        param.TypeDefinition.NetType = Helper.GetNetType(param.TypeDefinition.SqlType, paramExtension.IsNullable);
+                        param.Context[SqlParameterContextKeys.NetTypeName] = Helper.NormalizeNetTypeName(param.TypeDefinition.NetType);
+                    }
+                }
             }
             catch (Exception exception)
             {

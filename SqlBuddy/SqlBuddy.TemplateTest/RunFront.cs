@@ -30,9 +30,338 @@ namespace SqlBuddy.TemplateTest
 			{ 
 				RunFront._databaseName = value; 
 
+				db_accessadmin.SchemaName = db_accessadmin.SchemaName;
+				db_backupoperator.SchemaName = db_backupoperator.SchemaName;
+				db_datareader.SchemaName = db_datareader.SchemaName;
+				db_datawriter.SchemaName = db_datawriter.SchemaName;
+				db_ddladmin.SchemaName = db_ddladmin.SchemaName;
+				db_denydatareader.SchemaName = db_denydatareader.SchemaName;
+				db_denydatawriter.SchemaName = db_denydatawriter.SchemaName;
+				db_owner.SchemaName = db_owner.SchemaName;
+				db_securityadmin.SchemaName = db_securityadmin.SchemaName;
 				dbo.SchemaName = dbo.SchemaName;
+				device.SchemaName = device.SchemaName;
+				egais.SchemaName = egais.SchemaName;
+				guest.SchemaName = guest.SchemaName;
+				INFORMATION_SCHEMA.SchemaName = INFORMATION_SCHEMA.SchemaName;
+				sys.SchemaName = sys.SchemaName;
 			}
         }
+
+		public partial class db_accessadmin
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_accessadmin()
+			{
+				db_accessadmin.SchemaName = "db_accessadmin";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_accessadmin._schemaName; }
+				set {
+					 db_accessadmin._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_backupoperator
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_backupoperator()
+			{
+				db_backupoperator.SchemaName = "db_backupoperator";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_backupoperator._schemaName; }
+				set {
+					 db_backupoperator._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_datareader
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_datareader()
+			{
+				db_datareader.SchemaName = "db_datareader";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_datareader._schemaName; }
+				set {
+					 db_datareader._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_datawriter
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_datawriter()
+			{
+				db_datawriter.SchemaName = "db_datawriter";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_datawriter._schemaName; }
+				set {
+					 db_datawriter._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_ddladmin
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_ddladmin()
+			{
+				db_ddladmin.SchemaName = "db_ddladmin";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_ddladmin._schemaName; }
+				set {
+					 db_ddladmin._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_denydatareader
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_denydatareader()
+			{
+				db_denydatareader.SchemaName = "db_denydatareader";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_denydatareader._schemaName; }
+				set {
+					 db_denydatareader._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_denydatawriter
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_denydatawriter()
+			{
+				db_denydatawriter.SchemaName = "db_denydatawriter";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_denydatawriter._schemaName; }
+				set {
+					 db_denydatawriter._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_owner
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_owner()
+			{
+				db_owner.SchemaName = "db_owner";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_owner._schemaName; }
+				set {
+					 db_owner._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class db_securityadmin
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static db_securityadmin()
+			{
+				db_securityadmin.SchemaName = "db_securityadmin";
+			}
+
+			public static string SchemaName
+			{
+				get { return db_securityadmin._schemaName; }
+				set {
+					 db_securityadmin._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
 
 		public partial class dbo
 		{
@@ -59,11 +388,4561 @@ namespace SqlBuddy.TemplateTest
             }
             
             public partial class Procedures
+            {                
+                
+                    /// <summary>
+                    /// Выводит список текущих допустимых подразделений
+                    /// для данного экземпляра магазина
+                    /// <param name="statusIdd">                                  
+                    /// Статус подразделения
+                    /// </param>
+                    /// </summary>
+                    public static SqlCommand AllowedDivisionList(int? statusIdd = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AllowedDivisionList] @StatusIDD = @statusIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AssortmentByDivision(int? myType, Guid? divisionGuid, string tmpRes, int? selectorParam = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AssortmentByDivision] @MyType = @myType, @DivisionGUID = @divisionGuid, @TmpRes = @tmpRes, @SelectorParam = @selectorParam", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@selectorParam", selectorParam);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AssortmentFind(string search)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AssortmentFind] @Search = @search", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@search", search);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AssortmentList(Guid? divisionGuid, byte[] unrelationRestLat = default(byte[]), DateTime? unrelationRestLdm = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AssortmentList] @DivisionGUID = @divisionGuid, @UnrelationRestLAT = @unrelationRestLat, @UnrelationRestLDM = @unrelationRestLdm", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@unrelationRestLat", unrelationRestLat);
+                        prop1.Direction = ParameterDirection.InputOutput;                
+                        var prop2 = cmd.Parameters.AddWithValue("@unrelationRestLdm", unrelationRestLdm);
+                        prop2.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AssortmentListPackage(Guid? divisionGuid, Guid? divisionPlacementGuid, int? ownerType = default(int?), DateTime? dateRestPackage = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AssortmentListPackage] @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid, @OwnerType = @ownerType, @DateRestPackage = @dateRestPackage", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateRestPackage", dateRestPackage);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AssortmentPackageList(string tmpTableSource, string tmpTableResult, int? ownerType = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AssortmentPackageList] @tmpTableSource = @tmpTableSource, @tmpTableResult = @tmpTableResult, @OwnerType = @ownerType", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpTableSource", tmpTableSource);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@tmpTableResult", tmpTableResult);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AssortmentRedefinedParamList(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AssortmentRedefinedParamList] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AssortmentRedefinedParamSave(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AssortmentRedefinedParamSave] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand AsyncTest()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[AsyncTest] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeGoodDelete(Guid? guid, bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeGoodDelete] @GUID = @guid, @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeGoodList(int? code)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeGoodList] @Code = @code", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@code", code);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeGoodLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeGoodLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeGoodSave(bool? isNew, bool? isSkipValidation = false, byte[] newLat = default(byte[]), DateTime? newLdm = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeGoodSave] @IsNew = @isNew, @IsSkipValidation = @isSkipValidation, @NewLAT = @newLat, @NewLDM = @newLdm", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isNew", isNew);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@newLat", newLat);
+                        prop2.Direction = ParameterDirection.InputOutput;                
+                        var prop3 = cmd.Parameters.AddWithValue("@newLdm", newLdm);
+                        prop3.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeGoodSaveValidate()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeGoodSaveValidate] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeTemplateDelete(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeTemplateDelete] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeTemplateList()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeTemplateList] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeTemplateLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeTemplateLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BarCodeTemplateSave()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BarCodeTemplateSave] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand BasePriceCalc(Guid? divisionGuid, string fileName, int? replCode)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[BasePriceCalc] @DivisionGUID = @divisionGuid, @FileName = @fileName, @ReplCode = @replCode", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@fileName", fileName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@replCode", replCode);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ButcheryAutoCreateInvoice(Guid? divisionGuid, DateTime? dateDoc, short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ButcheryAutoCreateInvoice] @DivisionGUID = @divisionGuid, @DateDoc = @dateDoc, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ButcheryCreateInvoice(short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ButcheryCreateInvoice] @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ButcheryDeleteInvoice(Guid? incomeGuid, Guid? outgoGuid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ButcheryDeleteInvoice] @IncomeGUID = @incomeGuid, @OutgoGUID = @outgoGuid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@incomeGuid", incomeGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outgoGuid", outgoGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ButcheryLookup(bool? isSimpleButchery = true, int? statusIdd = 7)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ButcheryLookup] @isSimpleButchery = @isSimpleButchery, @StatusIDD = @statusIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isSimpleButchery", isSimpleButchery);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ButcheryLookupByIsSimpleButchery(bool? isSimpleButchery = true, int? statusIdd = 7)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ButcheryLookupByIsSimpleButchery] @isSimpleButchery = @isSimpleButchery, @StatusIDD = @statusIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isSimpleButchery", isSimpleButchery);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ButcheryMasterLoad(Guid? butcheryGuid, Guid? cuttingGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ButcheryMasterLoad] @ButcheryGUID = @butcheryGuid, @CuttingGUID = @cuttingGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@butcheryGuid", butcheryGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@cuttingGuid", cuttingGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashReestr2(DateTime? date, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashReestr2] @Date = @date, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashReport(DateTime? date, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashReport] @Date = @date, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ChequeCleaner(DateTime? date, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ChequeCleaner] @Date = @date, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CreateBarcodeList(string barcodesTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CreateBarcodeList] @barcodesTableName = @barcodesTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@barcodesTableName", barcodesTableName);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CuttingCreate(Guid? guid, Guid? butcheryGuid, string numDoc, DateTime? dateDoc, Guid? divisionGuid, Guid? divisionPlacementGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CuttingCreate] @GUID = @guid, @ButcheryGUID = @butcheryGuid, @NumDoc = @numDoc, @DateDoc = @dateDoc, @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@butcheryGuid", butcheryGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@numDoc", numDoc);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop5.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CuttingList(Guid? divisionGuid, DateTime? dateBegin = default(DateTime?), DateTime? dateEnd = default(DateTime?), Guid? divisionPlacementGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CuttingList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd, @DivisionPlacementGUID = @divisionPlacementGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CuttingLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CuttingLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DayReportList(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DayReportList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnContractorByDivision(int? myType, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnContractorByDivision] @MyType = @myType, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnContractorCreateInvoices(Guid? demandReturnGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnContractorCreateInvoices] @DemandReturnGUID = @demandReturnGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnContractorDivisionByContractor(int? myType, Guid? contractorGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnContractorDivisionByContractor] @MyType = @myType, @ContractorGUID = @contractorGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@contractorGuid", contractorGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnContractorRecalcPriceAndVat(int? ownerType, Guid? demandReturnGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnContractorRecalcPriceAndVat] @OwnerType = @ownerType, @DemandReturnGUID = @demandReturnGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnCreate(int? ownerType, Guid? divisionGuid, Guid? demandReturnGuid, int? demandReturnTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnCreate] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @DemandReturnGUID = @demandReturnGuid, @DemandReturnTypeIdd = @demandReturnTypeIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@demandReturnTypeIdd", demandReturnTypeIdd);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnCreateInvoices(Guid? demandReturnGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnCreateInvoices] @DemandReturnGUID = @demandReturnGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnDelete(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnDelete] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnExport(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnExport] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnGoodsLoad(int? ownerType, Guid? demandReturnGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnGoodsLoad] @OwnerType = @ownerType, @DemandReturnGUID = @demandReturnGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnList(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnLoad(int? ownerType, Guid? divisionGuid, Guid? demandReturnGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnLoad] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @DemandReturnGUID = @demandReturnGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnLoadGoodsInfo(int? ownerType, Guid? divisionGuid, Guid? divisionPlacementGuid, Guid? demandReturnGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnLoadGoodsInfo] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid, @DemandReturnGUID = @demandReturnGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnMasterList(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnMasterList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnMasterSave(bool? reCreate = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnMasterSave] @ReCreate = @reCreate", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@reCreate", reCreate);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnOutgoList(Guid? demandReturnGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnOutgoList] @DemandReturnGUID = @demandReturnGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnPrepare(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnPrepare] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnSave(int? ownerType, bool? isNew, Guid? demandReturnGuid, string validationTableName = "CREATE", short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnSave] @OwnerType = @ownerType, @IsNew = @isNew, @DemandReturnGUID = @demandReturnGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isNew", isNew);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@demandReturnGuid", demandReturnGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturnSetSended(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturnSetSended] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandReturtGetInvoiceData(Guid? divisionGuid, Guid? divisionPlacementGuid, Guid? contractorBuyerGuid, DateTime? dD = default(DateTime?), Guid? agreementGuid = default(Guid?), bool? isAgreementReverse = default(bool?), int? type1idd = default(int?), string tmpGoods = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandReturtGetInvoiceData] @DivisionGuid = @divisionGuid, @DivisionPlacementGuid = @divisionPlacementGuid, @ContractorBuyerGuid = @contractorBuyerGuid, @DD = @dD, @AgreementGuid = @agreementGuid, @isAgreementReverse = @isAgreementReverse, @Type1IDD = @type1idd, @tmpGoods = @tmpGoods", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@contractorBuyerGuid", contractorBuyerGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dD", dD);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@agreementGuid", agreementGuid);
+                        prop4.Direction = ParameterDirection.InputOutput;                
+                        var prop5 = cmd.Parameters.AddWithValue("@isAgreementReverse", isAgreementReverse);
+                        prop5.Direction = ParameterDirection.InputOutput;                
+                        var prop6 = cmd.Parameters.AddWithValue("@type1idd", type1idd);
+                        prop6.Direction = ParameterDirection.InputOutput;                
+                        var prop7 = cmd.Parameters.AddWithValue("@tmpGoods", tmpGoods);
+                        prop7.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleAgreementLookup(int? ownerType, Guid? divisionGuid = default(Guid?), int? demandScheduleTypeIdd = 0, Guid? currentAgreementGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleAgreementLookup] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @DemandScheduleTypeIDD = @demandScheduleTypeIdd, @CurrentAgreementGUID = @currentAgreementGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@demandScheduleTypeIdd", demandScheduleTypeIdd);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@currentAgreementGuid", currentAgreementGuid);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleDayList(int? ownerType, Guid? divisionGuid, DateTime? date)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleDayList] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @Date = @date", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@date", date);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleDelete(int? ownerType, Guid? divisionGuid, Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleDelete] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleGetAssortmentCode(int? ownerType, Guid? guid, DateTime? date, Guid? divisionGuid = default(Guid?), string outputTable = "SELECT", string outputFooter = "", int? demandScheduleTypeIdd = default(int?), Guid? agreementGuid = default(Guid?), int? demandScheduleGoodsTypeIdd = default(int?), int? demandSchedulePriceTypeIdd = default(int?), bool? isMainCodeContractor = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleGetAssortmentCode] @OwnerType = @ownerType, @GUID = @guid, @Date = @date, @DivisionGUID = @divisionGuid, @OutputTable = @outputTable, @OutputFooter = @outputFooter, @DemandScheduleTypeIDD = @demandScheduleTypeIdd, @AgreementGUID = @agreementGuid, @DemandScheduleGoodsTypeIDD = @demandScheduleGoodsTypeIdd, @DemandSchedulePriceTypeIDD = @demandSchedulePriceTypeIdd, @IsMainCodeContractor = @isMainCodeContractor", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@date", date);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputTable", outputTable);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@outputFooter", outputFooter);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@demandScheduleTypeIdd", demandScheduleTypeIdd);
+                        prop6.Direction = ParameterDirection.Input;                
+                        var prop7 = cmd.Parameters.AddWithValue("@agreementGuid", agreementGuid);
+                        prop7.Direction = ParameterDirection.Input;                
+                        var prop8 = cmd.Parameters.AddWithValue("@demandScheduleGoodsTypeIdd", demandScheduleGoodsTypeIdd);
+                        prop8.Direction = ParameterDirection.Input;                
+                        var prop9 = cmd.Parameters.AddWithValue("@demandSchedulePriceTypeIdd", demandSchedulePriceTypeIdd);
+                        prop9.Direction = ParameterDirection.Input;                
+                        var prop10 = cmd.Parameters.AddWithValue("@isMainCodeContractor", isMainCodeContractor);
+                        prop10.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleGetCross(int? ownerType, Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd, string inputTable = "#DemandScheduleGraph", string outputType = "SELECT", string outputFooter = "")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleGetCross] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd, @InputTable = @inputTable, @OutputType = @outputType, @OutputFooter = @outputFooter", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@inputTable", inputTable);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@outputType", outputType);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@outputFooter", outputFooter);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleGroupList(Guid? demandScheduleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleGroupList] @DemandScheduleGUID = @demandScheduleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandScheduleGuid", demandScheduleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleGroupListAll(Guid? demandScheduleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleGroupListAll] @DemandScheduleGUID = @demandScheduleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandScheduleGuid", demandScheduleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleList(int? ownerType, Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleList] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleLoad(int? ownerType, Guid? divisionGuid, Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleLoad] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleParamExAssSave(Guid? demandScheduleGuid, string variable = "EXASS", string keyTableName = "#ExAss", string keyTableFieldName = "Code")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleParamExAssSave] @DemandScheduleGUID = @demandScheduleGuid, @Variable = @variable, @KeyTableName = @keyTableName, @KeyTableFieldName = @keyTableFieldName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandScheduleGuid", demandScheduleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@variable", variable);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@keyTableName", keyTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@keyTableFieldName", keyTableFieldName);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleParamGroupLoad(Guid? demandScheduleGuid, string variable = "GRP", string keyTableName = "#Param", string keyTableFieldName = "Key")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleParamGroupLoad] @DemandScheduleGUID = @demandScheduleGuid, @Variable = @variable, @KeyTableName = @keyTableName, @KeyTableFieldName = @keyTableFieldName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandScheduleGuid", demandScheduleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@variable", variable);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@keyTableName", keyTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@keyTableFieldName", keyTableFieldName);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleParamGroupSave(Guid? demandScheduleGuid, string variable = "GRP", string keyTableName = "#Param", string keyTableFieldName = "Key")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleParamGroupSave] @DemandScheduleGUID = @demandScheduleGuid, @Variable = @variable, @KeyTableName = @keyTableName, @KeyTableFieldName = @keyTableFieldName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandScheduleGuid", demandScheduleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@variable", variable);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@keyTableName", keyTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@keyTableFieldName", keyTableFieldName);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleRepeaterDelete(int? ownerType, Guid? divisionGuid, Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleRepeaterDelete] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleRepeaterList(int? ownerType, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleRepeaterList] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleRepeaterLoad(int? ownerType, Guid? divisionGuid, Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleRepeaterLoad] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleRepeaterLookup(int? ownerType, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleRepeaterLookup] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleRepeaterSave(int? ownerType, Guid? divisionGuid, Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleRepeaterSave] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleSave(int? ownerType, Guid? divisionGuid, Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleSave] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandScheduleTypeLookup(int? ownerType, Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandScheduleTypeLookup] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleCalc(Guid? divisionGuid, DateTime? dateStart, DateTime? dateEnd, DateTime? dateDemand, Guid? contractorGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleCalc] @DivisionGUID = @divisionGuid, @DateStart = @dateStart, @DateEnd = @dateEnd, @DateDemand = @dateDemand, @ContractorGUID = @contractorGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateDemand", dateDemand);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@contractorGuid", contractorGuid);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleCalc2(Guid? divisionGuid, Guid? agreementGuid, DateTime? dateStart, DateTime? dateEnd, DateTime? z1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleCalc2] @DivisionGUID = @divisionGuid, @AgreementGUID = @agreementGuid, @DateStart = @dateStart, @DateEnd = @dateEnd, @Z1 = @z1", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@agreementGuid", agreementGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@z1", z1);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleCalc3(int? ownerType, Guid? divisionGuid, DateTime? z1, DateTime? dateStart, DateTime? dateEnd, Guid? demandScheduleGuid = default(Guid?), bool? handMake = false, DateTime? p1 = default(DateTime?), DateTime? p2 = default(DateTime?), int? portalTypeIdd = default(int?), Guid? agreementGuid = default(Guid?), DateTime? dateSpecification = default(DateTime?), Guid? contractorDivisionGuid = default(Guid?), int? result = default(int?), string validationTableName = default(string), short? outputRes = 0, Guid? demandSimpleGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleCalc3] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @Z1 = @z1, @DateStart = @dateStart, @DateEnd = @dateEnd, @DemandScheduleGUID = @demandScheduleGuid, @HandMake = @handMake, @P1 = @p1, @P2 = @p2, @PortalTypeIDD = @portalTypeIdd, @AgreementGUID = @agreementGuid, @DateSpecification = @dateSpecification, @ContractorDivisionGUID = @contractorDivisionGuid, @Result = @result, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @DemandSimpleGUID = @demandSimpleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@z1", z1);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@demandScheduleGuid", demandScheduleGuid);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@handMake", handMake);
+                        prop6.Direction = ParameterDirection.Input;                
+                        var prop7 = cmd.Parameters.AddWithValue("@p1", p1);
+                        prop7.Direction = ParameterDirection.Input;                
+                        var prop8 = cmd.Parameters.AddWithValue("@p2", p2);
+                        prop8.Direction = ParameterDirection.Input;                
+                        var prop9 = cmd.Parameters.AddWithValue("@portalTypeIdd", portalTypeIdd);
+                        prop9.Direction = ParameterDirection.Input;                
+                        var prop10 = cmd.Parameters.AddWithValue("@agreementGuid", agreementGuid);
+                        prop10.Direction = ParameterDirection.Input;                
+                        var prop11 = cmd.Parameters.AddWithValue("@dateSpecification", dateSpecification);
+                        prop11.Direction = ParameterDirection.Input;                
+                        var prop12 = cmd.Parameters.AddWithValue("@contractorDivisionGuid", contractorDivisionGuid);
+                        prop12.Direction = ParameterDirection.Input;                
+                        var prop13 = cmd.Parameters.AddWithValue("@result", result);
+                        prop13.Direction = ParameterDirection.InputOutput;                
+                        var prop14 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop14.Direction = ParameterDirection.Input;                
+                        var prop15 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop15.Direction = ParameterDirection.Input;                
+                        var prop16 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop16.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleCalc4(int? ownerType, Guid? divisionGuid, DateTime? z1, DateTime? dateStart, DateTime? dateEnd, Guid? demandScheduleGuid = default(Guid?), bool? handMake = false, DateTime? p1 = default(DateTime?), DateTime? p2 = default(DateTime?), int? portalTypeIdd = default(int?), Guid? agreementGuid = default(Guid?), DateTime? dateSpecification = default(DateTime?), Guid? contractorDivisionGuid = default(Guid?), int? result = default(int?), string validationTableName = default(string), short? outputRes = 0, Guid? demandSimpleGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleCalc4] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @Z1 = @z1, @DateStart = @dateStart, @DateEnd = @dateEnd, @DemandScheduleGUID = @demandScheduleGuid, @HandMake = @handMake, @P1 = @p1, @P2 = @p2, @PortalTypeIDD = @portalTypeIdd, @AgreementGUID = @agreementGuid, @DateSpecification = @dateSpecification, @ContractorDivisionGUID = @contractorDivisionGuid, @Result = @result, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @DemandSimpleGUID = @demandSimpleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@z1", z1);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@demandScheduleGuid", demandScheduleGuid);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@handMake", handMake);
+                        prop6.Direction = ParameterDirection.Input;                
+                        var prop7 = cmd.Parameters.AddWithValue("@p1", p1);
+                        prop7.Direction = ParameterDirection.Input;                
+                        var prop8 = cmd.Parameters.AddWithValue("@p2", p2);
+                        prop8.Direction = ParameterDirection.Input;                
+                        var prop9 = cmd.Parameters.AddWithValue("@portalTypeIdd", portalTypeIdd);
+                        prop9.Direction = ParameterDirection.Input;                
+                        var prop10 = cmd.Parameters.AddWithValue("@agreementGuid", agreementGuid);
+                        prop10.Direction = ParameterDirection.Input;                
+                        var prop11 = cmd.Parameters.AddWithValue("@dateSpecification", dateSpecification);
+                        prop11.Direction = ParameterDirection.Input;                
+                        var prop12 = cmd.Parameters.AddWithValue("@contractorDivisionGuid", contractorDivisionGuid);
+                        prop12.Direction = ParameterDirection.Input;                
+                        var prop13 = cmd.Parameters.AddWithValue("@result", result);
+                        prop13.Direction = ParameterDirection.InputOutput;                
+                        var prop14 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop14.Direction = ParameterDirection.Input;                
+                        var prop15 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop15.Direction = ParameterDirection.Input;                
+                        var prop16 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop16.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleContractorDivisionList(Guid? agreementGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleContractorDivisionList] @AgreementGUID = @agreementGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@agreementGuid", agreementGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleContractorList(Guid? divisionGuid, DateTime? date, int? dS_calcType)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleContractorList] @DivisionGUID = @divisionGuid, @Date = @date, @DS_CalcType = @dS_calcType", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dS_calcType", dS_calcType);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleCreatePlan(Guid? demandSimpleGuid, string validationTableName = "CREATE", short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleCreatePlan] @DemandSimpleGUID = @demandSimpleGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleCreatePlanValidate(Guid? demandSimpleGuid, string validationTableName = "CREATE", short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleCreatePlanValidate] @DemandSimpleGUID = @demandSimpleGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleCreateProductionPlan(Guid? demandSimpleGuid, string validationTableName = default(string), short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleCreateProductionPlan] @DemandSimpleGUID = @demandSimpleGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleDelete(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleDelete] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleDemandList(Guid? divisionGuid, DateTime? dateStart, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleDemandList] @DivisionGUID = @divisionGuid, @DateStart = @dateStart, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleExport(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleExport] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleExportValidate(Guid? demandSimpleGuid, string validationTableName = "CREATE", short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleExportValidate] @DemandSimpleGUID = @demandSimpleGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleGoodsFlagCalc(Guid? divisionGuid, bool? allowOutputSelect = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleGoodsFlagCalc] @DivisionGUID = @divisionGuid, @AllowOutputSelect = @allowOutputSelect", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@allowOutputSelect", allowOutputSelect);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleIncomeList(Guid? demandSimpleGuid, Guid? planIncomeGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleIncomeList] @DemandSimpleGUID = @demandSimpleGuid, @PlanIncomeGUID = @planIncomeGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@planIncomeGuid", planIncomeGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleLoad(Guid? demandSimpleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleLoad] @DemandSimpleGUID = @demandSimpleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleParamAdd(Guid? demandSimpleGuid, string demandSimpleParamTable = default(string), string demandSimpleGoodsParamTable = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleParamAdd] @DemandSimpleGUID = @demandSimpleGuid, @DemandSimpleParamTable = @demandSimpleParamTable, @DemandSimpleGoodsParamTable = @demandSimpleGoodsParamTable", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@demandSimpleParamTable", demandSimpleParamTable);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@demandSimpleGoodsParamTable", demandSimpleGoodsParamTable);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimplePlanIncomeList(Guid? demandSimpleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimplePlanIncomeList] @DemandSimpleGUID = @demandSimpleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@demandSimpleGuid", demandSimpleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleReportResultClean(Guid? divisionGuid, int? myType)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleReportResultClean] @DivisionGUID = @divisionGuid, @MyType = @myType", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleSave()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleSave] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleStatisticCalc(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd, int? result = default(int?), string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleStatisticCalc] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd, @Result = @result, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@result", result);
+                        prop3.Direction = ParameterDirection.InputOutput;                
+                        var prop4 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop5.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleStatisticCalcOnDay(Guid? divisionGuid, DateTime? date, bool? isForce = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleStatisticCalcOnDay] @DivisionGUID = @divisionGuid, @Date = @date, @IsForce = @isForce", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@isForce", isForce);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliveryCalc(Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliveryCalc] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliveryConverter()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliveryConverter] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliveryList(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliveryList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliverySave(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliverySave] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliveryWeekCalc(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliveryWeekCalc] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliveryWeekLoad(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliveryWeekLoad] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliveryWeekSave(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliveryWeekSave] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DemandSimpleTemplateDeliveryWeekValidate(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DemandSimpleTemplateDeliveryWeekValidate] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashClearAllJob(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashClearAllJob] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashClearAllJobTestAndrew(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashClearAllJobTestAndrew] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExport(Guid? divisionGuid, bool? exportGoods = false, bool? exportAdv = false, bool? exportCashier = false, bool? exportStoreLite = false, int? result = default(int?), string validationTableName = "CREATE", short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExport] @DivisionGUID = @divisionGuid, @ExportGoods = @exportGoods, @ExportADV = @exportAdv, @ExportCashier = @exportCashier, @ExportStoreLite = @exportStoreLite, @Result = @result, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@exportGoods", exportGoods);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@exportAdv", exportAdv);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@exportCashier", exportCashier);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@exportStoreLite", exportStoreLite);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@result", result);
+                        prop5.Direction = ParameterDirection.InputOutput;                
+                        var prop6 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop6.Direction = ParameterDirection.Input;                
+                        var prop7 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop7.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExport_testRR3()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExport_testRR3] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportADV(Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportADV] @JobGUID = @jobGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportCashier(Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportCashier] @JobGUID = @jobGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportCashierValidate(Guid? divisionGuid, int? deviceType)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportCashierValidate] @DivisionGUID = @divisionGuid, @DeviceType = @deviceType", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceType", deviceType);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportCrystal(Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportCrystal] @JobGUID = @jobGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportGoods(Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportGoods] @JobGUID = @jobGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportImage(Guid? jobGuid, int? deviceType)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportImage] @JobGUID = @jobGuid, @DeviceType = @deviceType", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceType", deviceType);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportRestricition(Guid? divisionGuid, Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportRestricition] @DivisionGUID = @divisionGuid, @JobGUID = @jobGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashExportStoreLite(Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashExportStoreLite] @JobGUID = @jobGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashGetUncompletedJob(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashGetUncompletedJob] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCashDeskStatusLookUP()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCashDeskStatusLookUP] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCntFinishedDate(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCntFinishedDate] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCntStartedDate(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCntStartedDate] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCreate(Guid? guid, Guid? divisionGuid, DateTime? dateDoc)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCreate] @GUID = @guid, @DivisionGUID = @divisionGuid, @DateDoc = @dateDoc", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand deviceCashJobCreateCashOperation(DateTime? date, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[deviceCashJobCreateCashOperation] @Date = @date, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand deviceCashJobCreateCashOperationValidate(DateTime? date, Guid? divisionGuid, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[deviceCashJobCreateCashOperationValidate] @Date = @date, @DivisionGUID = @divisionGuid, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCreateIncome(Guid? cashGuid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCreateIncome] @CashGUID = @cashGuid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@cashGuid", cashGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCreateInvoice(Guid? cashGuid, string validationTableName, bool? isReturn = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCreateInvoice] @CashGUID = @cashGuid, @ValidationTableName = @validationTableName, @IsReturn = @isReturn", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@cashGuid", cashGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@isReturn", isReturn);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCreateOutgo(Guid? cashGuid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCreateOutgo] @CashGUID = @cashGuid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@cashGuid", cashGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobCreateOutgoValidate(Guid? cashGuid, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobCreateOutgoValidate] @CashGUID = @cashGuid, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@cashGuid", cashGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobDelete(Guid? guid, bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobDelete] @GUID = @guid, @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobDeleteValidate(Guid? guid, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobDeleteValidate] @GUID = @guid, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand deviceCashJobFillCash(DateTime? date, Guid? divisionGuid, string tableCash)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[deviceCashJobFillCash] @Date = @date, @DivisionGUID = @divisionGuid, @TableCash = @tableCash", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableCash", tableCash);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand deviceCashJobFillCashFromRRCash(DateTime? date, Guid? divisionGuid, string table)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[deviceCashJobFillCashFromRRCash] @Date = @date, @DivisionGUID = @divisionGuid, @Table = @table", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@table", table);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand deviceCashJobFillCashFromRRCheque(DateTime? date, Guid? divisionGuid, string table)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[deviceCashJobFillCashFromRRCheque] @Date = @date, @DivisionGUID = @divisionGuid, @Table = @table", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@table", table);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobFillTab(DateTime? date, Guid? divisionGuid, bool? isReturn = false, string tab = "#Tab")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobFillTab] @Date = @date, @DivisionGUID = @divisionGuid, @IsReturn = @isReturn, @Tab = @tab", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@isReturn", isReturn);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@tab", tab);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobFillTabFromRRCash(DateTime? date, Guid? divisionGuid, bool? isReturn = false, string tab = "#Tab")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobFillTabFromRRCash] @Date = @date, @DivisionGUID = @divisionGuid, @IsReturn = @isReturn, @Tab = @tab", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@isReturn", isReturn);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@tab", tab);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobFillTabFromRRCheque(DateTime? date, Guid? divisionGuid, bool? isReturn = false, string tab = "#Tab")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobFillTabFromRRCheque] @Date = @date, @DivisionGUID = @divisionGuid, @IsReturn = @isReturn, @Tab = @tab", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@isReturn", isReturn);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@tab", tab);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobIsComplete(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobIsComplete] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobIsExists(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobIsExists] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobLoadFake(DateTime? date, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobLoadFake] @Date = @date, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobPrepareTab(DateTime? date, Guid? divisionGuid, string tableTab = "#Tab", string tableTabCash = "#TabCash", string tableResult = "#Temp")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobPrepareTab] @Date = @date, @DivisionGUID = @divisionGuid, @TableTab = @tableTab, @TableTabCash = @tableTabCash, @TableResult = @tableResult", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableTab", tableTab);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@tableTabCash", tableTabCash);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@tableResult", tableResult);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobSave(bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobSave] @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobSaveValidate(string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobSaveValidate] @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceCashJobTab(DateTime? date, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceCashJobTab] @Date = @date, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorCashTypeParamLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorCashTypeParamLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorDelete(Guid? guid, bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorDelete] @GUID = @guid, @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorDeleteValidate(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorDeleteValidate] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorList(Guid? divisionGuid, bool? isAllCashier = true)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorList] @DivisionGUID = @divisionGuid, @isAllCashier = @isAllCashier", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isAllCashier", isAllCashier);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorSave(bool? isNew, bool? isSkipValidation = false, byte[] newLat = default(byte[]), DateTime? newLdm = default(DateTime?), int? newIdd = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorSave] @IsNew = @isNew, @IsSkipValidation = @isSkipValidation, @NewLAT = @newLat, @NewLDM = @newLdm, @NewIDD = @newIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isNew", isNew);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@newLat", newLat);
+                        prop2.Direction = ParameterDirection.InputOutput;                
+                        var prop3 = cmd.Parameters.AddWithValue("@newLdm", newLdm);
+                        prop3.Direction = ParameterDirection.InputOutput;                
+                        var prop4 = cmd.Parameters.AddWithValue("@newIdd", newIdd);
+                        prop4.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorSaveValidate()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorSaveValidate] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorTypeList(bool? isAllCashier = true)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorTypeList] @isAllCashier = @isAllCashier", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isAllCashier", isAllCashier);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceOperatorTypeLoad(int? iDd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceOperatorTypeLoad] @IDD = @iDd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@iDd", iDd);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleBadPLULoad(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleBadPLULoad] @DeviceGUID = @deviceGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleBadPLUSave(Guid? deviceGuid, string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleBadPLUSave] @DeviceGUID = @deviceGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleClearAllJob()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleClearAllJob] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleClearAllJobAndrewTest()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleClearAllJobAndrewTest] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleCreateJob(Guid? deviceGuid, int? jobType, Guid? jobGuid = default(Guid?), int? jobNumber = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleCreateJob] @DeviceGUID = @deviceGuid, @JobType = @jobType, @JobGUID = @jobGuid, @JobNumber = @jobNumber", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@jobType", jobType);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@jobNumber", jobNumber);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleExport(Guid? deviceGuid, Guid? divisionGuid, int? result = default(int?), string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleExport] @DeviceGUID = @deviceGuid, @DivisionGUID = @divisionGuid, @Result = @result, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@result", result);
+                        prop2.Direction = ParameterDirection.InputOutput;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleExportAndrewTest(Guid? deviceGuid, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleExportAndrewTest] @DeviceGUID = @deviceGuid, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleGetUncompletedJob()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleGetUncompletedJob] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleGoodsImage(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleGoodsImage] @DeviceGUID = @deviceGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleGroupImage(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleGroupImage] @DeviceGUID = @deviceGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleGroupLoad(Guid? deviceGuid, int? statusIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleGroupLoad] @DeviceGUID = @deviceGuid, @StatusIDD = @statusIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleGroupSave(Guid? deviceGuid, string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleGroupSave] @DeviceGUID = @deviceGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleTemplateCheck(Guid? deviceGuid, string textTemplate, bool? isPrintOnly)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleTemplateCheck] @DeviceGUID = @deviceGuid, @TextTemplate = @textTemplate, @IsPrintOnly = @isPrintOnly", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@textTemplate", textTemplate);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@isPrintOnly", isPrintOnly);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleTemplateDefault(int? outputType, string outputValue = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleTemplateDefault] @OutputType = @outputType, @OutputValue = @outputValue", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@outputType", outputType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputValue", outputValue);
+                        prop1.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleTicketLoad(Guid? deviceGuid, int? statusIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleTicketLoad] @DeviceGUID = @deviceGuid, @StatusIDD = @statusIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DeviceScaleTicketSave(Guid? deviceGuid, string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DeviceScaleTicketSave] @DeviceGUID = @deviceGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand DsTExportTaskCreate(int? ownerType = default(int?), string validationTableName = "CREATE", string tableDocList = "#DemandScheduleList")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[DsTExportTaskCreate] @OwnerType = @ownerType, @ValidationTableName = @validationTableName, @TableDocList = @tableDocList", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableDocList", tableDocList);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ExportDemandSchedule()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ExportDemandSchedule] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FillDefault()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FillDefault] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductCreate(Guid? productionPlanGuid, Guid? guid = default(Guid?), string numDoc = default(string), DateTime? dateDoc = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductCreate] @ProductionPlanGUID = @productionPlanGuid, @GUID = @guid, @NumDoc = @numDoc, @DateDoc = @dateDoc", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@productionPlanGuid", productionPlanGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@numDoc", numDoc);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductCreateInvoice(Guid? guid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductCreateInvoice] @GUID = @guid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductCreateInvoice_(Guid? guid, short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductCreateInvoice_] @GUID = @guid, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductCreateInvoice_TestEtalon(Guid? guid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductCreateInvoice_TestEtalon] @GUID = @guid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductDelete(Guid? guid, bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductDelete] @GUID = @guid, @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductDeleteInvoice(Guid? guid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductDeleteInvoice] @GUID = @guid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductDeleteInvoice_(Guid? guid, short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductDeleteInvoice_] @GUID = @guid, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductDeleteValidate(Guid? guid, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductDeleteValidate] @GUID = @guid, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductList(Guid? productionPlanGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductList] @ProductionPlanGUID = @productionPlanGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@productionPlanGuid", productionPlanGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductReportCalculationSheet(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductReportCalculationSheet] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductReportCalculationSheet_(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductReportCalculationSheet_] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductSave(bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductSave] @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FinishedProductSaveValidate(string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FinishedProductSaveValidate] @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FixingPriceListListByDivision(int? myType = 1, Guid? divisionGuid = default(Guid?), DateTime? dD = default(DateTime?), int? code = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FixingPriceListListByDivision] @MyType = @myType, @DivisionGUID = @divisionGuid, @DD = @dD, @Code = @code", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dD", dD);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@code", code);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FreeClassficatorList(Guid? freeClassificatorGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FreeClassficatorList] @FreeClassificatorGUID = @freeClassificatorGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@freeClassificatorGuid", freeClassificatorGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FreezeCreate(string name, int? timeOut = 0, int? result = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FreezeCreate] @Name = @name, @TimeOut = @timeOut, @Result = @result", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@name", name);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@timeOut", timeOut);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@result", result);
+                        prop2.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand FreezeDelete(string name)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[FreezeDelete] @Name = @name", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@name", name);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetAllowChangeAfterSentReport(Guid? divisionGuid, DateTime? dateDoc)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetAllowChangeAfterSentReport] @DivisionGUID = @divisionGuid, @DateDoc = @dateDoc", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetCodesByDivision(int? myType, Guid? divisionGuid, string needField, string prefix, string postfix, string tmpRes = "CREATE", int? selectionParam = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetCodesByDivision] @MyType = @myType, @DivisionGUID = @divisionGuid, @NeedField = @needField, @Prefix = @prefix, @Postfix = @postfix, @TmpRes = @tmpRes, @SelectionParam = @selectionParam", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@needField", needField);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@prefix", prefix);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@postfix", postfix);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@selectionParam", selectionParam);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetContractorPrice(Guid? divisionGuid, DateTime? date, int? code = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetContractorPrice] @DivisionGUID = @divisionGuid, @Date = @date, @Code = @code", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@code", code);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetCurrentFixingPriceEdictGoods(Guid? divisionGuid, DateTime? date, string tableName)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetCurrentFixingPriceEdictGoods] @DivisionGUID = @divisionGuid, @Date = @date, @TableName = @tableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableName", tableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetDataFromCashDevices(string cashGuids, DateTime? realizDate, long? timeout = 60, int? result = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetDataFromCashDevices] @CashGUIDs = @cashGuids, @RealizDate = @realizDate, @Timeout = @timeout, @Result = @result", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@cashGuids", cashGuids);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@realizDate", realizDate);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@timeout", timeout);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@result", result);
+                        prop3.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetIngredient(Guid? recipeGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetIngredient] @RecipeGUID = @recipeGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@recipeGuid", recipeGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetNewPassword(int? length, string result = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetNewPassword] @Length = @length, @Result = @result", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@length", length);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@result", result);
+                        prop1.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetReportAndDataAssortment(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetReportAndDataAssortment] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetSaleExcludeGoodsByParam(DateTime? saleDate, Guid? divisionGuid = default(Guid?), string tableName = "#ExcludeGoodsByParam", Guid? saleGuid = default(Guid?), bool? needOut = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetSaleExcludeGoodsByParam] @SaleDate = @saleDate, @DivisionGUID = @divisionGuid, @TableName = @tableName, @SaleGUID = @saleGuid, @NeedOut = @needOut", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@saleDate", saleDate);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableName", tableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@saleGuid", saleGuid);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@needOut", needOut);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetSaleGoodsActionType(Guid? divisionGuid, string tableName)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetSaleGoodsActionType] @DivisionGUID = @divisionGuid, @TableName = @tableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@tableName", tableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetSaleGoodsByType(Guid? divisionGuid, DateTime? date, int? saleTypeIdd, string tableName = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetSaleGoodsByType] @DivisionGUID = @divisionGuid, @Date = @date, @SaleTypeIDD = @saleTypeIdd, @TableName = @tableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@saleTypeIdd", saleTypeIdd);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@tableName", tableName);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetSaleGoodsType1(Guid? divisionGuid, DateTime? date, string tableName, Guid? saleGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetSaleGoodsType1] @DivisionGUID = @divisionGuid, @Date = @date, @TableName = @tableName, @SaleGUID = @saleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableName", tableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@saleGuid", saleGuid);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetType1DiscountsByDate(DateTime? date, Guid? divisionGuid, string tableName = "#Type1DiscountTable", bool? needOut = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetType1DiscountsByDate] @Date = @date, @DivisionGUID = @divisionGuid, @TableName = @tableName, @NeedOut = @needOut", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableName", tableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@needOut", needOut);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetValidMatrixCodesByDivision(Guid? divisionGuid, int? selectorParam = 7)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetValidMatrixCodesByDivision] @DivisionGUID = @divisionGuid, @SelectorParam = @selectorParam", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@selectorParam", selectorParam);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GoodsCardDivisionInfo(Guid? divisionGuid, int? code)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GoodsCardDivisionInfo] @DivisionGUID = @divisionGuid, @Code = @code", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@code", code);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GoodsChooserControlGetCodes(string barCodeStr)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GoodsChooserControlGetCodes] @BarCodeStr = @barCodeStr", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@barCodeStr", barCodeStr);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GoodsChooserControlGetCodesByGroups()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GoodsChooserControlGetCodesByGroups] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GoodsChooserControlGetSpec(int? ownerType, Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GoodsChooserControlGetSpec] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GoodsChooserControlGetSpecGoods(int? ownerType, Guid? divisionGuid, Guid? agreementGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GoodsChooserControlGetSpecGoods] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @AgreementGUID = @agreementGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@agreementGuid", agreementGuid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GoodsChooserControlGetStateGoods(int? ownerType, Guid? divisionGuid, int? stateFlag)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GoodsChooserControlGetStateGoods] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @StateFlag = @stateFlag", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@stateFlag", stateFlag);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand IncomeHeaderLoad(Guid? guid, Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[IncomeHeaderLoad] @GUID = @guid, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand IncomeListItemLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[IncomeListItemLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand IncomeLoad(Guid? guid, Guid? divisionGuid = default(Guid?), string tmpSourceTableName = default(string), string spotExt = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[IncomeLoad] @GUID = @guid, @DivisionGUID = @divisionGuid, @tmpSourceTableName = @tmpSourceTableName, @SpotExt = @spotExt", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpSourceTableName", tmpSourceTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@spotExt", spotExt);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand IncreaseDirectoryVersion(int? value = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[IncreaseDirectoryVersion] @Value = @value", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@value", value);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand IsPermitionsAreOk()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[IsPermitionsAreOk] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand LastContractorByCodes(string codes, Guid? divisionGuid, DateTime? dD = default(DateTime?), string tmpRes = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[LastContractorByCodes] @Codes = @codes, @DivisionGUid = @divisionGuid, @DD = @dD, @tmpRes = @tmpRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@codes", codes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dD", dD);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MakeRangePriceFluctuation(string tmpTableInput, Guid? divisionGuid, string tmpTableOutput = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MakeRangePriceFluctuation] @tmpTableInput = @tmpTableInput, @DivisionGUID = @divisionGuid, @tmpTableOutput = @tmpTableOutput", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpTableInput", tmpTableInput);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpTableOutput", tmpTableOutput);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MakeRangeRound(string tmpTableInput, Guid? divisionGuid, string tmpTableOutput = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MakeRangeRound] @tmpTableInput = @tmpTableInput, @DivisionGUID = @divisionGuid, @tmpTableOutput = @tmpTableOutput", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpTableInput", tmpTableInput);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpTableOutput", tmpTableOutput);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand OldDataDecrease_ProductionPlan(DateTime? dD, Guid? divisionGuid, Guid? divisionPlacementGuid = default(Guid?), bool? isErrDemandRestore = default(bool?), int? cntEuthanasiaProductionPlan = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[OldDataDecrease_ProductionPlan] @DD = @dD, @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid, @isErrDemandRestore = @isErrDemandRestore, @cntEuthanasiaProductionPlan = @cntEuthanasiaProductionPlan", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@dD", dD);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@isErrDemandRestore", isErrDemandRestore);
+                        prop3.Direction = ParameterDirection.InputOutput;                
+                        var prop4 = cmd.Parameters.AddWithValue("@cntEuthanasiaProductionPlan", cntEuthanasiaProductionPlan);
+                        prop4.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand OldPriceList(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[OldPriceList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand OutgoGoodsChangeSave_Old(Guid? outGoGuid, Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[OutgoGoodsChangeSave_Old] @OutGoGUID = @outGoGuid, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@outGoGuid", outGoGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand OutgoHeaderLoad(Guid? guid, Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[OutgoHeaderLoad] @GUID = @guid, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand OutgoListItemLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[OutgoListItemLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand OutgoLoad(Guid? guid, Guid? divisionGuid = default(Guid?), string tmpSourceTableName = default(string), string spotExt = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[OutgoLoad] @GUID = @guid, @DivisionGUID = @divisionGuid, @tmpSourceTableName = @tmpSourceTableName, @SpotExt = @spotExt", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpSourceTableName", tmpSourceTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@spotExt", spotExt);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PortalTypeLookup(int? ownerType, Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PortalTypeLookup] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PrepareAssortmentListByDiv(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PrepareAssortmentListByDiv] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceArchiveList(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceArchiveList] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceArchiveLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceArchiveLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceAssortmentPrepare(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceAssortmentPrepare] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceCalc(Guid? divisionGuid, string filterName = "ALL", string note = default(string), short? outputRes = 0, string validationTableName = default(string), bool? isArchive = true, bool? isOutOutgoPriceChangeList = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceCalc] @DivisionGUID = @divisionGuid, @FilterName = @filterName, @Note = @note, @OutputRes = @outputRes, @ValidationTableName = @validationTableName, @IsArchive = @isArchive, @isOutOutgoPriceChangeList = @isOutOutgoPriceChangeList", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@filterName", filterName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@note", note);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@isArchive", isArchive);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@isOutOutgoPriceChangeList", isOutOutgoPriceChangeList);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceCalcOrderFillDivision(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceCalcOrderFillDivision] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceIncomeCalc(Guid? divisionGuid, string filterName)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceIncomeCalc] @DivisionGUID = @divisionGuid, @FilterName = @filterName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@filterName", filterName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceIncomeCalcOnDate(Guid? divisionGuid, DateTime? dateAccept)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceIncomeCalcOnDate] @DivisionGUID = @divisionGuid, @DateAccept = @dateAccept", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateAccept", dateAccept);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceLoad(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceLoad] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceLoadDelta(Guid? divisionGuid, DateTime? lDm = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceLoadDelta] @DivisionGUID = @divisionGuid, @LDM = @lDm", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@lDm", lDm);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceMRPLinkRefreshPriceList(int? ownerType, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceMRPLinkRefreshPriceList] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceMRPLinkSet(int? ownerType, Guid? divisionGuid, Guid? priceMrpguid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceMRPLinkSet] @OwnerType = @ownerType, @DivisionGUID = @divisionGuid, @PriceMRPGUID = @priceMrpguid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@priceMrpguid", priceMrpguid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceOptCalc(Guid? divisionGuid, string filterName = "ALL", string note = default(string), short? outputRes = 0, string validationTableName = default(string), bool? isArchive = true, bool? isOutOutgoPriceChangeList = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceOptCalc] @DivisionGUID = @divisionGuid, @FilterName = @filterName, @Note = @note, @OutputRes = @outputRes, @ValidationTableName = @validationTableName, @IsArchive = @isArchive, @isOutOutgoPriceChangeList = @isOutOutgoPriceChangeList", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@filterName", filterName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@note", note);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@isArchive", isArchive);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@isOutOutgoPriceChangeList", isOutOutgoPriceChangeList);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceOptOutgoCalc(Guid? divisionGuid, string filterName = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceOptOutgoCalc] @DivisionGUID = @divisionGuid, @FilterName = @filterName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@filterName", filterName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceOutgoCalc(Guid? divisionGuid, string filterName)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceOutgoCalc] @DivisionGUID = @divisionGuid, @FilterName = @filterName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@filterName", filterName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand PriceTableRecalc(string filterName, Guid? divisionGuid = default(Guid?), string note = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[PriceTableRecalc] @FilterName = @filterName, @DivisionGUID = @divisionGuid, @Note = @note", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@filterName", filterName);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@note", note);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProdAssortmentLoad(int? code)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProdAssortmentLoad] @Code = @code", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@code", code);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductFullList(Guid? divisionGuid = new Guid?())
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductFullList] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductionPlanCreate(Guid? divisionGuid, Guid? divisionPlacementGuid, Guid? guid = default(Guid?), string numDoc = default(string), DateTime? dateDoc = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductionPlanCreate] @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid, @GUID = @guid, @NumDoc = @numDoc, @DateDoc = @dateDoc", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@numDoc", numDoc);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductionPlanDelete(Guid? guid, bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductionPlanDelete] @GUID = @guid, @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductionPlanDeleteValidate(Guid? guid, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductionPlanDeleteValidate] @GUID = @guid, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductionPlanList(Guid? divisionGuid, DateTime? dateBegin = default(DateTime?), DateTime? dateEnd = default(DateTime?), Guid? divisionPlacementGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductionPlanList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd, @DivisionPlacementGUID = @divisionPlacementGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductionPlanLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductionPlanLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductionPlanSave(bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductionPlanSave] @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductionPlanSaveValidate(string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductionPlanSaveValidate] @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductList()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductList] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductRecipePriorityLoad(Guid? guid, Guid? divisionGuid = new Guid?())
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductRecipePriorityLoad] @GUID = @guid, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ProductRecipePrioritySave()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ProductRecipePrioritySave] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RecalcDiscountsByDate(DateTime? date, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RecalcDiscountsByDate] @Date = @date, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@date", date);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RecipeList(Guid? divisionGuid = new Guid?(), int? statusIdd = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RecipeList] @DivisionGUID = @divisionGuid, @StatusIDD = @statusIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RecipeListForRequestInvoice(Guid? productionPlanGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RecipeListForRequestInvoice] @ProductionPlanGUID = @productionPlanGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@productionPlanGuid", productionPlanGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RecipeLoad(Guid? recipeGuid, Guid? productionPlanGuid, Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RecipeLoad] @RecipeGUID = @recipeGuid, @ProductionPlanGUID = @productionPlanGuid, @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@recipeGuid", recipeGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@productionPlanGuid", productionPlanGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RecipeTreeFillQty(string tableSource, string tableTree)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RecipeTreeFillQty] @TableSource = @tableSource, @TableTree = @tableTree", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tableSource", tableSource);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@tableTree", tableTree);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RecipeTreeFillQtyRest(Guid? divisionGuid, Guid? divisionPlacementGuid, string tableTree, DateTime? date = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RecipeTreeFillQtyRest] @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid, @TableTree = @tableTree, @Date = @date", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tableTree", tableTree);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@date", date);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ReformDivisionPlacementLookup(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ReformDivisionPlacementLookup] @DivisionGUID = @divisionGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ReformList(Guid? divisionGuid, DateTime? dateBegin, DateTime? dateEnd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ReformList] @DivisionGUID = @divisionGuid, @DateBegin = @dateBegin, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateBegin", dateBegin);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ReformOutgoList(int? myType, DateTime? dateDoc, Guid? divisionGuid = default(Guid?), Guid? divisionPlacementGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ReformOutgoList] @MyType = @myType, @DateDoc = @dateDoc, @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ReformValidate(int? myType, string action, DateTime? dateDoc, Guid? divisionGuid = default(Guid?), Guid? divisionPlacementGuid = default(Guid?), int? result = default(int?), string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ReformValidate] @MyType = @myType, @Action = @action, @DateDoc = @dateDoc, @DivisionGUID = @divisionGuid, @DivisionPlacementGUID = @divisionPlacementGuid, @Result = @result, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@action", action);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@divisionPlacementGuid", divisionPlacementGuid);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@result", result);
+                        prop5.Direction = ParameterDirection.InputOutput;                
+                        var prop6 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop6.Direction = ParameterDirection.Input;                
+                        var prop7 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop7.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceCreate(Guid? productionPlanGuid, Guid? guid = default(Guid?), string numDoc = default(string), DateTime? dateDoc = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceCreate] @ProductionPlanGUID = @productionPlanGuid, @GUID = @guid, @NumDoc = @numDoc, @DateDoc = @dateDoc", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@productionPlanGuid", productionPlanGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@numDoc", numDoc);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateDoc", dateDoc);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceCreateInvoice(Guid? guid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceCreateInvoice] @GUID = @guid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceDelete(Guid? guid, bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceDelete] @GUID = @guid, @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceDeleteButchery(Guid? guid, short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceDeleteButchery] @GUID = @guid, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceDeleteInvoice(Guid? guid, short? outputRes = 1, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceDeleteInvoice] @GUID = @guid, @OutputRes = @outputRes, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceDeleteInvoice_(Guid? guid, short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceDeleteInvoice_] @GUID = @guid, @OutputRes = @outputRes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceDeleteValidate(Guid? guid, string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceDeleteValidate] @GUID = @guid, @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceList(Guid? productionPlanGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceList] @ProductionPlanGUID = @productionPlanGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@productionPlanGuid", productionPlanGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceLoad(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceLoad] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceReportRationSheet(Guid? guid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceReportRationSheet] @GUID = @guid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceSave(bool? isSkipValidation = false)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceSave] @IsSkipValidation = @isSkipValidation", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@isSkipValidation", isSkipValidation);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RequestInvoiceSaveValidate(string validationTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RequestInvoiceSaveValidate] @ValidationTableName = @validationTableName", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand RestrictionListByDivision(int? ownerType, Guid? divisionGuid, string codeFind = default(string), DateTime? dateWork = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[RestrictionListByDivision] @OwnerType = @ownerType, @DivisionGuid = @divisionGuid, @CodeFind = @codeFind, @DateWork = @dateWork", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@codeFind", codeFind);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@dateWork", dateWork);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SaleGetAssortmentCode(Guid? saleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SaleGetAssortmentCode] @SaleGUID = @saleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@saleGuid", saleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SaleItem(Guid? divisionGuid, Guid? saleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SaleItem] @DivisionGUID = @divisionGuid, @SaleGUID = @saleGuid", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@saleGuid", saleGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SaleList(Guid? divisionGuid, DateTime? currentDay, bool? showOld = false, bool? showCurrent = false, bool? showNew = false, string codeOrBarcode = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SaleList] @DivisionGUID = @divisionGuid, @CurrentDay = @currentDay, @ShowOld = @showOld, @ShowCurrent = @showCurrent, @ShowNew = @showNew, @CodeOrBarcode = @codeOrBarcode", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@currentDay", currentDay);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@showOld", showOld);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@showCurrent", showCurrent);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@showNew", showNew);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@codeOrBarcode", codeOrBarcode);
+                        prop5.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SetDiscountReportIDD(Guid? divisionGuid, int? code, int? value)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SetDiscountReportIDD] @DivisionGUID = @divisionGuid, @Code = @code, @Value = @value", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@code", code);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@value", value);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SetOldPriceReportIDD(Guid? divisionGuid, int? code, int? value)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SetOldPriceReportIDD] @DivisionGUID = @divisionGuid, @Code = @code, @Value = @value", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@code", code);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@value", value);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SetPriceCountValue(Guid? divisionGuid, int? code, int? value)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SetPriceCountValue] @DivisionGUID = @divisionGuid, @Code = @code, @Value = @value", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@code", code);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@value", value);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SetPriceForChequeValue(Guid? divisionGuid, int? code, decimal? value)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SetPriceForChequeValue] @DivisionGUID = @divisionGuid, @Code = @code, @Value = @value", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@code", code);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@value", value);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SetSelectedReportIDD(Guid? divisionGuid, int? usualReportIdd, int? oldPriceReportIdd, int? discountReportIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SetSelectedReportIDD] @DivisionGUID = @divisionGuid, @UsualReportIDD = @usualReportIdd, @OldPriceReportIDD = @oldPriceReportIdd, @DiscountReportIDD = @discountReportIdd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@usualReportIdd", usualReportIdd);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@oldPriceReportIdd", oldPriceReportIdd);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@discountReportIdd", discountReportIdd);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand Setting_SetDirectoryVersion(int? value = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[Setting_SetDirectoryVersion] @Value = @value", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@value", value);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SetUsualReportIDD(Guid? divisionGuid, int? code, int? value)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SetUsualReportIDD] @DivisionGUID = @divisionGuid, @Code = @code, @Value = @value", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@code", code);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@value", value);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SimpleDemandList(DateTime? dateStart = default(DateTime?), DateTime? dateEnd = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SimpleDemandList] @DateStart = @dateStart, @DateEnd = @dateEnd", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand SimpleRest(DateTime? dD, string divList = default(string), string tmpTableRest = default(string), string typePrice = "{price}", bool? isByPlace = false, string tmpGoods = default(string), string tmpIgnoreIncomes = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[SimpleRest] @DD = @dD, @DivList = @divList, @tmpTableRest = @tmpTableRest, @typePrice = @typePrice, @isByPlace = @isByPlace, @tmpGoods = @tmpGoods, @tmpIgnoreIncomes = @tmpIgnoreIncomes", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@dD", dD);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divList", divList);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpTableRest", tmpTableRest);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@typePrice", typePrice);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@isByPlace", isByPlace);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@tmpGoods", tmpGoods);
+                        prop5.Direction = ParameterDirection.Input;                
+                        var prop6 = cmd.Parameters.AddWithValue("@tmpIgnoreIncomes", tmpIgnoreIncomes);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand sp_alterdiagram(string diagramname, int? version, byte[] definition, int? owner_id = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[sp_alterdiagram] @diagramname = @diagramname, @version = @version, @definition = @definition, @owner_id = @owner_id", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@diagramname", diagramname);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@version", version);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@definition", definition);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@owner_id", owner_id);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand sp_creatediagram(string diagramname, int? version, byte[] definition, int? owner_id = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[sp_creatediagram] @diagramname = @diagramname, @version = @version, @definition = @definition, @owner_id = @owner_id", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@diagramname", diagramname);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@version", version);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@definition", definition);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@owner_id", owner_id);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand sp_dropdiagram(string diagramname, int? owner_id = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[sp_dropdiagram] @diagramname = @diagramname, @owner_id = @owner_id", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@diagramname", diagramname);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@owner_id", owner_id);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand sp_helpdiagramdefinition(string diagramname, int? owner_id = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[sp_helpdiagramdefinition] @diagramname = @diagramname, @owner_id = @owner_id", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@diagramname", diagramname);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@owner_id", owner_id);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand sp_helpdiagrams(string diagramname = default(string), int? owner_id = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[sp_helpdiagrams] @diagramname = @diagramname, @owner_id = @owner_id", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@diagramname", diagramname);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@owner_id", owner_id);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand sp_renamediagram(string diagramname, string new_diagramname, int? owner_id = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[sp_renamediagram] @diagramname = @diagramname, @new_diagramname = @new_diagramname, @owner_id = @owner_id", dbo.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@diagramname", diagramname);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@new_diagramname", new_diagramname);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@owner_id", owner_id);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand sp_upgraddiagrams()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[sp_upgraddiagrams] ", dbo.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand TableInfoAll()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[TableInfoAll] ", dbo.Prefix));
+
+                        return cmd;
+			        }            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class device
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static device()
+			{
+				device.SchemaName = "device";
+			}
+
+			public static string SchemaName
+			{
+				get { return device._schemaName; }
+				set {
+					 device._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
             {
-				//public static SqlCommand AllowedDivisionList()
-				//{
-				//    Lexer error. Line 2:0 token recognition error at: '-'
-				//}            
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {                
+                
+                    public static SqlCommand Cash(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[Cash] @DeviceGUID = @deviceGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashCrystalImportDataList(Guid? jobGuid, string delimiter = "|")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashCrystalImportDataList] @JobGUID = @jobGuid, @Delimiter = @delimiter", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@delimiter", delimiter);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountBarcodeList(Guid? discountGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountBarcodeList] @DiscountGUID = @discountGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@discountGuid", discountGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountCard(int? iDd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountCard] @IDD = @iDd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@iDd", iDd);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountCardFormatList(Guid? discountCardGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountCardFormatList] @DiscountCardGUID = @discountCardGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@discountCardGuid", discountCardGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountCardList(Guid? discountGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountCardList] @DiscountGUID = @discountGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@discountGuid", discountGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountExcludeGoodsList(Guid? divisionGuid, Guid? discountGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountExcludeGoodsList] @DivisionGUID = @divisionGuid, @DiscountGUID = @discountGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@discountGuid", discountGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountGoodsList(Guid? divisionGuid, Guid? discountGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountGoodsList] @DivisionGUID = @divisionGuid, @DiscountGUID = @discountGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@discountGuid", discountGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountInfoChequeList(Guid? discountGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountInfoChequeList] @DiscountGUID = @discountGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@discountGuid", discountGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountIntervalList(Guid? discountGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountIntervalList] @DiscountGUID = @discountGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@discountGuid", discountGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountList(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountList] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashDiscountSumList(Guid? discountGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashDiscountSumList] @DiscountGUID = @discountGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@discountGuid", discountGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashGoodsCategoryList(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashGoodsCategoryList] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashGoodsList(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashGoodsList] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashGoodsListByJobGUID(Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashGoodsListByJobGUID] @JobGUID = @jobGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashImagesList(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashImagesList] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashImagesWithCategory(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashImagesWithCategory] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashImportValidate(Guid? divisionGuid, DateTime? shiftDate, int? myType = 1, string validationTableName = default(string), short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashImportValidate] @DivisionGUID = @divisionGuid, @ShiftDate = @shiftDate, @MyType = @myType, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@shiftDate", shiftDate);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashItemSave()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashItemSave] ", device.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashList(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashList] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashRestricition(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashRestricition] @DivisionGUID = @divisionGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashRestricitionByJobGUID(Guid? jobGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashRestricitionByJobGUID] @JobGUID = @jobGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@jobGuid", jobGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashserverDelete(Guid? cashserverGuid, string validationTableName = default(string), short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashserverDelete] @CashserverGuid = @cashserverGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@cashserverGuid", cashserverGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashserverList(Guid? divisionGuid = default(Guid?), Guid? cashserverGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashserverList] @DivisionGuid = @divisionGuid, @CashserverGuid = @cashserverGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@cashserverGuid", cashserverGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashserverSave(Guid? cashserverGuid = default(Guid?), string tmpCashserver = default(string), string tmpCashserverEav = default(string), string validationTableName = default(string), short? outputRes = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashserverSave] @CashserverGUID = @cashserverGuid, @tmpCashserver = @tmpCashserver, @tmpCashserverEav = @tmpCashserverEav, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@cashserverGuid", cashserverGuid);
+                        prop0.Direction = ParameterDirection.InputOutput;                
+                        var prop1 = cmd.Parameters.AddWithValue("@tmpCashserver", tmpCashserver);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpCashserverEav", tmpCashserverEav);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashserverTypeList()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashserverTypeList] ", device.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashShiftImportToCash(Guid? divisionGuid, Guid? deviceGuid, DateTime? importDate)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashShiftImportToCash] @DivisionGUID = @divisionGuid, @DeviceGUID = @deviceGuid, @ImportDate = @importDate", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@importDate", importDate);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashShiftImportToCheque(Guid? divisionGuid, Guid? deviceGuid, DateTime? importDate)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashShiftImportToCheque] @DivisionGUID = @divisionGuid, @DeviceGUID = @deviceGuid, @ImportDate = @importDate", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@importDate", importDate);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashUserCategoryList(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashUserCategoryList] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand CashUserList(Guid? divisionGuid, int? deviceTypeIdd)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[CashUserList] @DivisionGUID = @divisionGuid, @DeviceTypeIDD = @deviceTypeIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceTypeIdd", deviceTypeIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ChequeRowTemplateHeader(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ChequeRowTemplateHeader] @DivisionGUID = @divisionGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ChequeRowTemplateRows(int? myType, Guid? divisionGuid, string tmpRes = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ChequeRowTemplateRows] @MyType = @myType, @DivisionGUID = @divisionGuid, @TmpRes = @tmpRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand GetScaleGoods(Guid? scaleGuid, string tmpTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[GetScaleGoods] @ScaleGUID = @scaleGuid, @tmpTableName = @tmpTableName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@tmpTableName", tmpTableName);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileAssortmentList(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileAssortmentList] @DivisionGUID = @divisionGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileBadPricesSave(string tmpTableName, string deviceName = default(string), string validationTableName = "CREATE", short? outputRes = 3)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileBadPricesSave] @tmpTableName = @tmpTableName, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpTableName", tmpTableName);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileBarcodeList()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileBarcodeList] ", device.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileClassificatorPlain()
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileClassificatorPlain] ", device.Prefix));
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileContractorList(Guid? divisionGuid, int? statusIdd = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileContractorList] @DivisionGUID = @divisionGuid, @StatusIDD = @statusIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileContractorPricesList(Guid? divisionGuid, DateTime? date)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileContractorPricesList] @DivisionGUID = @divisionGuid, @Date = @date", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileDemandHeaderList(Guid? divisionGuid, DateTime? date, string headersTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileDemandHeaderList] @divisionGuid = @divisionGuid, @date = @date, @headersTableName = @headersTableName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@headersTableName", headersTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileDemandImport(string tmpRes, string deviceName = default(string), string validationTableName = "CREATE", short? outputRes = 3, string action = "save", string result = default(string), int? ownerType = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileDemandImport] @tmpRes = @tmpRes, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @Action = @action, @Result = @result, @OwnerType = @ownerType", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@action", action);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@result", result);
+                        prop5.Direction = ParameterDirection.InputOutput;                
+                        var prop6 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileDemandList(Guid? divisionGuid, DateTime? date, string headersTableName = "CREATE", string itemsTableName = "CREATE", string barcodesTableName = "CREATE", string filterTableName = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileDemandList] @divisionGuid = @divisionGuid, @date = @date, @headersTableName = @headersTableName, @itemsTableName = @itemsTableName, @barcodesTableName = @barcodesTableName, @filterTableName = @filterTableName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@headersTableName", headersTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@itemsTableName", itemsTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@barcodesTableName", barcodesTableName);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@filterTableName", filterTableName);
+                        prop5.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileDocImportNote(int? typeDoc, Guid? docGuid, Guid? divisionGuid, string deviceName = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileDocImportNote] @TypeDoc = @typeDoc, @DocGuid = @docGuid, @DivisionGuid = @divisionGuid, @DeviceName = @deviceName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@typeDoc", typeDoc);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@docGuid", docGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileIncomeHeaderList(Guid? divisionGuid, DateTime? date, string headersTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileIncomeHeaderList] @divisionGuid = @divisionGuid, @date = @date, @headersTableName = @headersTableName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@headersTableName", headersTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileIncomeImport(string tmpRes, string deviceName = default(string), string validationTableName = "CREATE", short? outputRes = 3, string action = "save", string result = default(string), int? ownerType = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileIncomeImport] @tmpRes = @tmpRes, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @Action = @action, @Result = @result, @OwnerType = @ownerType", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@action", action);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@result", result);
+                        prop5.Direction = ParameterDirection.InputOutput;                
+                        var prop6 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileIncomeImportCreate(string tmpRes, Guid? guid, string deviceName = default(string), string validationTableName = default(string), short? outputRes = 1, bool? isCreated = default(bool?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileIncomeImportCreate] @tmpRes = @tmpRes, @GUID = @guid, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @isCreated = @isCreated", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@isCreated", isCreated);
+                        prop5.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileIncomeImportUpdate(string tmpRes, Guid? guid, string deviceName = default(string), string validationTableName = default(string), short? outputRes = 1, bool? isUpdated = default(bool?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileIncomeImportUpdate] @tmpRes = @tmpRes, @GUID = @guid, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @isUpdated = @isUpdated", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@isUpdated", isUpdated);
+                        prop5.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileIncomeList(Guid? divisionGuid, DateTime? date, string headersTableName = "CREATE", string itemsTableName = "CREATE", string barcodesTableName = "CREATE", string filterTableName = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileIncomeList] @divisionGuid = @divisionGuid, @date = @date, @headersTableName = @headersTableName, @itemsTableName = @itemsTableName, @barcodesTableName = @barcodesTableName, @filterTableName = @filterTableName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@headersTableName", headersTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@itemsTableName", itemsTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@barcodesTableName", barcodesTableName);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@filterTableName", filterTableName);
+                        prop5.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileInventorySave(string tmpRes, Guid? outputInventoryGuid, string deviceName = default(string), string validationTableName = "CREATE", short? outputRes = 3)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileInventorySave] @tmpRes = @tmpRes, @OutputInventoryGUID = @outputInventoryGuid, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@outputInventoryGuid", outputInventoryGuid);
+                        prop1.Direction = ParameterDirection.InputOutput;                
+                        var prop2 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileInventorySheetList(Guid? divisionGuid, DateTime? date = default(DateTime?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileInventorySheetList] @DivisionGuid = @divisionGuid, @Date = @date", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileOutgoHeaderList(Guid? divisionGuid, DateTime? date, string headersTableName = "CREATE")
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileOutgoHeaderList] @divisionGuid = @divisionGuid, @date = @date, @headersTableName = @headersTableName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@headersTableName", headersTableName);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileOutgoImport(string tmpRes, string deviceName = default(string), string validationTableName = "CREATE", short? outputRes = 3, string action = "save", string result = default(string), int? ownerType = default(int?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileOutgoImport] @tmpRes = @tmpRes, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @Action = @action, @Result = @result, @OwnerType = @ownerType", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@action", action);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@result", result);
+                        prop5.Direction = ParameterDirection.InputOutput;                
+                        var prop6 = cmd.Parameters.AddWithValue("@ownerType", ownerType);
+                        prop6.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileOutgoImportCreate(string tmpRes, Guid? guid, string deviceName = default(string), string validationTableName = default(string), short? outputRes = 1, bool? isCreated = default(bool?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileOutgoImportCreate] @tmpRes = @tmpRes, @GUID = @guid, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @isCreated = @isCreated", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@isCreated", isCreated);
+                        prop5.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileOutgoImportUpdate(string tmpRes, Guid? guid, string deviceName = default(string), string validationTableName = default(string), short? outputRes = 1, bool? isUpdated = default(bool?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileOutgoImportUpdate] @tmpRes = @tmpRes, @GUID = @guid, @DeviceName = @deviceName, @ValidationTableName = @validationTableName, @OutputRes = @outputRes, @isUpdated = @isUpdated", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@tmpRes", tmpRes);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@guid", guid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@deviceName", deviceName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@isUpdated", isUpdated);
+                        prop5.Direction = ParameterDirection.InputOutput;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileOutgoList(Guid? divisionGuid, DateTime? date, string headersTableName = "CREATE", string itemsTableName = "CREATE", string barcodesTableName = "CREATE", string filterTableName = default(string))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileOutgoList] @divisionGuid = @divisionGuid, @date = @date, @headersTableName = @headersTableName, @itemsTableName = @itemsTableName, @barcodesTableName = @barcodesTableName, @filterTableName = @filterTableName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@date", date);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@headersTableName", headersTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@itemsTableName", itemsTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@barcodesTableName", barcodesTableName);
+                        prop4.Direction = ParameterDirection.Input;                
+                        var prop5 = cmd.Parameters.AddWithValue("@filterTableName", filterTableName);
+                        prop5.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand MobileVatList(int? statusIdd = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[MobileVatList] @StatusIDD = @statusIdd", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@statusIdd", statusIdd);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleCopy(int? myType, Guid? divisionGuid, Guid? sourceScaleGuid, string newScaleName)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleCopy] @MyType = @myType, @DivisionGUID = @divisionGuid, @SourceScaleGUID = @sourceScaleGuid, @NewScaleName = @newScaleName", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@sourceScaleGuid", sourceScaleGuid);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@newScaleName", newScaleName);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleCustomGroupGoods(Guid? deviceGuid, int? deviceCustomGroupId)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleCustomGroupGoods] @DeviceGUID = @deviceGuid, @DeviceCustomGroupID = @deviceCustomGroupId", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@deviceCustomGroupId", deviceCustomGroupId);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleCustomGroupList(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleCustomGroupList] @DeviceGUID = @deviceGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleFastKeyList(Guid? scaleGuid, bool? selectOut = true)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleFastKeyList] @ScaleGUID = @scaleGuid, @SelectOut = @selectOut", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@selectOut", selectOut);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleGetTemplates(Guid? divisionGuid, Guid? scaleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleGetTemplates] @DivisionGUID = @divisionGuid, @ScaleGUID = @scaleGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleGoodsImage(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleGoodsImage] @DeviceGUID = @deviceGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleGoodsList(Guid? deviceGuid, bool? selectOut = true, bool? recalcAll = true)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleGoodsList] @DeviceGUID = @deviceGuid, @SelectOut = @selectOut, @RecalcAll = @recalcAll", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@selectOut", selectOut);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@recalcAll", recalcAll);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleGroupImage(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleGroupImage] @DeviceGUID = @deviceGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleGroupList(Guid? scaleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleGroupList] @ScaleGUID = @scaleGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleGroupListAll(Guid? scaleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleGroupListAll] @ScaleGUID = @scaleGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleInfo(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleInfo] @DeviceGUID = @deviceGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleItemClear(Guid? scaleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleItemClear] @ScaleGUID = @scaleGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleItemDelete(Guid? scaleGuid, int? myType = 1, string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleItemDelete] @ScaleGUID = @scaleGuid, @MyType = @myType, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop3.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleItemLoad(Guid? scaleGuid, Guid? divisionGuid, int? myType = 1)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleItemLoad] @ScaleGUID = @scaleGuid, @DivisionGUID = @divisionGuid, @MyType = @myType", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleItemSave(Guid? divisionGuid, Guid? scaleGuid, int? myType = 1, string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleItemSave] @DivisionGUID = @divisionGuid, @ScaleGUID = @scaleGuid, @MyType = @myType, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop2.Direction = ParameterDirection.Input;                
+                        var prop3 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop3.Direction = ParameterDirection.Input;                
+                        var prop4 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop4.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleLabel(Guid? deviceGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleLabel] @DeviceGUID = @deviceGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@deviceGuid", deviceGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleList(Guid? divisionGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleList] @DivisionGUID = @divisionGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleVirtualFastKeyLoad(Guid? scaleGuid)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleVirtualFastKeyLoad] @ScaleGUID = @scaleGuid", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }                
+                
+                    public static SqlCommand ScaleVirtualFastKeySave(Guid? scaleGuid, string validationTableName = default(string), short? outputRes = 0)
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[ScaleVirtualFastKeySave] @ScaleGUID = @scaleGuid, @ValidationTableName = @validationTableName, @OutputRes = @outputRes", device.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@scaleGuid", scaleGuid);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@validationTableName", validationTableName);
+                        prop1.Direction = ParameterDirection.Input;                
+                        var prop2 = cmd.Parameters.AddWithValue("@outputRes", outputRes);
+                        prop2.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class egais
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static egais()
+			{
+				egais.SchemaName = "egais";
+			}
+
+			public static string SchemaName
+			{
+				get { return egais._schemaName; }
+				set {
+					 egais._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {                
+                
+                    public static SqlCommand Dashboard(int? myType, Guid? divisionGuid = default(Guid?))
+                    {
+    			        var cmd = new SqlCommand(string.Format("EXEC {0}.[Dashboard] @MyType = @myType, @DivisionGUID = @divisionGuid", egais.Prefix));                
+                        var prop0 = cmd.Parameters.AddWithValue("@myType", myType);
+                        prop0.Direction = ParameterDirection.Input;                
+                        var prop1 = cmd.Parameters.AddWithValue("@divisionGuid", divisionGuid);
+                        prop1.Direction = ParameterDirection.Input;
+
+                        return cmd;
+			        }            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class guest
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static guest()
+			{
+				guest.SchemaName = "guest";
+			}
+
+			public static string SchemaName
+			{
+				get { return guest._schemaName; }
+				set {
+					 guest._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class INFORMATION_SCHEMA
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static INFORMATION_SCHEMA()
+			{
+				INFORMATION_SCHEMA.SchemaName = "INFORMATION_SCHEMA";
+			}
+
+			public static string SchemaName
+			{
+				get { return INFORMATION_SCHEMA._schemaName; }
+				set {
+					 INFORMATION_SCHEMA._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
+            
+            }
+
+            private static string GetPrefix()
+			{
+				return RunFront.GetPrefix(SchemaName);
+			}
+		}
+
+		public partial class sys
+		{
+			private static string _schemaName;
+			private static string _prefix;
+
+			static sys()
+			{
+				sys.SchemaName = "sys";
+			}
+
+			public static string SchemaName
+			{
+				get { return sys._schemaName; }
+				set {
+					 sys._schemaName = value; 
+					 _prefix = GetPrefix();
+				}
+			}
+            
+            public static string Prefix
+            {
+                get { return _prefix; }
+            }
+            
+            public partial class Procedures
+            {            
             
             }
 

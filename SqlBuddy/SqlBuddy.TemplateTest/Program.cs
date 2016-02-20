@@ -9,6 +9,9 @@ namespace SqlBuddy.TemplateTest
     {
         public static void Main(string[] args)
         {
+            using(var cmd = RunFront.dbo.Procedures.AllowedDivisionList())
+            {
+            }
         }
     }
 }

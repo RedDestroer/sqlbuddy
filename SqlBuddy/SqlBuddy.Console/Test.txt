@@ -1,13 +1,20 @@
 ﻿dataaccess
 {
-    classname = "GoodsMovement";
+    classname = "RunFront";
     generator = "csnativedbgen.tt";
     connection = 
     {
-        { database, "rrGoodsMovement" },
+        { database, "rrRunFront" },
         { server, "odin\run2010" },
         { user, "sa" },
         { password, "" }
     };
-    transformators = { };
+    transformators = { "SqlBuddy.Domain.PrettyNameTransformator", "SqlBuddy.Domain.SqlExtSyntaxTransformator" };
+    schemas =
+    {
+        !ALL,
+        { "d*", { "item*", !"item1" } },
+        { !"dbo" },
+        { "device", { ALL, !"Cash" } }
+    };
 }  

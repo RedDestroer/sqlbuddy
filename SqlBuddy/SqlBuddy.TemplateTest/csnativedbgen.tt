@@ -87,25 +87,11 @@ namespace <#= provider.Namespace #>
             
             public partial class Procedures
             {<#
-            foreach(var procedure in schema.Procedures) 
+            var schemaProcedures = schema.Procedures.Where(o => o.TryGetValue<bool>("IsPublic", true));
+            foreach(var procedure in schemaProcedures) 
             { 
 				var procedureName = Helper.FilterWhiteSpace(Helper.Capitalize(procedure.Name));
-
-				if (procedure.ExceptionMessage != null)
-				{
-			#>
-
-				//public static SqlCommand <#= procedureName #>()
-				//{
-				//    <#= procedure.ExceptionMessage #>
-				//}<#
-                }
-                else
-                { #>
-
-
-                    public static SqlCommand <#= procedureName #>(<#
-                        var procedureParameters = procedure.Parameters
+                var procedureParameters = procedure.Parameters
 															.Select(o =>
 																new 
 																{
@@ -119,6 +105,51 @@ namespace <#= provider.Namespace #>
 																})
 															.OrderBy(o => o.DefaultValue != null)
 															.ToList();
+
+				if (procedure.ExceptionMessage != null)
+				{
+			#>
+
+				//public static SqlCommand <#= procedureName #>()
+				//{
+				//    <#= procedure.ExceptionMessage #>
+				//}<#
+                }
+                else
+                { #>
+                
+                <#
+                    var comments = Helper.GetComments(procedure.TryGetValue<string>(SqlProcedureContextKeys.Description, null));
+                    if (comments.Count > 0)
+                    {#>
+
+                    /// <summary>
+                    <#
+                        foreach(var comment in comments)
+                        {#>/// <#=comment#>
+                    <#
+                        }#><#
+
+                        for(int i = 0; i < procedureParameters.Count; i++) 
+                        {
+                            var parameter = procedureParameters[i];
+                            var parComments = Helper.GetComments(parameter.Param.TryGetValue<string>(SqlParameterContextKeys.Description, null));
+                            
+                            if (parComments.Count > 0)
+                            {#>/// <param name="<#=parameter.NetParameterName#>"><#
+                                foreach(var parComment in parComments)
+                                {#>
+                                  
+                    /// <#=parComment#>
+                    <#          }
+                  #>/// </param>
+                    <#
+                            }
+                        }
+                        #>/// </summary><#
+                    }#>
+
+                    public static SqlCommand <#= procedureName #>(<#
                         for(int i = 0; i < procedureParameters.Count; i++) 
                         { 
                             var parameter = procedureParameters[i];

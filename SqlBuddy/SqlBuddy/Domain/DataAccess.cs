@@ -10,6 +10,8 @@ namespace SqlBuddy.Domain
         {
             Connection = new Dictionary<string, string>();
             Transformators = new List<string>();
+            SchemaRules = new Rules();
+            ProcedureRules = new Dictionary<string, Rules>();
         }
 
         public string ClassName { get; internal set; }
@@ -17,21 +19,26 @@ namespace SqlBuddy.Domain
         public string Generator { get; internal set; }
         public IDictionary<string, string> Connection { get; private set; }
         public IList<string> Transformators { get; private set; }
+        public Rules SchemaRules { get; private set; }
+        public IDictionary<string, Rules> ProcedureRules { get; private set; }
 
         public bool HaveToReadSchema(string schemaName)
         {
-            if (!(schemaName == "dbo"))
-                return false;
-
-            return true;
+            return SchemaRules.IsGood(schemaName);
         }
 
         public bool HaveToReadSqlProcedure(string schemaName, string procedureName)
         {
-            if (!(schemaName == "dbo" && procedureName == "AllowedDivisionList"))
-                return false;
+            string pattern;
+            if (SchemaRules.IsGood(schemaName, out pattern))
 
-            return true;
+            if (pattern == null)
+                return true;
+
+            if (!ProcedureRules.ContainsKey(pattern))
+                return true;
+
+            return ProcedureRules[pattern].IsGood(procedureName);
         }
     }
 }
