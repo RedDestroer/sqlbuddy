@@ -1,8 +1,8 @@
 namespace SqlBuddy.Domain
 {
-    public class SqlProocedureParameterExt
+    public class SqlProcedureParameterExt
     {
-        public SqlProocedureParameterExt(int row, int column)
+        public SqlProcedureParameterExt(int row, int column)
         {
             Row = row;
             Column = column;

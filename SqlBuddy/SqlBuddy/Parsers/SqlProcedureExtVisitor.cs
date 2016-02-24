@@ -51,7 +51,7 @@ namespace SqlBuddy.Parsers
             }
             else if (fieldContext != null)
             {
-                var sqlProocedureParameterExt = new SqlProocedureParameterExt(fieldContext.Start.Line, fieldContext.Start.Column);
+                var sqlProocedureParameterExt = new SqlProcedureParameterExt(fieldContext.Start.Line, fieldContext.Start.Column);
                 sqlProocedureParameterExt.IsNullable = IsNullable(fieldContext);
 
                 var descriptionContext = context.description();

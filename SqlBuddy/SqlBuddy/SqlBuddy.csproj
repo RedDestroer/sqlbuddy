@@ -70,7 +70,7 @@
     <Compile Include="Domain\SqlProcedureDefinition.cs" />
     <Compile Include="Domain\SqlProcedureExt.cs" />
     <Compile Include="Domain\SqlProcedureFlags.cs" />
-    <Compile Include="Domain\SqlProocedureParameterExt.cs" />
+    <Compile Include="Domain\SqlProcedureParameterExt.cs" />
     <Compile Include="Domain\SqlSchemaDefinition.cs" />
     <Compile Include="Domain\SqlTypeDefinition.cs" />
     <Compile Include="obj\Debug\DataAccessBaseListener.cs" />

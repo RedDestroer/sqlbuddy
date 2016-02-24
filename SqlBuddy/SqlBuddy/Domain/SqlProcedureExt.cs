@@ -6,11 +6,11 @@ namespace SqlBuddy.Domain
     {
         public SqlProcedureExt()
         {
-            ParamExtensions = new List<SqlProocedureParameterExt>();
+            ParamExtensions = new List<SqlProcedureParameterExt>();
         }
 
         public SqlProcedureFlags SqlProcedureFlags { get; set; }
         public string Description { get; set; }
-        public IList<SqlProocedureParameterExt> ParamExtensions { get; private set; }
+        public IList<SqlProcedureParameterExt> ParamExtensions { get; private set; }
     }
 }
